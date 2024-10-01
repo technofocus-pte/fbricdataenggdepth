@@ -1,3 +1,5 @@
+# **Use Case 02: Analyze data with Apache Spark**
+
 **Introduction**
 
 Apache Spark is an open-source engine for distributed data processing,
@@ -81,55 +83,48 @@ trial enabled.
 
 > **Note**: If you are directed to Microsoft Fabric Home page, then skip
 > steps from \#2 to \#4.
->
-> ![](./media/image1.png)
+      ![](./media/image1.png)
 
 2.  In the **Microsoft Fabric** window, enter your credentials, and
     click on the **Submit** button.
 
-> ![](./media/image2.png)
+      ![](./media/image2.png)
 
 3.  Then, In the **Microsoft** window enter the password and click on
     the **Sign in** button**.**
 
-> ![A login screen with a red box and blue text Description
-> automatically generated](./media/image3.png)
+     ![](./media/image3.png)
 
 4.  In **Stay signed in?** window, click on the **Yes** button.
 
-> ![A screenshot of a computer error Description automatically
-> generated](./media/image4.png)
+      ![](./media/image4.png)
 
 5.  In the **Microsoft Fabric** home page, select the **Power BI**
     template.
 
-> ![](./media/image5.png)
+      ![](./media/image5.png)
 
 6.  In the **Power BI Home** page menu bar on the left,
     select **Workspaces** (the icon looks similar to 🗇).
 
-> ![](./media/image6.png)
+      ![](./media/image6.png)
 
 7.  In the Workspaces pane, select **+** **New workspace**.
 
-> ![](./media/image7.png)
+      ![](./media/image7.png)
 
 8.  In the **Create a workspace tab**, enter the following details and
     click on the **Apply** button.
 
 [TABLE]
-
-> ![](./media/image8.png)
-
-![](./media/image9.png)
-
-![](./media/image10.png)
+        ![](./media/image8.png)
+        ![](./media/image9.png)
+       ![](./media/image10.png)
 
 9.  Wait for the deployment to complete. It takes 2-3 minutes to
     complete. When your new workspace opens, it should be empty.
 
-> ![A screen shot of a computer Description automatically
-> generated](./media/image11.png)
+      ![](./media/image11.png)
 
 ## Task 2: Create a lakehouse and upload files
 
@@ -140,62 +135,61 @@ the data files you’re going to analyze.
 1.  At the bottom left of the Power BI portal, select the **Power
     BI** icon and switch to the **Data Engineering** experience.
 
-![](./media/image12.png)
+      ![](./media/image12.png)
 
 2.  In the **Synapse Data Engineering** home page, Select **Lakehouse**
     under **New** pane.
 
-![](./media/image13.png)
+      ![](./media/image13.png)
 
 3.  In the **New lakehouse** dialog box, enter **Fabric_lakehouse** in
     the **Name** field, click on the **Create** button and open the new
     lakehouse.
 
-![](./media/image14.png)
+      ![](./media/image14.png)
 
 4.  After a minute or so, a new empty lakehouse will be created. You
     need to ingest some data into the data lakehouse for analysis.
 
-![A screenshot of a computer Description automatically
-generated](./media/image15.png)
+      ![](./media/image15.png)
 
 5.  You will see a notification stating **Successfully created SQL
     endpoint**.
 
-> ![](./media/image16.png)
+       ![](./media/image16.png)
 
 6.  In the **Explorer** section, under the **fabric_lakehouse**, hover
     your mouse beside **Files folder**, then click on the horizontal
     ellipses **(…)** menu. Navigate and click on **Upload**, then click
     on the **Upload folder** as shown in the below image.
 
-![](./media/image17.png)
+      ![](./media/image17.png)
 
 7.  On the **Upload folder** pane that appears on the right side, select
     the **folder icon** under the **Files/** and then browse to
     **C:\LabFiles** and then select the **orders** folder and click on
     the **Upload** button.
 
-![](./media/image18.png)
+      ![](./media/image18.png)
 
 8.  In case, the **Upload 3 files to this site?** dialog box appears,
     then click on **Upload** button.
 
-![](./media/image19.png)
+       ![](./media/image19.png)
 
 9.  In the Upload folder pane, click on the **Upload** button.
 
-> ![](./media/image20.png)
+      ![](./media/image20.png)
 
 10. After the files have been uploaded **close** the **Upload folder**
     pane.
 
-> ![](./media/image21.png)
+      ![](./media/image21.png)
 
 11. Expand **Files** and select the **orders** folder and verify that
     the CSV files have been uploaded.
 
-![](./media/image22.png)
+     ![](./media/image22.png)
 
 ## Task 3: Create a notebook
 
@@ -207,44 +201,41 @@ run code (in multiple languages), and add notes to document it.
     the **orders** folder in your datalake, in the **Open
     notebook** menu, select **New notebook**.
 
-![](./media/image23.png)
+     ![](./media/image23.png)
 
 2.  After a few seconds, a new notebook containing a single *cell* will
     open. Notebooks are made up of one or more cells that can
     contain *code* or *markdown* (formatted text).
 
-![](./media/image24.png)
+      ![](./media/image24.png)
 
 3.  Select the first cell (which is currently a *code* cell), and then
     in the dynamic tool bar at its top-right, use the **M↓** button to
     **convert the cell to a markdown cell**.
 
-![](./media/image25.png)
+      ![](./media/image25.png)
 
 4.  When the cell changes to a markdown cell, the text it contains is
     rendered.
 
-![](./media/image26.png)
+      ![](./media/image26.png)
 
 5.  Use the **🖉** (Edit) button to switch the cell to editing mode,
     replace all the text then modify the markdown as follows:
 
 > CodeCopy
->
-> \# Sales order data exploration
->
-> Use the code in this notebook to explore sales order data.
+```
+# Sales order data exploration
 
-![](./media/image27.png)
-
-![A screenshot of a computer Description automatically
-generated](./media/image28.png)
+Use the code in this notebook to explore sales order data.
+```
+   ![](./media/image27.png)
+    ![](./media/image28.png)
 
 6.  Click anywhere in the notebook outside of the cell to stop editing
     it and see the rendered markdown.
 
-![A screenshot of a computer Description automatically
-generated](./media/image29.png)
+      ![](./media/image29.png)
 
 ## Task 4: Load data into a dataframe
 
@@ -261,7 +252,7 @@ used languages on Spark and is the default language in Fabric notebooks.
     the **orders** folder so that the CSV files are listed next to the
     notebook editor.
 
-![](./media/image30.png)
+      ![](./media/image30.png)
 
 2.  Now, however your mouse to 2019.csv file. Click on the horizontal
     ellipses **(…)** beside 2019.csv. Navigate and click on **Load
@@ -269,18 +260,13 @@ used languages on Spark and is the default language in Fabric notebooks.
     following code will be added to the notebook:
 
 > CodeCopy
->
-> df =
-> spark.read.format("csv").option("header","true").load("Files/orders/2019.csv")
->
-> \# df now is a Spark DataFrame containing CSV data from
-> "Files/orders/2019.csv".
->
-> display(df)
-
-![](./media/image31.png)
-
-![](./media/image32.png)
+```
+df = spark.read.format("csv").option("header","true").load("Files/orders/2019.csv")
+# df now is a Spark DataFrame containing CSV data from "Files/orders/2019.csv".
+display(df)
+```
+  ![](./media/image31.png)
+      ![](./media/image32.png)
 
 **Tip**: You can hide the Lakehouse explorer panes on the left by using
 their **«** icons. Doing
@@ -289,7 +275,7 @@ so will help you focus on the notebook.
 
 3.  Use the **▷ Run cell** button on the left of the cell to run it.
 
-![](./media/image33.png)
+      ![](./media/image33.png)
 
 **Note**: Since this is the first time you’ve run any Spark code, a
 Spark session must be started. This means that the first run in the
@@ -299,7 +285,7 @@ quicker.
 4.  When the cell command has completed, review the output below the
     cell, which should look similar to this:
 
-![](./media/image34.png)
+      ![](./media/image34.png)
 
 5.  The output shows the rows and columns of data from the 2019.csv
     file. However, note that the column headers don’t look right. The
@@ -310,18 +296,12 @@ quicker.
 6.  Modify the code to set the **header** option to **false**. Replace
     all the code in the **cell** with the following code and click on
     **▷ Run cell** button and review the output
-
-> CodeCopy
->
-> df =
-> spark.read.format("csv").option("header","false").load("Files/orders/2019.csv")
->
-> \# df now is a Spark DataFrame containing CSV data from
-> "Files/orders/2019.csv".
->
-> display(df)
-
-![](./media/image35.png)
+```
+df = spark.read.format("csv").option("header","false").load("Files/orders/2019.csv")
+# df now is a Spark DataFrame containing CSV data from "Files/orders/2019.csv".
+display(df)
+```
+  ![](./media/image35.png)
 
 7.  Now the dataframe correctly includes first row as data values, but
     the column names are auto-generated and not very helpful. To make
@@ -330,41 +310,26 @@ quicker.
 
 8.  Replace all the code in the **cell** with the following code and
     click on **▷ Run cell** button and review the output
+```
+from pyspark.sql.types import *
 
-> CodeCopy
->
-> from pyspark.sql.types import \*
->
-> orderSchema = StructType(\[
->
-> StructField("SalesOrderNumber", StringType()),
->
-> StructField("SalesOrderLineNumber", IntegerType()),
->
-> StructField("OrderDate", DateType()),
->
-> StructField("CustomerName", StringType()),
->
-> StructField("Email", StringType()),
->
-> StructField("Item", StringType()),
->
-> StructField("Quantity", IntegerType()),
->
-> StructField("UnitPrice", FloatType()),
->
-> StructField("Tax", FloatType())
->
-> \])
->
-> df =
-> spark.read.format("csv").schema(orderSchema).load("Files/orders/2019.csv")
->
-> display(df)
+orderSchema = StructType([
+    StructField("SalesOrderNumber", StringType()),
+    StructField("SalesOrderLineNumber", IntegerType()),
+    StructField("OrderDate", DateType()),
+    StructField("CustomerName", StringType()),
+    StructField("Email", StringType()),
+    StructField("Item", StringType()),
+    StructField("Quantity", IntegerType()),
+    StructField("UnitPrice", FloatType()),
+    StructField("Tax", FloatType())
+    ])
 
-![](./media/image36.png)
-
-![](./media/image37.png)
+df = spark.read.format("csv").schema(orderSchema).load("Files/orders/2019.csv")
+display(df)
+```
+  ![](./media/image36.png)
+     ![](./media/image37.png)
 
 9.  Now the dataframe includes the correct column names (in addition to
     the **Index**, which is a built-in column in all dataframes based on
@@ -378,14 +343,10 @@ quicker.
 11. Use the **+ Code** icon below the cell output to add a new code cell
     to the notebook, and enter the following code in it. Click on **▷
     Run cell** button and review the output
-
-> CodeCopy
->
-> display(df)
->
-> ![A screenshot of a computer Description automatically
-> generated](./media/image38.png)
-
+```
+ display(df)
+```
+  ![](./media/image38.png)
 12. The dataframe includes only the data from the **2019.csv** file.
     Modify the code so that the file path uses a \* wildcard to read the
     sales order data from all of the files in the **orders** folder
@@ -394,42 +355,30 @@ quicker.
     to the notebook, and enter the following code in it.
 
 CodeCopy
+```
+from pyspark.sql.types import *
 
-> from pyspark.sql.types import \*
->
-> orderSchema = StructType(\[
->
->     StructField("SalesOrderNumber", StringType()),
->
->     StructField("SalesOrderLineNumber", IntegerType()),
->
->     StructField("OrderDate", DateType()),
->
->     StructField("CustomerName", StringType()),
->
->     StructField("Email", StringType()),
->
->     StructField("Item", StringType()),
->
->     StructField("Quantity", IntegerType()),
->
->     StructField("UnitPrice", FloatType()),
->
->     StructField("Tax", FloatType())
->
->     \])
->
-> df =
-> spark.read.format("csv").schema(orderSchema).load("Files/orders/\*.csv")
->
-> display(df)
+orderSchema = StructType([
+    StructField("SalesOrderNumber", StringType()),
+    StructField("SalesOrderLineNumber", IntegerType()),
+    StructField("OrderDate", DateType()),
+    StructField("CustomerName", StringType()),
+    StructField("Email", StringType()),
+    StructField("Item", StringType()),
+    StructField("Quantity", IntegerType()),
+    StructField("UnitPrice", FloatType()),
+    StructField("Tax", FloatType())
+    ])
 
-![](./media/image39.png)
+df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")
+display(df)
+```
+  ![](./media/image39.png)
 
 14. Run the modified code cell and review the output, which should now
     include sales for 2019, 2020, and 2021.
 
-![](./media/image40.png)
+     ![](./media/image40.png)
 
 **Note**: Only a subset of the rows is displayed, so you may not be able
 to see examples from all years.
@@ -445,16 +394,13 @@ to filter, group, and otherwise manipulate the data it contains.
     to the notebook, and enter the following code in it.
 
 **CodeCopy**
-
-> customers = df\['CustomerName', 'Email'\]
->
-> print(customers.count())
->
-> print(customers.distinct().count())
->
-> display(customers.distinct())
->
-> ![](./media/image41.png)
+```
+   customers = df['CustomerName', 'Email']
+   print(customers.count())
+   print(customers.distinct().count())
+   display(customers.distinct())
+ ```
+   ![](./media/image41.png)
 
 2.  **Run** the new code cell, and review the results. Observe the
     following details:
@@ -473,21 +419,16 @@ to filter, group, and otherwise manipulate the data it contains.
       use **select** method, so the first line of the code above could
       be written as customers = df.select("CustomerName", "Email")
 
-> ![](./media/image42.png)
+      ![](./media/image42.png)
 
 3.  Modify the code, replace all the code in the **cell** with the
     following code and click on **▷ Run cell** button as follows:
-
-> CodeCopy
->
-> customers = df.select("CustomerName",
-> "Email").where(df\['Item'\]=='Road-250 Red, 52')
->
-> print(customers.count())
->
-> print(customers.distinct().count())
->
-> display(customers.distinct())
+```
+customers = df.select("CustomerName", "Email").where(df['Item']=='Road-250 Red, 52')
+print(customers.count())
+print(customers.distinct().count())
+display(customers.distinct())
+```
 
 4.  **Run** the modified code to view the customers who have purchased
     the ***Road-250 Red, 52* product**. Note that you can “**chain**”
@@ -496,41 +437,34 @@ to filter, group, and otherwise manipulate the data it contains.
     by the **select** method is the source dataframe for
     the **where** method that is used to apply filtering criteria.
 
-> ![](./media/image43.png)
+      ![](./media/image43.png)
 
 ## Task 2: Aggregate and group data in a dataframe
 
 1.  Click on **+ Code** and copy and paste the below code and then click
     on **Run cell** button.
-
-CodeCopy
-
-> productSales = df.select("Item", "Quantity").groupBy("Item").sum()
->
-> display(productSales)
->
-> ![](./media/image44.png)
+```
+productSales = df.select("Item", "Quantity").groupBy("Item").sum()
+display(productSales)
+```
+   ![](./media/image44.png)
 
 2.  Note that the results show the sum of order quantities grouped by
     product. The **groupBy** method groups the rows by *Item*, and the
     subsequent **sum** aggregate function is applied to all of the
     remaining numeric columns (in this case, *Quantity*)
 
-![](./media/image45.png)
+      ![](./media/image45.png)
 
 3.  Click on **+ Code** and copy and paste the below code and then click
     on **Run cell** button.
+```
+from pyspark.sql.functions import *
 
-> **CodeCopy**
->
-> from pyspark.sql.functions import \*
->
-> yearlySales =
-> df.select(year("OrderDate").alias("Year")).groupBy("Year").count().orderBy("Year")
->
-> display(yearlySales)
-
-![](./media/image46.png)
+yearlySales = df.select(year("OrderDate").alias("Year")).groupBy("Year").count().orderBy("Year")
+display(yearlySales)
+```
+  ![](./media/image46.png)
 
 4.  Note that the results show the number of sales orders per year. Note
     that the **select** method includes a SQL **year** function to
@@ -542,7 +476,7 @@ CodeCopy
     group is calculated before finally the **orderBy** method is used to
     sort the resulting dataframe.
 
-![](./media/image47.png)
+     ![](./media/image47.png)
 
 # Exercise 3: Use Spark to transform data files
 
@@ -555,31 +489,22 @@ or analysis.
 1.  Click on + Code and copy and paste the below code
 
 **CodeCopy**
+```
+from pyspark.sql.functions import *
 
-> from pyspark.sql.functions import \*
->
-> \## Create Year and Month columns
->
-> transformed_df = df.withColumn("Year",
-> year(col("OrderDate"))).withColumn("Month", month(col("OrderDate")))
->
-> \# Create the new FirstName and LastName fields
->
-> transformed_df = transformed_df.withColumn("FirstName",
-> split(col("CustomerName"), " ").getItem(0)).withColumn("LastName",
-> split(col("CustomerName"), " ").getItem(1))
->
-> \# Filter and reorder columns
->
-> transformed_df = transformed_df\["SalesOrderNumber",
-> "SalesOrderLineNumber", "OrderDate", "Year", "Month", "FirstName",
-> "LastName", "Email", "Item", "Quantity", "UnitPrice", "Tax"\]
->
-> \# Display the first five orders
->
-> display(transformed_df.limit(5))
+## Create Year and Month columns
+transformed_df = df.withColumn("Year", year(col("OrderDate"))).withColumn("Month", month(col("OrderDate")))
 
-![](./media/image48.png)
+# Create the new FirstName and LastName fields
+transformed_df = transformed_df.withColumn("FirstName", split(col("CustomerName"), " ").getItem(0)).withColumn("LastName", split(col("CustomerName"), " ").getItem(1))
+
+# Filter and reorder columns
+transformed_df = transformed_df["SalesOrderNumber", "SalesOrderLineNumber", "OrderDate", "Year", "Month", "FirstName", "LastName", "Email", "Item", "Quantity", "UnitPrice", "Tax"]
+
+# Display the first five orders
+display(transformed_df.limit(5))
+```
+   ![](./media/image48.png)
 
 2.  **Run** the code to create a new dataframe from the original order
     data with the following transformations:
@@ -593,12 +518,12 @@ or analysis.
     - Filter and reorder the columns, removing
       the **CustomerName** column.
 
-![](./media/image49.png)
+     ![](./media/image49.png)
 
 3.  Review the output and verify that the transformations have been made
     to the data.
 
-![](./media/image50.png)
+     ![](./media/image50.png)
 
 You can use the full power of the Spark SQL library to transform the
 data by filtering rows, deriving, removing, renaming columns, and
@@ -614,12 +539,10 @@ learn more about the methods of the Dataframe object.
     dataframe in Parquet format (Overwriting the data if it already
     exists). **Run** the cell and wait for the message that the data has
     been saved.
-
-> CodeCopy
->
-> transformed_df.write.mode("overwrite").parquet('Files/transformed_data/orders')
->
-> print ("Transformed data saved!")
+```
+transformed_df.write.mode("overwrite").parquet('Files/transformed_data/orders')
+print ("Transformed data saved!")
+```
 >
 > **Note**: Commonly, *Parquet* format is preferred for data files that
 > you will use for further analysis or ingestion into an analytical
@@ -627,38 +550,32 @@ learn more about the methods of the Dataframe object.
 > large scale data analytics systems. In fact, sometimes your data
 > transformation requirement may simply be to convert data from another
 > format (such as CSV) to Parquet!
-
-![](./media/image51.png)
-
-![](./media/image52.png)
+    ![](./media/image51.png)
+    ![](./media/image52.png)
 
 2.  Then, in the **Lakehouse explorer** pane on the left, in
     the **…** menu for the **Files** node, select **Refresh**.
 
-> ![](./media/image53.png)
+     ![](./media/image53.png)
 
 3.  Click on the **transformed_data** folder to verify that it contains
     a new folder named **orders**, which in turn contains one or more
     **Parquet files**.
 
-![](./media/image54.png)
+     ![](./media/image54.png)
 
 4.  Click on **+ Code** following code to load a new dataframe from the
     parquet files in the **transformed_data -\> orders** folder:
-
-> **CodeCopy**
->
-> orders_df =
-> spark.read.format("parquet").load("Files/transformed_data/orders")
->
-> display(orders_df)
->
-> ![](./media/image55.png)
+```
+orders_df = spark.read.format("parquet").load("Files/transformed_data/orders")
+display(orders_df)
+```
+  ![](./media/image55.png)
 
 5.  **Run** the cell and verify that the results show the order data
     that has been loaded from the parquet files.
 
-> ![](./media/image56.png)
+     ![](./media/image56.png)
 
 ## Task 3: Save data in partitioned files
 
@@ -666,32 +583,28 @@ learn more about the methods of the Dataframe object.
     saves the dataframe, partitioning the data
     by **Year** and **Month**. **Run** the cell and wait for the message
     that the data has been saved
-
-> CodeCopy
->
-> orders_df.write.partitionBy("Year","Month").mode("overwrite").parquet("Files/partitioned_data")
->
-> print ("Transformed data saved!")
->
-> ![](./media/image57.png)
->
-> ![](./media/image58.png)
+```
+orders_df.write.partitionBy("Year","Month").mode("overwrite").parquet("Files/partitioned_data")
+print ("Transformed data saved!")
+```
+   ![](./media/image57.png)
+       ![](./media/image58.png)
 
 2.  Then, in the **Lakehouse explorer** pane on the left, in
     the **…** menu for the **Files** node, select **Refresh.**
 
-![](./media/image59.png)
+      ![](./media/image59.png)
 
-![](./media/image60.png)
+      ![](./media/image60.png)
 
 3.  Expand the **partitioned_orders** folder to verify that it contains
     a hierarchy of folders named **Year=*xxxx***, each containing
     folders named **Month=*xxxx***. Each month folder contains a parquet
     file with the orders for that month.
 
-![](./media/image61.png)
+      ![](./media/image61.png)
 
-![](./media/image62.png)
+      ![](./media/image62.png)
 
 > Partitioning data files is a common way to optimize performance when
 > dealing with large volumes of data. This technique can significant
@@ -699,21 +612,17 @@ learn more about the methods of the Dataframe object.
 
 4.  Add a new cell, click on **+ Code** with the following code to load
     a new dataframe from the **orders.parquet** file:
-
-> CodeCopy
->
-> orders_2021_df =
-> spark.read.format("parquet").load("Files/partitioned_data/Year=2021/Month=\*")
->
-> display(orders_2021_df)
-
-![](./media/image63.png)
+```
+orders_2021_df = spark.read.format("parquet").load("Files/partitioned_data/Year=2021/Month=*")
+display(orders_2021_df)
+```
+  ![](./media/image63.png)
 
 5.  **Run** the cell and verify that the results show the order data for
     sales in 2021. Note that the partitioning columns specified in the
     path (**Year** and **Month**) are not included in the dataframe.
 
-![](./media/image64.png)
+     ![](./media/image64.png)
 
 # **Exercise 3: Work with tables and SQL**
 
@@ -739,19 +648,14 @@ independently of the metastore).
 1.  Add a new code, click on **+ Code** cell to the notebook and enter
     the following code, which saves the dataframe of sales order data as
     a table named **salesorders**:
+```
+# Create a new table
+df.write.format("delta").saveAsTable("salesorders")
 
-> CodeCopy
->
-> \# Create a new table
->
-> df.write.format("delta").saveAsTable("salesorders")
->
-> \# Get the table description
->
-> spark.sql("DESCRIBE EXTENDED salesorders").show(truncate=False)
-
-![A screenshot of a computer Description automatically
-generated](./media/image65.png)
+# Get the table description
+spark.sql("DESCRIBE EXTENDED salesorders").show(truncate=False)
+```
+   ![](./media/image65.png)
 
 **Note**: It’s worth noting a couple of things about this example.
 Firstly, no explicit path is provided, so the files for the table will
@@ -766,44 +670,33 @@ lakehouses in Fabric.
 2.  **Run** the code cell and review the output, which describes the
     definition of the new table.
 
-![A screenshot of a computer Description automatically
-generated](./media/image66.png)
+      ![](./media/image66.png)
 
 3.  In the **Lakehouse** **explorer** pane, in the **…** menu for
     the **Tables** folder, select **Refresh.**
 
-![A screenshot of a computer Description automatically
-generated](./media/image67.png)
+      ![](./media/image67.png)
 
 4.  Then, expand the **Tables** node and verify that
     the **salesorders** table has been created.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image68.png)
+      ![](./media/image68.png)
 
 5.  Hover your mouse beside **salesorders** table, then click on the
     horizontal ellipses (…). Navigate and click on **Load data**, then
     select **Spark**.
 
-![A screenshot of a computer Description automatically
-generated](./media/image69.png)
+      ![](./media/image69.png)
 
 6.  Click on **▷ Run cell** button and which uses the Spark SQL library
     to embed a SQL query against the **salesorder** table in PySpark
     code and load the results of the query into a dataframe.
-
-> CodeCopy
->
-> df = spark.sql("SELECT \* FROM \[your_lakehouse\].salesorders LIMIT
-> 1000")
->
-> display(df)
-
-![A screenshot of a computer program Description automatically
-generated](./media/image70.png)
-
-![A screenshot of a computer Description automatically
-generated](./media/image71.png)
+```
+df = spark.sql("SELECT * FROM [your_lakehouse].salesorders LIMIT 1000")
+display(df)
+```
+  ![](./media/image70.png)
+    ![](./media/image71.png)
 
 ## Task 2: Create an external table
 
@@ -814,15 +707,10 @@ stored in an external location.
 1.  Under the results returned by the first code cell, use the **+
     Code** button to add a new code cell if one doesn’t already exist.
     Then enter the following code in the new cell.
-
-CodeCopy
-
-> df.write.format("delta").saveAsTable("external_salesorder",
-> path="\<abfs_path\>/external_salesorder")
-
-![A screenshot of a computer Description automatically
-generated](./media/image72.png)
-
+```
+df.write.format("delta").saveAsTable("external_salesorder", path="<abfs_path>/external_salesorder")
+```
+  ![](./media/image72.png)
 2.  In the **Lakehouse explorer** pane, in the **…** menu for
     the **Files** folder, select **Copy ABFS path** in the notepad.
 
@@ -830,9 +718,7 @@ generated](./media/image72.png)
 > the OneLake storage for your lakehouse - similar to this:
 
 abfss://dp_Fabric29@onelake.dfs.fabric.microsoft.com/Fabric_lakehouse.Lakehouse/Files/external_salesorder
-
-![A screenshot of a computer Description automatically
-generated](./media/image73.png)
+     ![](./media/image73.png)
 
 3.  Now, move into the code cell, replace **\<abfs_path\>** with the
     **path** you copied to the notepad so that the code saves the
@@ -842,35 +728,29 @@ generated](./media/image73.png)
 
 abfss://dp_Fabric29@onelake.dfs.fabric.microsoft.com/Fabric_lakehouse.Lakehouse/Files/external_salesorder
 
-4.  Use the **▷ (*Run cell*)** button on the left of the cell to run it.
-
-![A screenshot of a computer Description automatically
-generated](./media/image74.png)
+4.  Use the **▷ (Run cell)** button on the left of the cell to run it.
+     ![](./media/image74.png)
 
 5.  In the **Lakehouse explorer** pane, in the **…** menu for
     the **Tables** folder, select the **Refresh**.
 
-![A screenshot of a computer Description automatically
-generated](./media/image75.png)
+      ![](./media/image75.png)
 
 6.  Then expand the **Tables** node and verify that
     the **external_salesorder** table has been created.
 
-![A screenshot of a computer Description automatically
-generated](./media/image76.png)
+      ![](./media/image76.png)
 
 7.  In the **Lakehouse explorer** pane, in the **…** menu for
     the **Files** folder, select **Refresh**.
 
-![A screenshot of a computer Description automatically
-generated](./media/image77.png)
+      ![](./media/image77.png)
 
 8.  Then expand the **Files** node and verify that
     the **external_salesorder** folder has been created for the table’s
     data files.
 
-![A screenshot of a computer Description automatically
-generated](./media/image78.png)
+      ![](./media/image78.png)
 
 ## Task 3: Compare managed and external tables
 
@@ -881,25 +761,20 @@ Let’s explore the differences between managed and external tables.
     Code cell and use the **▷ (*Run cell*)** button on the left of the
     cell to run it.
 
-> SqlCopy
->
-> %%sql
->
-> DESCRIBE FORMATTED salesorders;
+```
+%%sql
 
-![A screenshot of a computer Description automatically
-generated](./media/image79.png)
-
-![A screenshot of a computer Description automatically
-generated](./media/image80.png)
+DESCRIBE FORMATTED salesorders;
+```
+  ![](./media/image79.png)
+      ![](./media/image80.png)
 
 2.  In the results, view the **Location** property for the table, which
     should be a path to the OneLake storage for the lakehouse ending
     with **/Tables/salesorders** (you may need to widen the **Data
     type** column to see the full path).
 
-![A screenshot of a computer Description automatically
-generated](./media/image81.png)
+      ![](./media/image81.png)
 
 3.  Modify the **DESCRIBE** command to show the details of
     the **external_saleorder** table as shown here.
@@ -908,14 +783,13 @@ generated](./media/image81.png)
     Code** button to add a new code cell. Copy the below code and use
     the **▷ (*Run cell*)** button on the left of the cell to run it.
 
-> SqlCopy
->
-> %%sql
->
-> DESCRIBE FORMATTED external_salesorder;
+```
+%%sql
 
-![A screenshot of a email Description automatically
-generated](./media/image82.png)
+DESCRIBE FORMATTED external_salesorder;
+```
+
+![](./media/image82.png)
 
 5.  In the results, view the **Location** property for the table, which
     should be a path to the OneLake storage for the lakehouse ending
