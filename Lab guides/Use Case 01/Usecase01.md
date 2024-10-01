@@ -98,33 +98,31 @@ Follow these steps to start your Fabric trial.
     right side. In the Account manager blade, navigate and
     select **Start trial** as shown in the below image**.**
 
-![](./media/image6.png)
+     ![](./media/image6.png)
 
 2.  If prompted, agree to the terms and then select **Start trial**.
 
-> ![](./media/image7.png)
+     ![](./media/image7.png)
 
 3.  Once your trial capacity is ready, you receive a confirmation
     message. Select **Fabric Home Page** to begin working in Fabric.
 
-> ![](./media/image8.png)
+      ![](./media/image8.png)
 
 4.  Open your Account manager again. Notice that you now have a heading
     for **Trial status**. Your Account manager keeps track of the number
     of days remaining in your trial. You will also see the countdown in
     your Fabric menu bar when you work in a product experience.
 
-> ![](./media/image9.png)
+     ![](./media/image9.png)
 
 ## Task 3: OneDrive configured sign up for the Microsoft 365 admin center
 
 1.  Open your browser, navigate to the address bar, and type or paste
-    the following URL:
-    <https://admin.microsoft.com/AdminPortal/Home#/homepage> then press
+    the following URL:+++https://admin.microsoft.com/AdminPortal/Home#/homepage+++ then press
     the **Enter** button.
-
-> ![A screenshot of a computer Description automatically
-> generated](./media/image10.png)
+ 
+      ![](./media/image10.png)
 
 **Note**: If you are directly landed on **Microsoft 365 admin center**
 page, then skip steps from \#2 to \#4.
@@ -132,36 +130,31 @@ page, then skip steps from \#2 to \#4.
 2.  In the **Microsoft Azure** window, enter your **Sign-in**
     credentials, and click on the **Next** button.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image11.png)
+     ![](./media/image11.png)
 
 3.  Then, in the **Microsoft** window, enter the password and click on
     the **Sign in** button**.**
 
-> ![](./media/image3.png)
+      ![](./media/image3.png)
 
 4.  In **Stay signed in?** window, click on the **Yes** button.
 
-> ![](./media/image4.png)
+     ![](./media/image4.png)
 
 5.  On the left-side of Microsoft 365 admin center page, click on the
     **App launcher** as shown in the below image.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image12.png)
+     ![](./media/image12.png)
 
 6.  Under the **Apps** section, navigate and click on the **OneDrive.**
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image13.png)
+     ![](./media/image13.png)
 
 7.  In **OneDrive** page, under **Securely store and share files,**
     select **Your OneDrive is ready**
 
-![A screenshot of a computer Description automatically
-generated](./media/image14.png)
-
-![](./media/image15.png)
+    ![](./media/image14.png)
+    ![](./media/image15.png)
 
 # Exercise 2: Build and implement an end-to-end lakehouse for your organization
 
@@ -175,27 +168,26 @@ reports.
 1.  Go back to **Power BI** window. On the left side navigation menu of
     Power BI Home page, navigate and click on **Workspaces**.
 
-![](./media/image16.png)
+     ![](./media/image16.png)
 
 2.  In the Workspaces pane, click on **+** **New workspace** button**.**
 
-> ![](./media/image17.png)
+      ![](./media/image17.png)
 
 3.  In the **Create a workspace** pane that appears on the right side,
     enter the following details, and click on the **Apply** button.
 
 [TABLE]
+    ![](./media/image18.png)
 
-> ![](./media/image18.png)
+    ![](./media/image19.png)
 
-![](./media/image19.png)
-
-![](./media/image20.png)
+    ![](./media/image20.png)
 
 4.  Wait for the deployment to complete. It takes 2-3 minutes to
     complete.
 
-![](./media/image21.png)
+     ![](./media/image21.png)
 
 ## **Task 2: Create a lakehouse**
 
@@ -203,27 +195,27 @@ reports.
     **Power BI** icon located at the bottom left and select **Data
     Engineering** under Synapse.
 
-> ![](./media/image22.png)
+     ![](./media/image22.png)
 
 2.  In the **Synapse** **Data Engineering** **Home** page,
     select **Lakehouse** to create a lakehouse.
 
-![](./media/image23.png)
+     ![](./media/image23.png)
 
 3.  In the **New lakehouse** dialog box, enter **wwilakehouse** in
     the **Name** field, click on the **Create** button and open the new
     lakehouse.
 
 > **Note**: Ensure to remove space before **wwilakehouse**.
->
-> ![](./media/image24.png)
->
-> ![](./media/image25.png)
+ 
+     ![](./media/image24.png)
+ 
+     ![](./media/image25.png)
 
 4.  You will see a notification stating **Successfully created SQL
     endpoint**.
 
-> ![](./media/image26.png)
+     ![](./media/image26.png)
 
 ## **Task 3: Ingest sample data**
 
@@ -231,37 +223,37 @@ reports.
     lakehouse** section, and click on **New Dataflow Gen2** as shown in
     the below image.
 
-> ![](./media/image27.png)
+      ![](./media/image27.png)
 
 2.  On the Dataflow canvas, navigate and click on **Import from a
     Text/CSV file**.
 
-> ![](./media/image28.png)
+      ![](./media/image28.png)
 
 3.  On the **Connect to data source** pane, select the **Upload
     file** radio button. Click on the **Browse button** and browse to
     **C:\LabFiles** on your VM, then select
     **dimension_customer.csv** file and click on **Open** button.
 
-> ![](./media/image29.png)
->
-> ![](./media/image30.png)
+     ![](./media/image29.png)
+ 
+     ![](./media/image30.png)
 
 4.  Then, click on the **Next** button.
 
-> ![](./media/image31.png)
+     ![](./media/image31.png)
 
 5.  In the **Preview file data** page, go through the data and click on
     the **Create** button. You’ll be directed to **Dataflow** canvas.
 
-> ![](./media/image32.png)
+     ![](./media/image32.png)
 
 6.  In the **Query settings** pane on the right side of the Dataflow
     canvas, ensure that **dimension_customer** is selected under the
     **Name** field. Similarly, ensure that **Lakehouse** is selected
     under the **Data destination** field.
 
-> ![](./media/image33.png)
+     ![](./media/image33.png)
 >
 > ***Note:***
 
@@ -286,7 +278,7 @@ table name.*
     changes in this task. To proceed, select **Publish** at the bottom
     right of the screen.
 
-> ![](./media/image34.png)
+     ![](./media/image34.png)
 
 8.  A spinning circle next to the dataflow's name indicates publishing
     is in progress in the item view. ![](./media/image35.png)
@@ -296,45 +288,45 @@ table name.*
     horizontal ellipses (**…**), then navigate and click on
     **Properties** as shown in the below image.
 
-> ![](./media/image36.png)
+      ![](./media/image36.png)
 
 10. In the Dataflow 1 pane that appear on the right side, rename the
     dataflow to  **Load Lakehouse Table**  and select **Save**.
 
-> ![](./media/image37.png)
+      ![](./media/image37.png)
 
 11. Select the **Refresh now** option next to data flow name to refresh
     the dataflow. It runs the dataflow and moves data from the source
     file to lakehouse table. While it's in progress, you see a spinning
     circle under **Refreshed** column in the item view.
 
-![](./media/image38.png)
+     ![](./media/image38.png)
 
-> ![](./media/image39.png)
+     ![](./media/image39.png)
 
 12. Refreshing data will take around 4-5 min.
 
-![](./media/image40.png)
+     ![](./media/image40.png)
 
 13. Once the dataflow is refreshed, select **wwilakehouse** in the left
     navigation panel to view the **dimension_customer** delta table.
     Select the table to preview its data.
 
-![](./media/image41.png)
+    ![](./media/image41.png)
 
-![](./media/image42.png)
+    ![](./media/image42.png)
 
 14. You can also use the SQL endpoint of the lakehouse to query the data
     with SQL statements. Select **SQL analytics endpoint** from
     the **Lakehouse** drop-down menu at the top right of the screen.
 
-![](./media/image43.png)
+     ![](./media/image43.png)
 
 15. In the wwilakehouse page, under Explorer select
     the **dimension_customer** table to preview its data and
     select **New SQL query** to write your SQL statements.
 
-![](./media/image44.png)
+      ![](./media/image44.png)
 
 16. The following sample query aggregates the row count based on the
     **BuyingGroup column** of the **dimension_customer** table. SQL
@@ -342,21 +334,16 @@ table name.*
     can rename or delete these files based on your need. Paste the code
     as shown in the below image, then click on the play icon to **Run**
     the script.
-
-> SQLCopy
->
-> SELECT BuyingGroup, Count(\*) AS Total
->
-> FROM dimension_customer
->
-> GROUP BY BuyingGroup
-
-![](./media/image45.png)
+```
+SELECT BuyingGroup, Count(*) AS Total
+FROM dimension_customer
+GROUP BY BuyingGroup
+```
+  ![](./media/image45.png)
 
 **Note**: If you encounter an error during the execution of the script,
 then crosscheck the script syntax with the above image.
-
-![](./media/image46.png)
+    ![](./media/image46.png)
 
 17. Previously all the lakehouse tables and views were automatically
     added to the semantic model. With the recent updates, for new
@@ -367,39 +354,36 @@ then crosscheck the script syntax with the above image.
     BI semantic model** and select the tables that you want to add to
     the semantic model.
 
-> ![](./media/image47.png)
+      ![](./media/image47.png)
 
 19. In **Manage default semantic model** tab, select
     the **dimension_customer** table and click on **Confirm.**
 
-> ![](./media/image48.png)
+      ![](./media/image48.png)
 
 ## **Task 4: Build a report**
 
 1.  Now, click on **Fabric Lakehouse** **Tutorial-XX** on the left-sided
     navigation pane.
 
-![](./media/image49.png)
+      ![](./media/image49.png)
 
 2.  In the **Fabric Lakehouse Tutorial-XX** view, select
     **wwilakehouse** of Type **Semantic model(default)**. This dataset
     is automatically created and has the same name as the lakehouse.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image50.png)
-
+      ![](./media/image50.png)
 3.  From the semantic model pane, you can view all the tables. You have
     options to create reports either from scratch, paginated report, or
     let Power BI automatically create a report based on your data. For
     this tutorial, under **Explore this data**, select **Auto-create a
     report** as shown in the below image.
 
-![](./media/image51.png)
+     ![](./media/image51.png)
 
-![](./media/image52.png)
+     ![](./media/image52.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image53.png)
+     ![](./media/image53.png)
 
 4.  Since the table is a dimension and there are no measures in it,
     Power BI creates a measure for the row count and aggregates it
@@ -409,17 +393,16 @@ generated](./media/image53.png)
 5.  Save this report for the future by selecting **Save** from the top
     ribbon.
 
-> ![](./media/image54.png)
+      ![](./media/image54.png)
 
 6.  In the **Save your replort** dialog box, enter a name for your
-    report as !! **dimension_customer-report** !!and select **Save.**
+    report as +++dimension_customer-report+++ and select **Save.**
 
-![](./media/image55.png)
+     ![](./media/image55.png)
 
 7.  You will see a notification stating **Report saved**.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image56.png)
+      ![](./media/image56.png)
 
 # Exercise 3: Ingest data into the lakehouse
 
@@ -432,57 +415,56 @@ the Wide World Importers (WWI) into the lakehouse.
     your new workspace (i.e., Fabric Lakehouse Tutorial-XX) from
     the **Workspaces** menu. The items view of your workspace appears.
 
-> ![](./media/image57.png)
->
-> ![](./media/image58.png)
+     ![](./media/image57.png)
+ 
+      ![](./media/image58.png)
 
 2.  In the **Fabric Lakehouse Tutorial-XX** workspace page, navigate and
     click on **+New** button, then select **Data pipeline**.
 
-> ![](./media/image59.png)
+      ![](./media/image59.png)
 
 3.  In the New pipeline dialog box, specify the name as
     **IngestDataFromSourceToLakehouse** and select **Create.** A new
     data factory pipeline is created and opened
 
-> ![](./media/image60.png)
->
-> ![](./media/image61.png)
+      ![](./media/image60.png)
+ 
+      ![](./media/image61.png)
 
 4.  On newly created data factory pipeline i.e
     **IngestDataFromSourceToLakehouse**, select  **Copy data
     assistant** .
 
-> ![](./media/image62.png)
+      ![](./media/image62.png)
 
 5.  Next, set up an **HTTP** connection to import the sample World Wide
     Importers data into the Lakehouse. From the list of **New sources**,
     select **View more**, search for **Http** and select it.
 
-> ![](./media/image63.png)
+      ![](./media/image63.png)
 
 6.  In the **Connect to data source** window, enter the details from the
     table below and select **Next**.
 
 [TABLE]
-
-> ![](./media/image64.png)
+     ![](./media/image64.png)
 
 7.  In the next step, enable the **Binary copy** and choose **ZipDeflate
     (.zip)** as the **Compression type** since the source is a .zip
     file. Keep the other fields at their default values and
     click **Next**.
 
-> ![](./media/image65.png)
+      ![](./media/image65.png)
 
 8.  In the **Connect to data destination** window, select **OneLake data
     hub** and select **wwilakehouse.** Now specify the **Root
     folder** as **Files** and click **Next**. This will write the data
     to the *Files* section of the lakehouse.
 
-> ![](./media/image66.png)
->
-> ![](./media/image67.png)
+      ![](./media/image66.png)
+ 
+      ![](./media/image67.png)
 
 9.  Choose the **File format** as **Binary** for the destination.
     Click **Next** and then **Save+Run**. You can schedule pipelines to
@@ -490,44 +472,43 @@ the Wide World Importers (WWI) into the lakehouse.
     pipeline once. The data copy process takes approximately 10-15
     minutes to complete.
 
-> ![](./media/image68.png)
->
-> ![](./media/image69.png)
->
-> ![](./media/image70.png)
->
-> ![A screenshot of a computer Description automatically
-> generated](./media/image71.png)
->
-> ![](./media/image72.png)
->
-> ![](./media/image73.png)
+      ![](./media/image68.png)
+ 
+      ![](./media/image69.png)
+ 
+      ![](./media/image70.png)
+ 
+      ![](./media/image71.png)
+ 
+      ![](./media/image72.png)
+ 
+      ![](./media/image73.png)
 
 10. Under the Output tab, , select **Copy_a1n** to look at the details
     of the data transfer. After seeing the **Status** as **Succeeded**,
     click on the **Close** button.
 
-> ![](./media/image74.png)
->
-> ![](./media/image75.png)
+      ![](./media/image74.png)
+ 
+      ![](./media/image75.png)
 
 11. After the successful execution of the pipeline, go to your lakehouse
     (**wwilakehouse**) and open the explorer to see the imported data.
 
-> ![](./media/image76.png)
+      ![](./media/image76.png)
 
 12. Verify that the folder **WideWorldImportersDW** is present in
     the **Explorer** view and contains data for all tables.
 
-> ![](./media/image77.png)
+     ![](./media/image77.png)
 
 13. The data is created under the **Files** section of the lakehouse
     explorer. A new folder with GUID contains all the needed data.
     Rename the GUID to +++**wwi-raw-data+++**
 
-> ![](./media/image78.png)
->
-> ![](./media/image79.png)
+     ![](./media/image78.png)
+ 
+     ![](./media/image79.png)
 
 # Exercise 4: Prepare and transform data in the lakehouse
 
@@ -540,43 +521,42 @@ that data and prepare it for creating delta tables.
 1.  Now, click on **Fabric Lakehouse** **Tutorial-XX** on the left-sided
     navigation pane.
 
-> ![](./media/image80.png)
+     ![](./media/image80.png)
 
 2.  In the **Synapse Data Engineering** page, navigate to **New**
     section and click on **Import notebook**.
 
-> ![](./media/image81.png)
+     ![](./media/image81.png)
 
 3.  Select **Upload** from the **Import status** pane that opens on the
     right side of the screen.
 
 > **Note**: Ensure to select **All files (\*.\*)** from the dropdown
 > beside **File name** field.
->
-> ![](./media/image82.png)
+      ![](./media/image82.png)
 
 4.  Navigate and select **01-Create Delta Tables, 02-Data
     Transformation-Business Aggregation** notebook from **C:\LabFiles**
     and click on the **Open** button.
 
-> ![](./media/image83.png)
+      ![](./media/image83.png)
 
 5.  You will see a notification stating **Imported successfully.**
 
-> ![](./media/image84.png)
+      ![](./media/image84.png)
 
 6.  After the import is successful, to see the newly imported notebooks,
     select **Fabric Lakehouse Tutorial-XX** under the **Recommended**
     section.
 
-> ![](./media/image85.png)
->
-> ![](./media/image86.png)
+      ![](./media/image85.png)
+ 
+       ![](./media/image86.png)
 
 7.  In **Fabric Lakehouse Tutorial-XX** pane,
     select **wwilakehouse** lakehouse to open it.
 
-![](./media/image87.png)
+     ![](./media/image87.png)
 
 ## Task 2: Transform data and load to silver Delta table
 
@@ -584,17 +564,17 @@ that data and prepare it for creating delta tables.
     notebook** drop in the command bar, then select **Existing
     notebook**.
 
-> ![](./media/image88.png)
+     ![](./media/image88.png)
 
 2.  From the list of **Open existing notebook**, select the **01 -
     Create Delta Tables** notebook and select **Open**.
 
-![](./media/image89.png)
+      ![](./media/image89.png)
 
 3.  In the open notebook in **Lakehouse explorer**, you see the notebook
     is already linked to your opened lakehouse.
 
-![](./media/image90.png)
+     ![](./media/image90.png)
 
 ** Note**
 
@@ -620,7 +600,7 @@ aims to increase individual file size of the written data.
 5.  To start the notebook and execute the cell, select the **Run** icon
     that appears to the left of the cell upon hover.
 
-![](./media/image91.png)
+      ![](./media/image91.png)
 
 When running a cell, you didn't have to specify the underlying Spark
 pool or cluster details because Fabric provides them through Live Pool.
@@ -631,8 +611,7 @@ execute the first notebook command, the live pool is up and running in a
 few seconds. And the Spark session is established and it starts
 executing the code. Subsequent code execution is almost instantaneous in
 this notebook while the Spark session is active.
-
-![](./media/image92.png)
+     ![](./media/image92.png)
 
 6.  Next, you read raw data from the **Files** section of the lakehouse
     and add more columns for different date parts as part of the
@@ -646,26 +625,20 @@ this notebook while the Spark session is active.
 > **Note**: In case, you are unable to see the output, then click on the
 > horizontal lines on the left side of **Spark jobs**.
 >
-> from pyspark.sql.functions import col, year, month, quarter
->
-> table_name = 'fact_sale'
->
-> df =
-> spark.read.format("parquet").load('Files/wwi-raw-data/full/fact_sale_1y_full')
->
-> df = df.withColumn('Year', year(col("InvoiceDateKey")))
->
-> df = df.withColumn('Quarter', quarter(col("InvoiceDateKey")))
->
-> df = df.withColumn('Month', month(col("InvoiceDateKey")))
->
-> df.write.mode("overwrite").format("delta").partitionBy("Year","Quarter").save("Tables/" +
-> table_name)
+```
+from pyspark.sql.functions import col, year, month, quarter
 
-![A screenshot of a computer Description automatically
-generated](./media/image93.png)
+table_name = 'fact_sale'
 
-![](./media/image94.png)
+df = spark.read.format("parquet").load('Files/wwi-raw-data/full/fact_sale_1y_full')
+df = df.withColumn('Year', year(col("InvoiceDateKey")))
+df = df.withColumn('Quarter', quarter(col("InvoiceDateKey")))
+df = df.withColumn('Month', month(col("InvoiceDateKey")))
+
+df.write.mode("overwrite").format("delta").partitionBy("Year","Quarter").save("Tables/" + table_name)
+```
+   ![](./media/image93.png)
+       ![](./media/image94.png)
 
 8.  After the fact tables load, you can move on to loading data for the
     rest of the dimensions. The following cell creates a function to
@@ -677,66 +650,52 @@ generated](./media/image93.png)
 
 9.  Select the cell and select  **Run** icon that appears to the left of
     the cell upon hover.
+```
+from pyspark.sql.types import *
+def loadFullDataFromSource(table_name):
+    df = spark.read.format("parquet").load('Files/wwi-raw-data/full/' + table_name)
+    df.write.mode("overwrite").format("delta").save("Tables/" + table_name)
 
-> PythonCopy
->
-> from pyspark.sql.types import \*
->
-> def loadFullDataFromSource(table_name):
->
-> df = spark.read.format("parquet").load('Files/wwi-raw-data/full/' +
-> table_name)
->
-> df.write.mode("overwrite").format("delta").save("Tables/" +
-> table_name)
->
-> full_tables = \[
->
-> 'dimension_city',
->
-> 'dimension_date',
->
-> 'dimension_employee',
->
-> 'dimension_stock_item'
->
-> \]
->
-> for table in full_tables:
->
-> loadFullDataFromSource(table)
+full_tables = [
+    'dimension_city',
+    'dimension_date',
+    'dimension_employee',
+    'dimension_stock_item'
+    ]
 
-![](./media/image95.png)
+for table in full_tables:
+    loadFullDataFromSource(table)
 
-![A screenshot of a computer Description automatically
-generated](./media/image96.png)
 
+for table in full_tables:
+    loadFullDataFromSource(table)
+```
+   ![](./media/image95.png)
+      ![](./media/image96.png)
 10. To validate the created tables, click and select refresh on
     the **Tables**. The tables appear.
-
-> ![](./media/image97.png)
->
-> ![A screenshot of a computer Description automatically
-> generated](./media/image98.png)
+     ![](./media/image97.png)
+ 
+     ![](./media/image98.png)
 
 11. Go the items view of the workspace again, select **Fabric Lakehouse
     Tutorial-XX** and select the **wwilakehouse** lakehouse to open it.
 
-> ![](./media/image99.png)
->
-> ![](./media/image100.png)
+     ![](./media/image99.png)
+ 
+     ![](./media/image100.png)
 
 12. Now, open the second notebook. In the lakehouse view, dropdown the
     **Open notebook** and select **Existing notebook** from the top
     navigation menu.
 
-> ![](./media/image101.png)
+     ![](./media/image101.png)
 
 13. From the list of Open existing notebook, select the **02 - Data
     Transformation - Business** **Aggregation** notebook and click on
     the **Open**.
 
-> ![](./media/image102.png)
+     ![](./media/image102.png)
 
 14. In the open notebook in **Lakehouse explorer**, you see the notebook
     is already linked to your opened lakehouse.
@@ -744,7 +703,7 @@ generated](./media/image96.png)
 15. To start the notebook and select the 1^(st) cell and select
     the **Run** icon that appears to the left of the cell upon hover.
 
-![](./media/image103.png)
+     ![](./media/image103.png)
 
 16. An organization might have data engineers working with Scala/Python
     and other data engineers working with SQL (Spark SQL or T-SQL), all
@@ -775,58 +734,34 @@ generated](./media/image96.png)
 > referencing an existing delta table.
 >
 > PythonCopy
->
-> df_fact_sale = spark.read.table("wwilakehouse.fact_sale")
->
-> df_dimension_date = spark.read.table("wwilakehouse.dimension_date")
->
-> df_dimension_city = spark.read.table("wwilakehouse.dimension_city")
->
-> ![](./media/image104.png)
+```
+df_fact_sale = spark.read.table("wwilakehouse.fact_sale") 
+df_dimension_date = spark.read.table("wwilakehouse.dimension_date")
+df_dimension_city = spark.read.table("wwilakehouse.dimension_city")
+```
+   ![](./media/image104.png)
 
 18. In this cell, you join these tables using the dataframes created
     earlier, do group by to generate aggregation, rename a few of the
     columns, and finally write it as a delta table in
     the **Tables** section of the lakehouse.
 
-> PythonCopy
->
-> sale_by_date_city = df_fact_sale.alias("sale") \\
->
-> .join(df_dimension_date.alias("date"), df_fact_sale.InvoiceDateKey ==
-> df_dimension_date.Date, "inner") \\
->
-> .join(df_dimension_city.alias("city"), df_fact_sale.CityKey ==
-> df_dimension_city.CityKey, "inner") \\
->
-> .select("date.Date", "date.CalendarMonthLabel", "date.Day",
-> "date.ShortMonth", "date.CalendarYear", "city.City",
-> "city.StateProvince", "city.SalesTerritory", "sale.TotalExcludingTax",
-> "sale.TaxAmount", "sale.TotalIncludingTax", "sale.Profit")\\
->
-> .groupBy("date.Date", "date.CalendarMonthLabel", "date.Day",
-> "date.ShortMonth", "date.CalendarYear", "city.City",
-> "city.StateProvince", "city.SalesTerritory")\\
->
-> .sum("sale.TotalExcludingTax", "sale.TaxAmount",
-> "sale.TotalIncludingTax", "sale.Profit")\\
->
-> .withColumnRenamed("sum(TotalExcludingTax)",
-> "SumOfTotalExcludingTax")\\
->
-> .withColumnRenamed("sum(TaxAmount)", "SumOfTaxAmount")\\
->
-> .withColumnRenamed("sum(TotalIncludingTax)",
-> "SumOfTotalIncludingTax")\\
->
-> .withColumnRenamed("sum(Profit)", "SumOfProfit")\\
->
-> .orderBy("date.Date", "city.StateProvince", "city.City")
->
-> sale_by_date_city.write.mode("overwrite").format("delta").option("overwriteSchema",
-> "true").save("Tables/aggregate_sale_by_date_city")
->
-> ![](./media/image105.png)
+```
+sale_by_date_city = df_fact_sale.alias("sale") \
+.join(df_dimension_date.alias("date"), df_fact_sale.InvoiceDateKey == df_dimension_date.Date, "inner") \
+.join(df_dimension_city.alias("city"), df_fact_sale.CityKey == df_dimension_city.CityKey, "inner") \
+.select("date.Date", "date.CalendarMonthLabel", "date.Day", "date.ShortMonth", "date.CalendarYear", "city.City", "city.StateProvince", "city.SalesTerritory", "sale.TotalExcludingTax", "sale.TaxAmount", "sale.TotalIncludingTax", "sale.Profit")\
+.groupBy("date.Date", "date.CalendarMonthLabel", "date.Day", "date.ShortMonth", "date.CalendarYear", "city.City", "city.StateProvince", "city.SalesTerritory")\
+.sum("sale.TotalExcludingTax", "sale.TaxAmount", "sale.TotalIncludingTax", "sale.Profit")\
+.withColumnRenamed("sum(TotalExcludingTax)", "SumOfTotalExcludingTax")\
+.withColumnRenamed("sum(TaxAmount)", "SumOfTaxAmount")\
+.withColumnRenamed("sum(TotalIncludingTax)", "SumOfTotalIncludingTax")\
+.withColumnRenamed("sum(Profit)", "SumOfProfit")\
+.orderBy("date.Date", "city.StateProvince", "city.City")
+
+sale_by_date_city.write.mode("overwrite").format("delta").option("overwriteSchema", "true").save("Tables/aggregate_sale_by_date_city")
+```
+ ![](./media/image105.png)
 
 19. **Approach \#2 (sale_by_date_employee)** - Use Spark SQL to join and
     aggregate data for generating business aggregates. With the
@@ -840,65 +775,41 @@ generated](./media/image96.png)
 > tables, do group by to generate aggregation, and rename a few of the
 > columns.
 >
-> PythonCopy
->
-> %%sql
->
-> CREATE OR REPLACE TEMPORARY VIEW sale_by_date_employee
->
-> AS
->
-> SELECT
->
-> DD.Date, DD.CalendarMonthLabel
->
-> , DD.Day, DD.ShortMonth Month, CalendarYear Year
->
-> ,DE.PreferredName, DE.Employee
->
-> ,SUM(FS.TotalExcludingTax) SumOfTotalExcludingTax
->
-> ,SUM(FS.TaxAmount) SumOfTaxAmount
->
-> ,SUM(FS.TotalIncludingTax) SumOfTotalIncludingTax
->
-> ,SUM(Profit) SumOfProfit
->
-> FROM wwilakehouse.fact_sale FS
->
-> INNER JOIN wwilakehouse.dimension_date DD ON FS.InvoiceDateKey =
-> DD.Date
->
-> INNER JOIN wwilakehouse.dimension_Employee DE ON FS.SalespersonKey =
-> DE.EmployeeKey
->
-> GROUP BY DD.Date, DD.CalendarMonthLabel, DD.Day, DD.ShortMonth,
-> DD.CalendarYear, DE.PreferredName, DE.Employee
->
-> ORDER BY DD.Date ASC, DE.PreferredName ASC, DE.Employee ASC
-
-![](./media/image106.png)
+```
+%%sql
+CREATE OR REPLACE TEMPORARY VIEW sale_by_date_employee
+AS
+SELECT
+       DD.Date, DD.CalendarMonthLabel
+ , DD.Day, DD.ShortMonth Month, CalendarYear Year
+      ,DE.PreferredName, DE.Employee
+      ,SUM(FS.TotalExcludingTax) SumOfTotalExcludingTax
+      ,SUM(FS.TaxAmount) SumOfTaxAmount
+      ,SUM(FS.TotalIncludingTax) SumOfTotalIncludingTax
+      ,SUM(Profit) SumOfProfit 
+FROM wwilakehouse.fact_sale FS
+INNER JOIN wwilakehouse.dimension_date DD ON FS.InvoiceDateKey = DD.Date
+INNER JOIN wwilakehouse.dimension_Employee DE ON FS.SalespersonKey = DE.EmployeeKey
+GROUP BY DD.Date, DD.CalendarMonthLabel, DD.Day, DD.ShortMonth, DD.CalendarYear, DE.PreferredName, DE.Employee
+ORDER BY DD.Date ASC, DE.PreferredName ASC, DE.Employee ASC
+```
+   ![](./media/image106.png)
 
 20. In this cell, you read from the temporary Spark view created in the
     previous cell and finally write it as a delta table in
     the **Tables** section of the lakehouse.
-
-> PythonCopy
->
-> sale_by_date_employee = spark.sql("SELECT \* FROM
-> sale_by_date_employee")
->
-> sale_by_date_employee.write.mode("overwrite").format("delta").option("overwriteSchema",
-> "true").save("Tables/aggregate_sale_by_date_employee")
-
-![](./media/image107.png)
+  ```
+  sale_by_date_employee = spark.sql("SELECT * FROM sale_by_date_employee")
+  sale_by_date_employee.write.mode("overwrite").format("delta").option("overwriteSchema", "true").save("Tables/aggregate_sale_by_date_employee")
+  ```
+   ![](./media/image107.png)
 
 21. To validate the created tables, click and select refresh on
     the **Tables**. The aggregate tables appear.
 
-![](./media/image108.png)
+     ![](./media/image108.png)
 
-![](./media/image109.png)
+     ![](./media/image109.png)
 
 Both the approaches produce a similar outcome. You can choose based on
 your background and preference, to minimize the need for you to learn a
@@ -952,18 +863,16 @@ frequent updates at the source.
 1.  From your left navigation pane, select **Fabric_LakehouseXX** and
     then select **wwilakehouse** of **Type** **SQL analytics endpoint.**
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image110.png)
->
-> ![](./media/image111.png)
+    ![](./media/image110.png)
+ 
+     ![](./media/image111.png)
 
 2.  From the SQL endpoint pane, you should be able to see all the tables
     you created. If you don't see them yet, select the **Refresh** icon
     at the top. Next, select the **Model** tab at the bottom to open the
     default Power BI dataset.
 
-![A screenshot of a computer Description automatically
-generated](./media/image112.png)
+      ![](./media/image112.png)
 
 3.  For this data model, you need to define the relationship between
     different tables so that you can create reports and visualizations
@@ -978,8 +887,7 @@ generated](./media/image112.png)
 > each other. The same holds good for any two tables that you are trying
 > to create relationship. This is just to make the drag and drop of the
 > columns between the tables is easier.
-
-![](./media/image113.png)
+      ![](./media/image113.png)
 
 5.  In the **Create Relationship** dialog box:
 
@@ -999,8 +907,7 @@ generated](./media/image112.png)
 
     - Select **Confirm.**
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image114.png)
+     ![](./media/image114.png)
 
 6.  Next, add these relationships with the same **Create
     Relationship** settings as shown above but with the following tables
@@ -1008,17 +915,15 @@ generated](./media/image112.png)
 
 - **StockItemKey(fact_sale)** - **StockItemKey(dimension_stock_item)**
 
-![](./media/image115.png)
+     ![](./media/image115.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image116.png)
+     ![](./media/image116.png)
 
 - **Salespersonkey(fact_sale)** - **EmployeeKey(dimension_employee)**
 
-![](./media/image117.png)
+     ![](./media/image117.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image118.png)
+     ![](./media/image118.png)
 
 7.  Ensure to create the relationships between the below two sets using
     the same steps as above.
@@ -1030,40 +935,34 @@ generated](./media/image118.png)
 8.  After you add these relationships, your data model should be as
     shown in the below image and is ready for reporting.
 
-![A screenshot of a computer Description automatically
-generated](./media/image119.png)
+     ![](./media/image119.png)
 
 ## **Task 2: Build Report**
 
 1.  From the top ribbon, select **New report** to start creating
     reports/dashboards in Power BI.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image120.png)
->
-> ![](./media/image121.png)
+     ![](./media/image120.png)
+ 
+      ![](./media/image121.png)
 
 2.  On the Power BI report canvas, you can create reports to meet your
     business requirements by dragging required columns from
     the **Data** pane to the canvas and using one or more of available
     visualizations.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image122.png)
+      ![](./media/image122.png)
 
 **Add a title:**
 
 1.  In the Ribbon, select **Text box**. Type in **WW Importers Profit
     Reporting**. **Highlight** the **text** and increase size to **20**.
 
-![A screenshot of a computer Description automatically
-generated](./media/image123.png)
-
+     ![](./media/image123.png)
 2.  Resize the text box and place it in the **upper left** of the report
     page and click outside the textbox.
 
-![A screenshot of a computer Description automatically
-generated](./media/image124.png)
+     ![](./media/image124.png)
 
 **Add a Card:**
 
@@ -1071,127 +970,104 @@ generated](./media/image124.png)
   to **Profit**. This selection creates a column chart and adds the
   field to the Y-axis.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image125.png)
+     ![](./media/image125.png)
 
-1.  With the bar chart selected, select the **Card** visual in the
+3.  With the bar chart selected, select the **Card** visual in the
     visualization pane.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image126.png)
+     ![](./media/image126.png)
 
-1.  This selection converts the visual to a card. Place the card under
+4.  This selection converts the visual to a card. Place the card under
     the title.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image127.png)
+     ![](./media/image127.png)
 
-2.  Click anywhere on the blank canvas (or press the Esc key) so the
+5.  Click anywhere on the blank canvas (or press the Esc key) so the
     Card that we just placed is no longer selected.
 
 **Add a Bar chart:**
 
-1.  On the **Data** pane, expand **fact_sales** and check the box next
+6.  On the **Data** pane, expand **fact_sales** and check the box next
     to **Profit**. This selection creates a column chart and adds the
     field to the Y-axis.
+      ![](./media/image128.png)
 
-> ![A screenshot of a search box Description automatically
-> generated](./media/image128.png)
-
-1.  On the **Data** pane, expand **dimension_city** and check the box
+7.  On the **Data** pane, expand **dimension_city** and check the box
     for **SalesTerritory**. This selection adds the field to the Y-axis.
+     ![](./media/image129.png)
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image129.png)
-
-1.  With the bar chart selected, select the **Clustered bar
+8.  With the bar chart selected, select the **Clustered bar
     chart** visual in the visualization pane. This selection converts
     the column chart into a bar chart.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image130.png)
+      ![](./media/image130.png)
 
-1.  Resize the Bar chart to fill in the area under the title and Card.
+9.  Resize the Bar chart to fill in the area under the title and Card.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image131.png)
+     ![](./media/image131.png)
 
-2.  Click anywhere on the blank canvas (or press the Esc key) so the bar
+10.  Click anywhere on the blank canvas (or press the Esc key) so the bar
     chart is no longer selected.
 
-> **Build a stacked area chart visual:**
+     **Build a stacked area chart visual:**
 
-1.  On the **Visualizations** pane, select the **Stacked area
+11.  On the **Visualizations** pane, select the **Stacked area
     chart** visual.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image132.png)
+     ![](./media/image132.png)
 
-1.  Reposition and resize the stacked area chart to the right of the
+12.  Reposition and resize the stacked area chart to the right of the
     card and bar chart visuals created in the previous steps.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image133.png)
-
-1.  On the **Data** pane, expand **fact_sales** and check the box next
+     ![](./media/image133.png)
+13.  On the **Data** pane, expand **fact_sales** and check the box next
     to **Profit**. Expand **dimension_date** and check the box next
     to **FiscalMonthNumber**. This selection creates a filled line chart
     showing profit by fiscal month.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image134.png)
-
-1.  On the **Data** pane, expand **dimension_stock_item** and
+     ![](./media/image134.png)
+14.  On the **Data** pane, expand **dimension_stock_item** and
     drag **BuyingPackage** into the Legend field well. This selection
     adds a line for each of the Buying Packages.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image135.png)
->
-> ![A screenshot of a computer Description automatically
-> generated](./media/image136.png)
+     ![](./media/image135.png)
+     ![](./media/image136.png)
 
-2.  Click anywhere on the blank canvas (or press the Esc key) so the
+15.  Click anywhere on the blank canvas (or press the Esc key) so the
     stacked area chart is no longer selected.
 
-**Build a column chart:**
+     **Build a column chart:**
 
-1.  On the **Visualizations** pane, select the **Stacked column
+16.  On the **Visualizations** pane, select the **Stacked column
     chart** visual.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image137.png)
+     ![](./media/image137.png)
 
-1.  On the **Data** pane, expand **fact_sales** and check the box next
+17.  On the **Data** pane, expand **fact_sales** and check the box next
     to **Profit**. This selection adds the field to the Y-axis.
 
 &nbsp;
 
-1.  On the **Data** pane, expand **dimension_employee** and check the
+18.  On the **Data** pane, expand **dimension_employee** and check the
     box next to **Employee**. This selection adds the field to the
     X-axis.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image138.png)
+     ![](./media/image138.png)
 
-2.  Click anywhere on the blank canvas (or press the Esc key) so the
+19.  Click anywhere on the blank canvas (or press the Esc key) so the
     chart is no longer selected.
 
-3.  From the ribbon, select **File** \> **Save**.
+20.  From the ribbon, select **File** \> **Save**.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image139.png)
+      ![](./media/image139.png)
 
-4.  Enter the name of your report as **Profit Reporting**.
+21.  Enter the name of your report as **Profit Reporting**.
     Select **Save**.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image140.png)
+     ![](./media/image140.png)
 
-5.  You will get a notification stating that the report has been saved.
-
-> ![A screenshot of a computer Description automatically
-> generated](./media/image141.png)
+22.  You will get a notification stating that the report has been saved.
+      ![](./media/image141.png)
 
 # Exercise 6: Clean up resources
 
@@ -1202,28 +1078,24 @@ the workspace you created for this tutorial.
 1.  Select your workspace, the **Fabric Lakehouse Tutorial-XX** from the
     left-hand navigation menu. It opens the workspace item view.
 
-![A screenshot of a computer screen Description automatically
-generated](./media/image142.png)
-
+     ![](./media/image142.png)
 2.  Select the ***...*** option under the workspace name and
     select **Workspace settings**.
 
-![](./media/image143.png)
+    ![](./media/image143.png)
 
 3.  Select **Other** and **Remove this workspace.**
 
-![](./media/image144.png)
+     ![](./media/image144.png)
 
 4.  Click on **Delete** in the warning that pops up.
 
-![A white background with black text Description automatically
-generated](./media/image145.png)
+     ![](./media/image145.png)
 
 5.  Wait for a notification that the Workspace has been deleted, before
     proceeding to the next lab.
 
-![A screenshot of a computer Description automatically
-generated](./media/image146.png)
+     ![](./media/image146.png)
 
 **Summary**: This practical lab focuses on setting up and configuring
 essential components within Microsoft Fabric and Power BI for data
