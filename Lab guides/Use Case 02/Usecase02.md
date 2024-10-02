@@ -788,16 +788,14 @@ DESCRIBE FORMATTED salesorders;
 
 DESCRIBE FORMATTED external_salesorder;
 ```
-
-![](./media/image82.png)
+  ![](./media/image82.png)
 
 5.  In the results, view the **Location** property for the table, which
     should be a path to the OneLake storage for the lakehouse ending
     with **/Files/external_saleorder** (you may need to widen the **Data
     type** column to see the full path).
 
-![A screenshot of a computer Description automatically
-generated](./media/image83.png)
+      ![](./media/image83.png)
 
 ## Task 4: Run SQL code in a cell
 
@@ -818,26 +816,16 @@ in SQL.
 
     - The output from the SQL query is automatically displayed as the
       result under the cell
-
-> SqlCopy
->
-> %%sql
->
-> SELECT YEAR(OrderDate) AS OrderYear,
->
-> SUM((UnitPrice \* Quantity) + Tax) AS GrossRevenue
->
-> FROM salesorders
->
-> GROUP BY YEAR(OrderDate)
->
-> ORDER BY OrderYear;
-
-![A screenshot of a computer Description automatically
-generated](./media/image84.png)
-
-![A screenshot of a computer Description automatically
-generated](./media/image85.png)
+```
+%%sql
+SELECT YEAR(OrderDate) AS OrderYear,
+       SUM((UnitPrice * Quantity) + Tax) AS GrossRevenue
+FROM salesorders
+GROUP BY YEAR(OrderDate)
+ORDER BY OrderYear;
+```
+  ![](./media/image84.png)
+       ![](./media/image85.png)
 
 **Note**: For more information about Spark SQL and dataframes, see
 the [*Spark SQL
@@ -858,24 +846,17 @@ create charts from data in dataframes.
     code in it. Click on **▷ Run cell** button and observe that it
     returns the data from the **salesorders** view you created
     previously.
-
-> SqlCopy
->
-> %%sql
->
-> SELECT \* FROM salesorders
-
-![A screenshot of a computer Description automatically
-generated](./media/image86.png)
-
-![A screenshot of a computer Description automatically
-generated](./media/image87.png)
+```
+%%sql
+SELECT * FROM salesorders
+```
+   ![](./media/image86.png)
+     ![](./media/image87.png)
 
 2.  In the results section beneath the cell, change the **View** option
     from **Table** to **Chart**.
 
-![A screenshot of a computer Description automatically
-generated](./media/image88.png)
+      ![](./media/image88.png)
 
 3.  Use the **View options** button at the top right of the chart to
     display the options pane for the chart. Then set the options as
@@ -893,43 +874,30 @@ generated](./media/image88.png)
 
     - **Stacked**: *Unselected*
 
-![A blue barcode on a white background Description automatically
-generated](./media/image89.png)
+    ![](./media/image89.png)
 
-![A screenshot of a graph Description automatically
-generated](./media/image90.png)
+     ![](./media/image90.png)
 
 4.  Verify that the chart looks similar to this
 
-![A screenshot of a computer Description automatically
-generated](./media/image91.png)
+        ![](./media/image91.png)
 
 ## Task 2: Get started with matplotlib
 
 1.  Click on **+ Code** and copy and paste the below code. **Run** the
     code and observe that it returns a Spark dataframe containing the
     yearly revenue.
-
-> CodeCopy
->
-> sqlQuery = "SELECT CAST(YEAR(OrderDate) AS CHAR(4)) AS OrderYear, \\
->
-> SUM((UnitPrice \* Quantity) + Tax) AS GrossRevenue \\
->
-> FROM salesorders \\
->
-> GROUP BY CAST(YEAR(OrderDate) AS CHAR(4)) \\
->
-> ORDER BY OrderYear"
->
-> df_spark = spark.sql(sqlQuery)
->
-> df_spark.show()
-
-![A screenshot of a computer Description automatically
-generated](./media/image92.png)
-
-![](./media/image93.png)
+```
+sqlQuery = "SELECT CAST(YEAR(OrderDate) AS CHAR(4)) AS OrderYear, \
+                SUM((UnitPrice * Quantity) + Tax) AS GrossRevenue \
+            FROM salesorders \
+            GROUP BY CAST(YEAR(OrderDate) AS CHAR(4)) \
+            ORDER BY OrderYear"
+df_spark = spark.sql(sqlQuery)
+df_spark.show()
+```
+  ![](./media/image92.png)
+       ![](./media/image93.png)
 
 2.  To visualize the data as a chart, we’ll start by using
     the **matplotlib** Python library. This library is the core plotting
@@ -937,25 +905,19 @@ generated](./media/image92.png)
     flexibility in creating charts.
 
 3.  Click on **+ Code** and copy and paste the below code.
+```
+from matplotlib import pyplot as plt
 
-**CodeCopy**
+# matplotlib requires a Pandas dataframe, not a Spark one
+df_sales = df_spark.toPandas()
 
-> from matplotlib import pyplot as plt
->
-> \# matplotlib requires a Pandas dataframe, not a Spark one
->
-> df_sales = df_spark.toPandas()
->
-> \# Create a bar plot of revenue by year
->
-> plt.bar(x=df_sales\['OrderYear'\], height=df_sales\['GrossRevenue'\])
->
-> \# Display the plot
->
-> plt.show()
+# Create a bar plot of revenue by year
+plt.bar(x=df_sales['OrderYear'], height=df_sales['GrossRevenue'])
 
-![A screenshot of a computer Description automatically
-generated](./media/image94.png)
+# Display the plot
+plt.show()
+```
+  ![](./media/image94.png)
 
 5.  Click on the **Run cell** button and review the results, which
     consist of a column chart with the total gross revenue for each
