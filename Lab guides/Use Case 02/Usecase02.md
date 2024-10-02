@@ -935,45 +935,31 @@ plt.show()
     - The default settings result in a usable chart, but there’s
       considerable scope to customize it
 
-![A screenshot of a computer screen Description automatically
-generated](./media/image95.png)
+       ![](./media/image95.png)
 
 6.  Modify the code to plot the chart as follows, replace all the code
     in the **cell** with the following code and click on **▷ Run
     cell** button and review the output
+```
+from matplotlib import pyplot as plt
 
-> CodeCopy
->
-> from matplotlib import pyplot as plt
->
-> \# Clear the plot area
->
-> plt.clf()
->
-> \# Create a bar plot of revenue by year
->
-> plt.bar(x=df_sales\['OrderYear'\], height=df_sales\['GrossRevenue'\],
-> color='orange')
->
-> \# Customize the chart
->
-> plt.title('Revenue by Year')
->
-> plt.xlabel('Year')
->
-> plt.ylabel('Revenue')
->
-> plt.grid(color='#95a5a6', linestyle='--', linewidth=2, axis='y',
-> alpha=0.7)
->
-> plt.xticks(rotation=45)
->
-> \# Show the figure
->
-> plt.show()
+# Clear the plot area
+plt.clf()
 
-![A screenshot of a graph Description automatically
-generated](./media/image96.png)
+# Create a bar plot of revenue by year
+plt.bar(x=df_sales['OrderYear'], height=df_sales['GrossRevenue'], color='orange')
+
+# Customize the chart
+plt.title('Revenue by Year')
+plt.xlabel('Year')
+plt.ylabel('Revenue')
+plt.grid(color='#95a5a6', linestyle='--', linewidth=2, axis='y', alpha=0.7)
+plt.xticks(rotation=45)
+
+# Show the figure
+plt.show()
+```
+  ![](./media/image96.png)
 
 7.  The chart now includes a little more information. A plot is
     technically contained with a **Figure**. In the previous examples,
@@ -982,96 +968,65 @@ generated](./media/image96.png)
 
 8.  Modify the code to plot the chart as follows, replace all the code
     in the **cell** with the following code.
+```
+from matplotlib import pyplot as plt
 
-> CodeCopy
->
-> from matplotlib import pyplot as plt
->
-> \# Clear the plot area
->
-> plt.clf()
->
-> \# Create a Figure
->
-> fig = plt.figure(figsize=(8,3))
->
-> \# Create a bar plot of revenue by year
->
-> plt.bar(x=df_sales\['OrderYear'\], height=df_sales\['GrossRevenue'\],
-> color='orange')
->
-> \# Customize the chart
->
-> plt.title('Revenue by Year')
->
-> plt.xlabel('Year')
->
-> plt.ylabel('Revenue')
->
-> plt.grid(color='#95a5a6', linestyle='--', linewidth=2, axis='y',
-> alpha=0.7)
->
-> plt.xticks(rotation=45)
->
-> \# Show the figure
->
-> plt.show()
+# Clear the plot area
+plt.clf()
 
-![A screenshot of a computer program Description automatically
-generated](./media/image97.png)
+# Create a Figure
+fig = plt.figure(figsize=(8,3))
+
+# Create a bar plot of revenue by year
+plt.bar(x=df_sales['OrderYear'], height=df_sales['GrossRevenue'], color='orange')
+
+# Customize the chart
+plt.title('Revenue by Year')
+plt.xlabel('Year')
+plt.ylabel('Revenue')
+plt.grid(color='#95a5a6', linestyle='--', linewidth=2, axis='y', alpha=0.7)
+plt.xticks(rotation=45)
+
+# Show the figure
+plt.show()
+```
+  ![](./media/image97.png)
 
 9.  **Re-run** the code cell and view the results. The figure determines
     the shape and size of the plot.
 
 > A figure can contain multiple subplots, each on its own *axis*.
-
-![A screenshot of a computer Description automatically
-generated](./media/image98.png)
+      ![](./media/image98.png)
 
 10. Modify the code to plot the chart as follows. **Re-run** the code
     cell and view the results. The figure contains the subplots
     specified in the code.
+```
+from matplotlib import pyplot as plt
 
-> CodeCopy
->
-> from matplotlib import pyplot as plt
->
-> \# Clear the plot area
->
-> plt.clf()
->
-> \# Create a figure for 2 subplots (1 row, 2 columns)
->
-> fig, ax = plt.subplots(1, 2, figsize = (10,4))
->
-> \# Create a bar plot of revenue by year on the first axis
->
-> ax\[0\].bar(x=df_sales\['OrderYear'\],
-> height=df_sales\['GrossRevenue'\], color='orange')
->
-> ax\[0\].set_title('Revenue by Year')
->
-> \# Create a pie chart of yearly order counts on the second axis
->
-> yearly_counts = df_sales\['OrderYear'\].value_counts()
->
-> ax\[1\].pie(yearly_counts)
->
-> ax\[1\].set_title('Orders per Year')
->
-> ax\[1\].legend(yearly_counts.keys().tolist())
->
-> \# Add a title to the Figure
->
-> fig.suptitle('Sales Data')
->
-> \# Show the figure
->
-> plt.show()
+# Clear the plot area
+plt.clf()
 
-![A screenshot of a computer program Description automatically
-generated](./media/image99.png)
+# Create a figure for 2 subplots (1 row, 2 columns)
+fig, ax = plt.subplots(1, 2, figsize = (10,4))
 
+# Create a bar plot of revenue by year on the first axis
+ax[0].bar(x=df_sales['OrderYear'], height=df_sales['GrossRevenue'], color='orange')
+ax[0].set_title('Revenue by Year')
+
+# Create a pie chart of yearly order counts on the second axis
+yearly_counts = df_sales['OrderYear'].value_counts()
+ax[1].pie(yearly_counts)
+ax[1].set_title('Orders per Year')
+ax[1].legend(yearly_counts.keys().tolist())
+
+# Add a title to the Figure
+fig.suptitle('Sales Data')
+
+# Show the figure
+plt.show()
+```
+![](./media/image99.png)
 ![](./media/image100.png)
 
 **Note**: To learn more about plotting with matplotlib, see
@@ -1087,71 +1042,56 @@ capabilities. One such library is **seaborn**.
 
 1.  Click on **+ Code** and copy and paste the below code.
 
-CodeCopy
+    CodeCopy
+    ```
+    import seaborn as sns
 
-> import seaborn as sns
->
-> \# Clear the plot area
->
-> plt.clf()
->
-> \# Create a bar chart
->
-> ax = sns.barplot(x="OrderYear", y="GrossRevenue", data=df_sales)
->
-> plt.show()
+    # Clear the plot area
+    plt.clf()
 
-![A screenshot of a graph Description automatically
-generated](./media/image101.png)
+    # Create a bar chart
+    ax = sns.barplot(x="OrderYear", y="GrossRevenue", data=df_sales)
+    plt.show()
+    ```
+      ![](./media/image101.png)
 
 2.  **Run** the code and observe that it displays a bar chart using the
     seaborn library.
 
-![A screenshot of a graph Description automatically
-generated](./media/image102.png)
+      ![](./media/image102.png)
 
 3.  **Modify** the code as follows. **Run** the modified code and note
     that seaborn enables you to set a consistent color theme for your
     plots.
+    ```
+    import seaborn as sns
 
-> CodeCopy
->
-> import seaborn as sns
->
-> \# Clear the plot area
->
-> plt.clf()
->
-> \# Set the visual theme for seaborn
->
-> sns.set_theme(style="whitegrid")
->
-> \# Create a bar chart
->
-> ax = sns.barplot(x="OrderYear", y="GrossRevenue", data=df_sales)
->
-> plt.show()
->
-> ![](./media/image103.png)
+    # Clear the plot area
+    plt.clf()
+
+    # Set the visual theme for seaborn
+    sns.set_theme(style="whitegrid")
+
+    # Create a bar chart
+    ax = sns.barplot(x="OrderYear", y="GrossRevenue", data=df_sales)
+    plt.show()
+    ```
+       ![](./media/image103.png)
 
 4.  **Modify** the code again as follows. **Run** the modified code to
     view the yearly revenue as a line chart.
+    ```
+    import seaborn as sns
 
-> CodeCopy
->
-> import seaborn as sns
->
-> \# Clear the plot area
->
-> plt.clf()
->
-> \# Create a bar chart
->
-> ax = sns.lineplot(x="OrderYear", y="GrossRevenue", data=df_sales)
->
-> plt.show()
+    # Clear the plot area
+    plt.clf()
 
-![](./media/image104.png)
+    # Create a bar chart
+    ax = sns.lineplot(x="OrderYear", y="GrossRevenue", data=df_sales)
+    plt.show()
+    ```
+
+      ![](./media/image104.png)
 
 **Note**: To learn more about plotting with seaborn, see the [*seaborn
 documentation*](https://seaborn.pydata.org/index.html).
@@ -1165,65 +1105,37 @@ streaming data in a simulated internet of things (IoT) scenario.
 
 1.  Click on **+ Code** and copy and paste the below code and then click
     on **Run cell** button.
+```
+from notebookutils import mssparkutils
+from pyspark.sql.types import *
+from pyspark.sql.functions import *
 
-CodeCopy
+# Create a folder
+inputPath = 'Files/data/'
+mssparkutils.fs.mkdirs(inputPath)
 
-> from notebookutils import mssparkutils
->
-> from pyspark.sql.types import \*
->
-> from pyspark.sql.functions import \*
->
-> \# Create a folder
->
-> inputPath = 'Files/data/'
->
-> mssparkutils.fs.mkdirs(inputPath)
->
-> \# Create a stream that reads data from the folder, using a JSON
-> schema
->
-> jsonSchema = StructType(\[
->
-> StructField("device", StringType(), False),
->
-> StructField("status", StringType(), False)
->
-> \])
->
-> iotstream =
-> spark.readStream.schema(jsonSchema).option("maxFilesPerTrigger",
-> 1).json(inputPath)
->
-> \# Write some event data to the folder
->
-> device_data = '''{"device":"Dev1","status":"ok"}
->
-> {"device":"Dev1","status":"ok"}
->
-> {"device":"Dev1","status":"ok"}
->
-> {"device":"Dev2","status":"error"}
->
-> {"device":"Dev1","status":"ok"}
->
-> {"device":"Dev1","status":"error"}
->
-> {"device":"Dev2","status":"ok"}
->
-> {"device":"Dev2","status":"error"}
->
-> {"device":"Dev1","status":"ok"}'''
->
-> mssparkutils.fs.put(inputPath + "data.txt", device_data, True)
->
-> print("Source stream created...")
+# Create a stream that reads data from the folder, using a JSON schema
+jsonSchema = StructType([
+StructField("device", StringType(), False),
+StructField("status", StringType(), False)
+])
+iotstream = spark.readStream.schema(jsonSchema).option("maxFilesPerTrigger", 1).json(inputPath)
 
-![A screenshot of a computer program Description automatically
-generated](./media/image105.png)
-
-![A screenshot of a computer Description automatically
-generated](./media/image106.png)
+# Write some event data to the folder
+device_data = '''{"device":"Dev1","status":"ok"}
+{"device":"Dev1","status":"ok"}
+{"device":"Dev1","status":"ok"}
+{"device":"Dev2","status":"error"}
+{"device":"Dev1","status":"ok"}
+{"device":"Dev1","status":"error"}
+{"device":"Dev2","status":"ok"}
+{"device":"Dev2","status":"error"}
+{"device":"Dev1","status":"ok"}'''
+mssparkutils.fs.put(inputPath + "data.txt", device_data, True)
+print("Source stream created...")
+```
+  ![](./media/image105png)
+      ![](./media/image106.png)
 
 2.  Ensure the message ***Source stream created…*** is printed. The code
     you just ran has created a streaming data source based on a folder
@@ -1232,23 +1144,14 @@ generated](./media/image106.png)
 
 3.  Click on **+ Code** and copy and paste the below code and then click
     on **Run cell** button.
-
-CodeCopy
-
-> \# Write the stream to a delta table
->
-> delta_stream_table_path = 'Tables/iotdevicedata'
->
-> checkpointpath = 'Files/delta/checkpoint'
->
-> deltastream =
-> iotstream.writeStream.format("delta").option("checkpointLocation",
-> checkpointpath).start(delta_stream_table_path)
->
-> print("Streaming to delta sink...")
-
-![A screenshot of a computer Description automatically
-generated](./media/image107.png)
+    ```
+    # Write the stream to a delta table
+    delta_stream_table_path = 'Tables/iotdevicedata'
+    checkpointpath = 'Files/delta/checkpoint'
+    deltastream = iotstream.writeStream.format("delta").option("checkpointLocation", checkpointpath).start(delta_stream_table_path)
+    print("Streaming to delta sink...")
+    ```
+      ![](./media/image107.png)
 
 4.  This code writes the streaming device data in delta format to a
     folder named **iotdevicedata**. Because the path for the folder
@@ -1256,66 +1159,49 @@ generated](./media/image107.png)
     created for it. Click on the horizontal ellipses beside table, then
     click on **Refresh**.
 
-![](./media/image108.png)
+     ![](./media/image108.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image109.png)
+     ![](./media/image109.png)
 
 5.  Click on **+ Code** and copy and paste the below code and then click
     on **Run cell** button.
+    ```
+    %%sql
 
-> SqlCopy
->
-> %%sql
->
-> SELECT \* FROM IotDeviceData;
-
-![A screenshot of a computer Description automatically
-generated](./media/image110.png)
+    SELECT * FROM IotDeviceData;
+    ```
+      ![](./media/image110.png)
 
 6.  This code queries the **IotDeviceData** table, which contains the
     device data from the streaming source.
 
 7.  Click on **+ Code** and copy and paste the below code and then click
     on **Run cell** button.
+    ```
+    # Add more data to the source stream
+    more_data = '''{"device":"Dev1","status":"ok"}
+   {"device":"Dev1","status":"ok"}
+   {"device":"Dev1","status":"ok"}
+   {"device":"Dev1","status":"ok"}
+   {"device":"Dev1","status":"error"}
+   {"device":"Dev2","status":"error"}
+   {"device":"Dev1","status":"ok"}'''
 
-> CodeCopy
->
-> \# Add more data to the source stream
->
-> more_data = '''{"device":"Dev1","status":"ok"}
->
-> {"device":"Dev1","status":"ok"}
->
-> {"device":"Dev1","status":"ok"}
->
-> {"device":"Dev1","status":"ok"}
->
-> {"device":"Dev1","status":"error"}
->
-> {"device":"Dev2","status":"error"}
->
-> {"device":"Dev1","status":"ok"}'''
->
-> mssparkutils.fs.put(inputPath + "more-data.txt", more_data, True)
-
-![A screenshot of a computer Description automatically
-generated](./media/image111.png)
+    mssparkutils.fs.put(inputPath + "more-data.txt", more_data, True)
+    ```
+   ![](./media/image111.png)
 
 8.  This code writes more hypothetical device data to the streaming
     source.
 
 9.  Click on **+ Code** and copy and paste the below code and then click
     on **Run cell** button.
+```
+%%sql
 
-> SqlCopy
->
-> %%sql
->
-> SELECT \* FROM IotDeviceData;
->
-> ![A screenshot of a computer Description automatically
-> generated](./media/image112.png)
+SELECT * FROM IotDeviceData;
+```
+  ![](./media/image112.png)
 
 10. This code queries the **IotDeviceData** table again, which should
     now include the additional data that was added to the streaming
@@ -1323,13 +1209,10 @@ generated](./media/image111.png)
 
 11. Click on **+ Code** and copy and paste the below code and then click
     on **Run cell** button.
-
-> CodeCopy
->
-> deltastream.stop()
-
-![A screenshot of a computer Description automatically
-generated](./media/image113.png)
+```
+deltastream.stop()
+```
+   ![](./media/image113.png)
 
 12. This code stops the stream.
 
@@ -1341,23 +1224,19 @@ notebook with a meaningful name and end the Spark session.
 1.  In the notebook menu bar, use the ⚙️ **Settings** icon to view the
     notebook settings.
 
-![A screenshot of a computer Description automatically
-generated](./media/image114.png)
+    ![](./media/image114.png)
 
 2.  Set the **Name** of the notebook to ++**Explore Sales Orders++**,
     and then close the settings pane.
 
-![A screenshot of a computer Description automatically
-generated](./media/image115.png)
+     ![](./media/image115.png)
 
 3.  On the notebook menu, select **Stop session** to end the Spark
     session.
 
-![A screenshot of a computer Description automatically
-generated](./media/image116.png)
+     ![](./media/image116.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image117.png)
+     ![](./media/image117.png)
 
 # Exercise 5: Create a Dataflow (Gen2) in Microsoft Fabric
 
@@ -1379,27 +1258,25 @@ transform, and load* (ETL) process.
 1.  Now, click on **Fabric_lakehouse** on the left-sided navigation
     pane.
 
-![A screenshot of a computer Description automatically
-generated](./media/image118.png)
+     ![](./media/image118.png)
 
 2.  In the **Fabric_lakehouse** home page, click on the drop-down arrow
     in the **Get data** and select **New Dataflow Gen2.** The Power
     Query editor for your new dataflow opens.
 
-![](./media/image119.png)
+     ![](./media/image119.png)
 
 3.  In the **Power Query** pane under the **Home tab**, click on
     **Import from a Text/CSV file**.
 
-![](./media/image120.png)
+     ![](./media/image120.png)
 
 4.  In the **Connect to data source** pane, under **Connection
     settings**, select **Upload file (Preview)** radio button, then
     click on **Browse** button and browse your VM **C:\LabFiles**, then
     select the **orders file** and click on the **Open** button.
 
-![A screenshot of a computer Description automatically
-generated](./media/image121.png)
+     ![](./media/image121.png)
 
 5.  In the **Connect to data source** pane, under **Connection
     credentials,** enter the following details and click on the **Next**
@@ -1411,38 +1288,33 @@ generated](./media/image121.png)
 
     - **Authentication kind**: Organizational account
 
-![A screenshot of a computer Description automatically
-generated](./media/image122.png)
+      ![](./media/image122.png)
 
 6.  In **Preview file data** pane, click on **Create** to create the
-    data source. ![A screenshot of a computer Description automatically
-    generated](./media/image123.png)
+    data source.
+      ![](./media/image123.png)
 
 7.  The **Power Query** editor shows the data source and an initial set
     of query steps to format the data.
 
-![A screenshot of a computer Description automatically
-generated](./media/image124.png)
+     ![](./media/image124.png)
 
 8.  On the toolbar ribbon, select the **Add column** tab. Then,
     select **Custom column.**
 
-![A screenshot of a computer Description automatically
-generated](./media/image125.png) 
+     ![](./media/image125.png)
 
 9.  Set the New column name to **MonthNo** , set the Data type to
     **Whole Number** and then add the following
     formula:**Date.Month(\[OrderDate\])** under **Custom column
     formula**. Select **OK**.
 
-![A screenshot of a computer Description automatically
-generated](./media/image126.png)
+      ![](./media/image126.png)
 
 10. Notice how the step to add the custom column is added to the query.
     The resulting column is displayed in the data pane.
 
-![A screenshot of a computer Description automatically
-generated](./media/image127.png)
+      ![](./media/image127.png)
 
 **Tip:** In the Query Settings pane on the right side, notice
 the **Applied Steps** include each transformation step. At the bottom,
@@ -1459,10 +1331,9 @@ Task 2: Add data destination for Dataflow
     in the D**ata destination** drop-down menu, select **Lakehouse**(if
     not selected already).
 
-![](./media/image128.png)
+     ![](./media/image128.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image129.png)
+     ![](./media/image129.png)
 
 **Note:** If this option is grayed out, you may already have a data
 destination set. Check the data destination at the bottom of the Query
@@ -1472,29 +1343,24 @@ destination is already set, you can change it using the gear.
 2.  Click on the **Settings** icon next to the selected **Lakehouse**
     option.
 
-![A screenshot of a computer Description automatically
-generated](./media/image130.png)
+      ![](./media/image130.png)
 
 3.  In the **Connect to data destination** dialog box, select **Edit
     connection.**
 
-![A screenshot of a computer Description automatically
-generated](./media/image131.png)
+      ![](./media/image131.png))
 
 4.  In the **Connect to data destination** dialog box, select **sign
     in** using your Power BI organizational account to set the identity
     that the dataflow uses to access the lakehouse.
 
-![A screenshot of a computer Description automatically
-generated](./media/image132.png)
+     ![](./media/image132.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image133.png)
+     ![](./media/image133.png)
 
 5.  In Connect to data destination dialog box, select **Next**
 
-![A screenshot of a computer Description automatically
-generated](./media/image134.png)
+      ![](./media/image134.png)
 
 6.  In Connect to data destination dialog box, select **New table**.
     Click on the **Lakehouse folder** ,select your workspace –
@@ -1502,44 +1368,36 @@ generated](./media/image134.png)
     **Fabric_lakehouse.** Then specify the Table name as **orders** and
     select **Next** button.
 
-![A screenshot of a computer Description automatically
-generated](./media/image135.png)
+      ![](./media/image135.png)
 
 7.  In the **Choose destination settings** dialog box, under **Use
     automatic settings off** and the **Update method** select **Append**
     ,then click on the **Save settings** button.
 
-![A screenshot of a computer Description automatically
-generated](./media/image136.png)
-
+      ![](./media/image136.png)
 8.  The **Lakehouse** destination is indicated as an **icon** in the
     **query** in the Power Query editor.
 
-![A screenshot of a computer Description automatically
-generated](./media/image137.png)
+      ![](./media/image137.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image138.png)
+       ![](./media/image138.png)
 
 9.  Select **Publish** to publish the dataflow. Then wait for
     the **Dataflow 1** dataflow to be created in your workspace.
 
-![A screenshot of a computer Description automatically
-generated](./media/image139.png)
+      ![](./media/image139.png)
 
 10. Once published, you can right-click on the dataflow in your
     workspace, select **Properties**, and rename your dataflow.
 
-![A screenshot of a computer Description automatically
-generated](./media/image140.png)
+      ![](./media/image140.png)
 
 11. In the **Dataflow1** dialog box, enter the **Name** as
     **Gen2_Dataflow** and click on **Save** button.
 
-![A screenshot of a computer Description automatically
-generated](./media/image141.png)
+     ![](./media/image141.png)
 
-![](./media/image142.png)
+     ![](./media/image142.png)
 
 ## Task 3: Add a dataflow to a pipeline
 
@@ -1552,72 +1410,62 @@ experiences, including Data Factory experience.
 1.  In the Synapse Data Engineering Home page , Under **dp_FabricXX**
     pane, select **+New** -\> **Data pipeline**
 
-![A screenshot of a computer Description automatically
-generated](./media/image143.png)
+      ![](./media/image143.png)
 
 2.  In the **New pipeline** dialog box, enter **Load data** in
     the **Name** field, click on the **Create** button to open the new
     pipeline.
 
-![A screenshot of a computer Description automatically
-generated](./media/image144.png)
+     ![](./media/image144.png)
 
 3.  The pipeline editor opens.
 
-![A screenshot of a computer Description automatically
-generated](./media/image145.png)
+       ![](./media/image145.png)
 
 > **Tip**: If the Copy Data wizard opens automatically, close it!
 
 4.  Select **Pipeline activity**, and add a **Dataflow** activity to the
     pipeline.
 
-![](./media/image146.png)
+      ![](./media/image146.png)
 
 5.  With the new **Dataflow1** activity selected, on
     the **Settings** tab, in the **Dataflow** drop-down list,
     select **Gen2_Dataflow** (the data flow you created previously)
 
-![](./media/image147.png)
+      ![](./media/image147.png)
 
 6.  On the **Home** tab, save the pipeline using the **🖫 (*Save*)**
     icon.
 
-![A screenshot of a computer Description automatically
-generated](./media/image148.png)
+      ![](./media/image148.png)
 
 7.  Use the **▷ Run** button to run the pipeline, and wait for it to
     complete. It may take a few minutes.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image149.png)
->
-> ![A screenshot of a computer Description automatically
-> generated](./media/image150.png)
+      ![](./media/image149.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image151.png)
+       ![](./media/image150.png)
+
+      ![](./media/image151.png)
 
 8.  In the menu bar on the left edge, select your workspace i.e
     **dp_FabricXX**.
 
-![A screenshot of a computer Description automatically
-generated](./media/image152.png)
+      ![](./media/image152.png)
 
 9.  In the **Fabric_lakehouse** pane, select the
     **Gen2_FabricLakehouse** of type Lakehouse.
 
-![A screenshot of a computer Description automatically
-generated](./media/image153.png)
+      ![](./media/image153.png)
 
 10. In **Explorer** pane, select the **…** menu for **Tables**,
     select **refresh**. Then expand **Tables** and select
     the **orders** table, which has been created by your dataflow.
 
-![A screenshot of a computer Description automatically
-generated](./media/image154.png)
+     ![](./media/image154.png)
 
-![](./media/image155.png)
+     ![](./media/image155.png)
 
 **Tip**: Use the Power BI Desktop *Dataflows connector* to connect
 directly to the data transformations done with your dataflow.
@@ -1636,27 +1484,22 @@ workspace you created for this exercise.
 1.  In the bar on the left, select the icon for your workspace to view
     all of the items it contains.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image156.png)
+      ![](./media/image156.png)
 
 2.  In the **…** menu on the toolbar, select **Workspace settings**.
 
-![](./media/image157.png)
+     ![](./media/image157.png)
 
 3.  Select **General** and click on **Remove this workspace.**
 
-![A screenshot of a computer settings Description automatically
-generated](./media/image158.png)
+      ![](./media/image158.png)
 
 4.  In the **Delete workspace?** dialog box, click on the **Delete**
     button.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image159.png)
->
-> ![A screenshot of a computer Description automatically
-> generated](./media/image160.png)
-
+      ![](./media/image159.png)
+ 
+      ![](./media/image160.png)
 **Summary**
 
 This use case guides you through the process of working with Microsoft
