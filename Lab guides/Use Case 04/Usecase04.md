@@ -90,6 +90,7 @@ reports.
 
 4.  In the **Create a workspace** pane that appears on the right side,
     enter the following details, and click on the **Apply** button.
+    
    |              |                                                                 |
    |-------- -----|------------------------------------ ----------------------------|
    |Name          |+++Fabric Lakehouse Tutorial-XX+++ (XX can be a unique number) 	|
@@ -101,7 +102,7 @@ reports.
 
       ![](./media/image5.png)
 
-5.  Wait for the deployment to complete. It takes 2-3 minutes to
+6.  Wait for the deployment to complete. It takes 2-3 minutes to
     complete.
 
 ![](./media/image6.png)
