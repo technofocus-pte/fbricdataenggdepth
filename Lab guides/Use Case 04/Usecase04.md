@@ -92,14 +92,13 @@ reports.
     enter the following details, and click on the **Apply** button.
     
    |              |                                                                 |
-   |-------- -----|------------------------------------ ----------------------------|
+   |--------------|-----------------------------------------------------------------|
    |Name          |+++Fabric Lakehouse Tutorial-XX+++ (XX can be a unique number) 	|
    |Description   |This workspace contains all the items for the lakehouse tutorial |
    |Advanced      |Under License mode, select Trial	                                |
    |Template apps |Check the Develop template apps	                                |
 
-      ![](./media/image4.png)
-
+   ![](./media/image4.png)
       ![](./media/image5.png)
 
 6.  Wait for the deployment to complete. It takes 2-3 minutes to
