@@ -1072,54 +1072,43 @@ Note: Replace StorageAccountName in the URL with your storage account name or pa
 
 4.  And click **Next**.
 
-![A screenshot of a computer Description automatically
-generated](./media/image86.png)
+     ![](./media/image86.png)
 
 5.  This will establish a link with your Azure storage container. Select
     the storage and select the **Next** button.
 
-![A screenshot of a computer Description automatically
-generated](./media/image87.png)
-
-![A screenshot of a computer Description automatically
-generated](./media/image88.png)![A screenshot of a computer Description
-automatically generated](./media/image89.png)
+      ![](./media/image87.png)
+      ![](./media/image88.png)
+      ![](./media/image89.png)
 
 6.  Once the Wizard has been launched, select **Files** and select the
     **“… “** on the **bronze** file.
 
-![A screenshot of a computer Description automatically
-generated](./media/image90.png)
+      ![](./media/image90.png)
 
 7.  Select **load to tables** and **new table**.
 
-![](./media/image91.png)
+     ![](./media/image91.png)
 
 8.  On the pop-up window provide the name for your table as
     **bronze_01** and select the file type as **parquet**.
 
-![A screenshot of a computer Description automatically
-generated](./media/image92.png)
+     ![](./media/image92.png)
 
 9.  The file **bronze_01** is now visible in the files.
 
-![A screenshot of a computer Description automatically
-generated](./media/image93.png)
+     ![](./media/image93.png)
 
 10. Next, select the **“… “** on the **bronze** file. Select **load to
     tables** and **existing table.**
-
-![A screenshot of a computer Description automatically
-generated](./media/image94.png)
+     ![](./media/image94.png)
 
 11. Provide the existing table name as **dimcustomer_gold.** Select the
     file type as **parquet** and select **load.**
 
-![A screenshot of a computer Description automatically
-generated](./media/image95.png)
+     ![](./media/image95.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image96.png)
+     ![](./media/image96.png)
 
 ## **Task 3: Create a Semantic Model Using the gold layer to create a report**
 
@@ -1136,23 +1125,20 @@ from the lakehouse explorer.*
     Select **New semantic model** from the ribbon of the lakehouse
     explorer view.
 
-![A screenshot of a computer Description automatically
-generated](./media/image97.png)
+      ![](./media/image97.png)
 
 2.  In the pop-up, assign the name **DatabricksTutorial** to your new
     semantic model and select the workspace as **Fabric Lakehouse
     Tutorial-29**.
 
-![](./media/image98.png)
+     ![](./media/image98.png)
 
 3.  Next, scroll down and select all to include in your semantic model
     and select **Confirm**.
 
 This will open the semantic model in Fabric where you can create
 relationships and measures, as shown here:
-
-![A screenshot of a computer Description automatically
-generated](./media/image99.png)
+    ![](./media/image99.png)
 
 From here, you or other members of your data team can create reports and
 dashboards based on the data in your lakehouse. These reports will be
@@ -1163,82 +1149,66 @@ always reflect the latest data.
 
 1.  Navigate to your lakehouse in the Power BI service and select **Get
     data** and then select **New data pipeline**.
+     ![](./media/image100.png)
 
-![Screenshot showing how to navigate to new data pipeline option from
-within the UI.](./media/image100.png)
-
-1.  In the **New Pipeline** prompt, enter a name for the new pipeline
+2.  In the **New Pipeline** prompt, enter a name for the new pipeline
     and then select **Create**. **IngestDatapipeline01**
 
-![](./media/image101.png)
+     ![](./media/image101.png)
 
-2.  For this exercise, select the **NYC Taxi - Green** sample data as
+3.  For this exercise, select the **NYC Taxi - Green** sample data as
     the data source.
 
-![A screenshot of a computer Description automatically
-generated](./media/image102.png)
+      ![](./media/image102.png)
 
-3.  On the preview screen, select **Next**.
+4.  On the preview screen, select **Next**.
 
-![A screenshot of a computer Description automatically
-generated](./media/image103.png)
+      ![](./media/image103.png)
 
-4.  For data destination, select the name of the table you want to use
+5.  For data destination, select the name of the table you want to use
     to store the OneLake Delta table data. You can choose an existing
     table or create a new one. For the purpose of this lab, select
     **load into new table** and select **Next**.
 
-![A screenshot of a computer Description automatically
-generated](./media/image104.png)
+       ![](./media/image104.png)
 
-5.  On the **Review + Save** screen, select **Start data transfer
+6.  On the **Review + Save** screen, select **Start data transfer
     immediately** and then select **Save + Run**.
 
-![Screenshot showing how to enter table name.](./media/image105.png)
+     ![](./media/image105.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image106.png)
+     ![](./media/image106.png)
 
-6.  When the job is complete, navigate to your lakehouse and view the
+7.  When the job is complete, navigate to your lakehouse and view the
     delta table listed under /Tables.
 
-![A screenshot of a computer Description automatically
-generated](./media/image107.png)
+      ![](./media/image107.png)
 
-7.  Copy the Azure Blob Filesystem (ABFS) path to your delta table to by
+8.  Copy the Azure Blob Filesystem (ABFS) path to your delta table to by
     right-clicking the table name in the Explorer view and
     selecting **Properties**.
 
-![A screenshot of a computer Description automatically
-generated](./media/image108.png)
+     ![](./media/image108.png)
 
-8.  Open your Azure Databricks notebook and run the code.
+9.  Open your Azure Databricks notebook and run the code.
 
-olsPath = "**abfss://\<replace with workspace
-name\>@onelake.dfs.fabric.microsoft.com/\<replace with item
-name\>.Lakehouse/Tables/nycsample**"
-
+olsPath = "**abfss://<replace with workspace name>@onelake.dfs.fabric.microsoft.com/<replace with item name>.Lakehouse/Tables/nycsample**"
+```
 df=spark.read.format('delta').option("inferSchema","true").load(olsPath)
-
 df.show(5)
+```
 
-*Note: Replace the file path in bold with the one you copied.*
-
-![](./media/image109.png)
+**Note: Replace the file path in bold with the one you copied.**
+     ![](./media/image109.png)
 
 9.  Update the Delta table data by changing a field value.
-
+```
 %sql
+update delta.`abfss://<replace with workspace name>@onelake.dfs.fabric.microsoft.com/<replace with item name>.Lakehouse/Tables/nycsample` set vendorID = 99999 where vendorID = 1;
+```
+**Note: Replace the file path in bold with the one you copied.**
 
-update delta.\`abfss://\<replace with workspace
-name\>@onelake.dfs.fabric.microsoft.com/\<replace with item
-name\>.Lakehouse/Tables/nycsample\` set vendorID = 99999 where vendorID
-= 1;
-
-*Note: Replace the file path in bold with the one you copied.*
-
-![A screenshot of a computer Description automatically
-generated](./media/image110.png)
+   ![](./media/image110.png)
 
 # Exercise 6: Clean up resources
 
@@ -1251,30 +1221,24 @@ workspace you created for this exercise.
 1.  Select your workspace, the **Fabric Lakehouse Tutorial-29** from the
     left-hand navigation menu. It opens the workspace item view.
 
-![A screenshot of a computer Description automatically
-generated](./media/image111.png)
+     ![](./media/image111.png)
 
 2.  Select the ***...*** option under the workspace name and
     select **Workspace settings**.
 
-![A screenshot of a computer Description automatically
-generated](./media/image112.png)
+     ![](./media/image112.png)
 
 3.  Scroll down to the bottom and **Remove this workspace.**
-
-![A screenshot of a computer Description automatically
-generated](./media/image113.png)
+     ![](./media/image113.png)
 
 4.  Click on **Delete** in the warning that pops up.
 
-![A white background with black text Description automatically
-generated](./media/image114.png)
+     ![](./media/image114.png)
 
 5.  Wait for a notification that the Workspace has been deleted, before
     proceeding to the next lab.
 
-![A screenshot of a computer Description automatically
-generated](./media/image115.png)
+     ![](./media/image115.png)
 
 **Summary**:
 
@@ -1286,4 +1250,4 @@ table for structured processing, refining further into gold Delta tables
 for advanced analytics, exploring semantic models, and creating data
 relationships for insightful analysis.
 
-## 
+
