@@ -80,7 +80,10 @@ trial enabled.
 8.  In the **Create a workspace** tab, enter the following details and
     click on the **Apply** button.
     
-   [TABLE]
+   Name	 Data-FactoryXX (XX can be a unique number) (here, we entered Dataflow _Fabric29)
+Advanced	Under License mode, select Trial
+Default storage format	Small dataset storage format
+
 
    ![](./media/image8.png)
     ![](./media/image9.png)
