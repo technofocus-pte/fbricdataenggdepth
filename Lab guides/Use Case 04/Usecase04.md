@@ -90,8 +90,8 @@ reports.
 
 4.  In the **Create a workspace** pane that appears on the right side,
     enter the following details, and click on the **Apply** button.
-   | 	|  |
-   |-------|-------|
+   |        |                                   |
+   |--------|------------------------------------ |
    |Name   |+++Fabric Lakehouse Tutorial-XX+++ (XX can be a unique number) 	|
    |Description |This workspace contains all the items for the lakehouse tutorial |
    |Advanced |Under License mode, select Trial	|
