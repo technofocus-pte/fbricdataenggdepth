@@ -79,7 +79,7 @@ trial enabled.
 
 8.  In the **Create a workspace** tab, enter the following details and
     click on the **Apply** button.
-    
+   |                                                                           |
     |-----------------------|------------------------------------------------- |
     |Name                   | +++Data-FactoryXX+++ (XX can be a unique number) |
     |Advanced               |Under License mode, select Trial	|
