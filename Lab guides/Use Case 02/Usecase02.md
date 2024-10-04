@@ -121,7 +121,8 @@ trial enabled.
 |Name                   |+++Data-FactoryXX+++ (XX can be a unique number) |
 |Advanced               |Under License mode, select Trial	|
 |Default storage format |Small dataset storage format	|
-        ![](./media/image8.png)
+
+   ![](./media/image8.png)
         ![](./media/image9.png)
        ![](./media/image10.png)
 
