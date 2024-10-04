@@ -80,24 +80,24 @@ trial enabled.
 8.  In the **Create a workspace** tab, enter the following details and
     click on the **Apply** button.
     
-    |Title	|Title|
-    |-------|-------|
-    |Name                   | Data-FactoryXX (XX can be a unique number) (here, we entered Dataflow _Fabric29)	|
+  
+    |-------                |-------|
+    |Name                   | +++Data-FactoryXX+++ (XX can be a unique number) |
     |Advanced               |Under License mode, select Trial	|
     |Default storage format |Small dataset storage format	|
    ![](./media/image8.png)
     ![](./media/image9.png)
     ![](./media/image10.png)
 
-10.  Wait for the deployment to complete. It’ll take approximately 2-3
+9.  Wait for the deployment to complete. It’ll take approximately 2-3
     minutes.
 
-11. In the **Data-FactoryXX** workspace page, navigate and click on
+10. In the **Data-FactoryXX** workspace page, navigate and click on
     **+New** button, then select **Lakehouse.**
 
      ![](./media/image11.png)
 
-12. In the **New lakehouse** dialog box, enter
+11. In the **New lakehouse** dialog box, enter
     **+++DataFactoryLakehouse+++** in the **Name** field, click on the
     **Create** button and open the new lakehouse.
 
@@ -105,7 +105,7 @@ trial enabled.
 
      ![](./media/image13.png)
 
-13. Now, click on **Data-FactoryXX** on the left-sided navigation pane.
+12. Now, click on **Data-FactoryXX** on the left-sided navigation pane.
 
     ![](./media/image14.png)
 
