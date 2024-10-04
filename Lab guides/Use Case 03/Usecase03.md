@@ -25,7 +25,7 @@ The lab is divided into three modules:
 
 # Exercise 1: Create a pipeline with Data Factory
 
-** Important**
+**Important**
 
 Microsoft Fabric is currently in PREVIEW. This information relates to a
 prerelease product that may be substantially modified before it's
