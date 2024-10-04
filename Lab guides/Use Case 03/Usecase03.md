@@ -285,8 +285,6 @@ trial enabled.
     •	pickupLatitude
     •	dropoffLongitude
     •	rateCodeID
-
-
       ![](./media/image46.png)
 
 4.  Select the **storeAndFwdFlag** column's filter and sort dropdown
@@ -371,7 +369,7 @@ types of your columns.*
 
      ![](./media/image60.png)
 
-    ![](./media/image61.png)
+     ![](./media/image61.png)
 
 4.  Change the data type of the Date column by selecting the data type
     menu to the left of the column name and choosing **Date**.
