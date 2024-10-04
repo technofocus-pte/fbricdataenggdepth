@@ -1061,8 +1061,8 @@ You have now successfully created your Azure data storage account.
    |      Field            |   Details                                                                                                                   |
    |-----------------------|-----------------------------------------------------------------------------------------------------------------------------|
    |URL                    |[DBTutorial ](https://StorageAccountName.dfs.core.windows.net/                                                               |
-                            Note: Replace StorageAccountName in the URL with your storage account name or paste the URL that you copied earlier from the |
-                            Endpoint tab.)                                                                                                               |
+   |                        Note: Replace StorageAccountName in the URL with your storage account name or paste the URL that you copied earlier from the |
+   |                        Endpoint tab.)                                                                                                               |
    |Connection details     |EAST US                                                                                                                      |
    |Connection name        |Connection02                                                                                                                 |	        |Authentication kind    |Account key (You can also sign in through your organizational account)                                                       |
    |Account key            |Paste the key from your storage account.                                                                                     |
