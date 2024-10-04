@@ -74,28 +74,30 @@ dataflows, Data Factory pipelines, the notebooks, Power BI datasets, and
 reports.
 
 1.  Open your browser, navigate to the address bar, and type or paste
-    the following URL:
-    [https://app.fabric.microsoft.com/](https://app.fabric.microsoft.com/,)
+    the following URL:+++https://app.fabric.microsoft.com/+++
     then press the **Enter** button.
 
-> ![A search engine window with a red box Description automatically
-> generated with medium confidence](./media/image1.png)
+     ![](./media/image1.png)
 
 2.  Go back to **Power BI** window. On the left side navigation menu of
     Power BI Home page, navigate and click on **Workspaces**.
 
-![](./media/image2.png)
+     ![](./media/image2.png)
 
 3.  In the Workspaces pane, click on **+** **New workspace** button**.**
 
-> ![](./media/image3.png)
+      ![](./media/image3.png)
 
 4.  In the **Create a workspace** pane that appears on the right side,
     enter the following details, and click on the **Apply** button.
+   | 	|  |
+   |-------|-------|
+   |Name   |+++Fabric Lakehouse Tutorial-XX+++ (XX can be a unique number) 	|
+   |Description |This workspace contains all the items for the lakehouse tutorial |
+   |Advanced |Under License mode, select Trial	|
+   |Template apps |Check the Develop template apps	|
 
-[TABLE]
-
-> ![](./media/image4.png)
+     ![](./media/image4.png)
 
 ![A screenshot of a computer Description automatically
 generated](./media/image5.png)
