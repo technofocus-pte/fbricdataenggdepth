@@ -79,8 +79,8 @@ trial enabled.
 
 8.  In the **Create a workspace** tab, enter the following details and
     click on the **Apply** button.
+   [TABLE]
 
-[TABLE]
     ![](./media/image8.png)
     ![](./media/image9.png)
     ![](./media/image10.png)
