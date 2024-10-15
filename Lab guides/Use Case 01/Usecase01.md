@@ -639,7 +639,7 @@ that data and prepare it for creating delta tables.
      **Note**: In case, you are unable to see the output, then click on the
      horizontal lines on the left side of **Spark jobs**.
     
-
+       >
         from pyspark.sql.functions import col, year, month, quarter
         
         table_name = 'fact_sale'
@@ -650,7 +650,8 @@ that data and prepare it for creating delta tables.
         df = df.withColumn('Month', month(col("InvoiceDateKey")))
         
         df.write.mode("overwrite").format("delta").partitionBy("Year","Quarter").save("Tables/" + table_name)
-
+      >
+      
        ![](./media/image93.png)
        ![](./media/image94.png)
 
