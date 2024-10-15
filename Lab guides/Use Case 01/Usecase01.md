@@ -133,7 +133,7 @@ page, then skip steps from \#2 to \#4.
      ![](./media/image11.png)
 
 3.  Then, in the **Microsoft** window, enter the password and click on
-    the **Sign in** button**.**
+    the **Sign in** button.
 
       ![](./media/image3.png)
 
@@ -170,19 +170,26 @@ reports.
 
      ![](./media/image16.png)
 
-2.  In the Workspaces pane, click on **+** **New workspace** button**.**
+2.  In the Workspaces pane, click on **+** **New workspace** button.
 
       ![](./media/image17.png)
 
 3.  In the **Create a workspace** pane that appears on the right side,
     enter the following details, and click on the **Apply** button.
 
-[TABLE]
-    ![](./media/image18.png)
+        |   |    |
+        |----|---|
+        |Name|	Fabric Lakehouse Tutorial-XX (XX can be a unique number) (here, we entered Fabric Lakehouse Tutorial-29)|
+        |Description	|This workspace contains all the items for the lakehouse tutorial |
+        |Advanced	|Under License mode, select Trial|
+        |Default |storage format	Small dataset storage format|
+        |Template apps|	Check the Develop template apps|
 
-    ![](./media/image19.png)
+       ![](./media/image18.png)
 
-    ![](./media/image20.png)
+      ![](./media/image19.png)
+
+      ![](./media/image20.png)
 
 4.  Wait for the deployment to complete. It takes 2-3 minutes to
     complete.
@@ -195,20 +202,20 @@ reports.
     **Power BI** icon located at the bottom left and select **Data
     Engineering** under Synapse.
 
-     ![](./media/image22.png)
+     ![](./media/new1.png)
 
 2.  In the **Synapse** **Data Engineering** **Home** page,
     select **Lakehouse** to create a lakehouse.
 
-     ![](./media/image23.png)
+     ![](./media/new2.png)
 
 3.  In the **New lakehouse** dialog box, enter **wwilakehouse** in
     the **Name** field, click on the **Create** button and open the new
     lakehouse.
 
-> **Note**: Ensure to remove space before **wwilakehouse**.
+    > **Note**: Ensure to remove space before **wwilakehouse**.
  
-     ![](./media/image24.png)
+     ![](./media/new3.png)
  
      ![](./media/image25.png)
 
