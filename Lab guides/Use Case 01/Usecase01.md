@@ -177,13 +177,14 @@ reports.
 3.  In the **Create a workspace** pane that appears on the right side,
     enter the following details, and click on the **Apply** button.
 
-        |   |    |
-        |----|---|
-        |Name|	Fabric Lakehouse Tutorial-XX (XX can be a unique number) (here, we entered Fabric Lakehouse Tutorial-29)|
-        |Description	|This workspace contains all the items for the lakehouse tutorial |
-        |Advanced	|Under License mode, select Trial|
-        |Default |storage format	Small dataset storage format|
-        |Template apps|	Check the Develop template apps|
+
+       |   |    |
+       |----|---|
+       |Name|	Fabric Lakehouse Tutorial-XX (XX can be a unique number) (here, we entered Fabric Lakehouse Tutorial-29)|
+       |Description	|This workspace contains all the items for the lakehouse tutorial |
+       |Advanced	|Under License mode, select Trial|
+       |Default |storage format	Small dataset storage format|
+       |Template apps|	Check the Develop template apps|
 
        ![](./media/image18.png)
 
