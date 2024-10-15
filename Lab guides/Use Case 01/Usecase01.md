@@ -741,10 +741,11 @@ that data and prepare it for creating delta tables.
     few of the columns, and finally write it as a delta table in
     the **Tables** section of the lakehouse to persist with the data.
 
-    > In this cell, you create three different Spark dataframes, each
-    > referencing an existing delta table.
+    In this cell, you create three different Spark dataframes, each
+    referencing an existing delta table.
    
-    > PythonCopy
+   PythonCopy
+   
     ```
     df_fact_sale = spark.read.table("wwilakehouse.fact_sale") 
     df_dimension_date = spark.read.table("wwilakehouse.dimension_date")
@@ -784,9 +785,9 @@ that data and prepare it for creating delta tables.
     write it as a delta table in the **Tables** section of the lakehouse
     to persist with the data.
 
-        > In this cell, you create a temporary Spark view by joining three
-        > tables, do group by to generate aggregation, and rename a few of the
-        > columns.
+    In this cell, you create a temporary Spark view by joining three
+    tables, do group by to generate aggregation, and rename a few of the
+    columns.
         
         ```
         %%sql
@@ -811,13 +812,14 @@ that data and prepare it for creating delta tables.
 21. In this cell, you read from the temporary Spark view created in the
     previous cell and finally write it as a delta table in
     the **Tables** section of the lakehouse.
+    
       ```
       sale_by_date_employee = spark.sql("SELECT * FROM sale_by_date_employee")
       sale_by_date_employee.write.mode("overwrite").format("delta").option("overwriteSchema", "true").save("Tables/aggregate_sale_by_date_employee")
       ```
        ![](./media/image107.png)
 
-22. To validate the created tables, click and select refresh on
+23. To validate the created tables, click and select refresh on
     the **Tables**. The aggregate tables appear.
 
      ![](./media/image108.png)
