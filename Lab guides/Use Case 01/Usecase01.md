@@ -78,7 +78,7 @@ analysis.
       ![](./media/image2.png)
 
 3.  Then, In the **Microsoft** window enter the password and click on
-    the **Sign in** button**.**
+    the **Sign in** button.
 
        ![](./media/image3.png)
 
@@ -96,13 +96,13 @@ Follow these steps to start your Fabric trial.
 
 1.  On **Power BI Home** page, click on the **Account manager** on the
     right side. In the Account manager blade, navigate and
-    select **Start trial** as shown in the below image**.**
+    select **Start trial** as shown in the below image.
 
      ![](./media/image6.png)
 
 2.  If prompted, agree to the terms and then select **Start trial**.
 
-     ![](./media/image7.png)
+     ![](./media/new1.png)
 
 3.  Once your trial capacity is ready, you receive a confirmation
     message. Select **Fabric Home Page** to begin working in Fabric.
