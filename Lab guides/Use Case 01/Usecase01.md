@@ -102,7 +102,7 @@ Follow these steps to start your Fabric trial.
 
 2.  If prompted, agree to the terms and then select **Start trial**.
 
-     ![](./media/new1.png)
+     ![](./media/new1-1.png)
 
 3.  Once your trial capacity is ready, you receive a confirmation
     message. Select **Fabric Home Page** to begin working in Fabric.
