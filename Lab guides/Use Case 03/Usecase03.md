@@ -45,9 +45,9 @@ trial enabled.
     the **Enter** button.
 
      ![](./media/image1.png)
->
-> **Note**: If you are directed to Microsoft Fabric Home page, then skip
-> steps from \#2 to \#4.
+
+     **Note**: If you are directed to Microsoft Fabric Home page, then skip
+     steps from \#2 to \#4.
 
 2.  In the **Microsoft Fabric** window, enter your credentials, and
     click on the **Submit** button.
@@ -79,24 +79,25 @@ trial enabled.
 
 8.  In the **Create a workspace** tab, enter the following details and
     click on the **Apply** button.
-   |                                                                           |
+    |                          |                                               |
     |-----------------------|------------------------------------------------- |
     |Name                   | +++Data-FactoryXX+++ (XX can be a unique number) |
     |Advanced               |Under License mode, select Trial	|
     |Default storage format |Small dataset storage format	|
-   ![](./media/image8.png)
-    ![](./media/image9.png)
-    ![](./media/image10.png)
+    
+     ![](./media/image8.png)
+     ![](./media/image9.png)
+     ![](./media/image10.png)
 
-9.  Wait for the deployment to complete. It’ll take approximately 2-3
+10.  Wait for the deployment to complete. It’ll take approximately 2-3
     minutes.
 
-10. In the **Data-FactoryXX** workspace page, navigate and click on
+11. In the **Data-FactoryXX** workspace page, navigate and click on
     **+New** button, then select **Lakehouse.**
 
      ![](./media/image11.png)
 
-11. In the **New lakehouse** dialog box, enter
+12. In the **New lakehouse** dialog box, enter
     **+++DataFactoryLakehouse+++** in the **Name** field, click on the
     **Create** button and open the new lakehouse.
 
@@ -104,7 +105,7 @@ trial enabled.
 
      ![](./media/image13.png)
 
-12. Now, click on **Data-FactoryXX** on the left-sided navigation pane.
+13. Now, click on **Data-FactoryXX** on the left-sided navigation pane.
 
     ![](./media/image14.png)
 
