@@ -664,6 +664,7 @@ that data and prepare it for creating delta tables.
     parameter.
 
 9.  Select the cell, replace the code, and click the **Run** icon that appears to the left of the cell when you hover over it
+    
         ```
         from pyspark.sql.types import *
         def loadFullDataFromSource(table_name):
@@ -683,25 +684,25 @@ that data and prepare it for creating delta tables.
 
        ![](./media/image95.png)
       ![](./media/image96.png)
-11. To validate the created tables, click and select refresh on
+10. To validate the created tables, click and select refresh on
     the **Tables**. The tables appear.
      ![](./media/image97.png)
       ![](./media/image98.png)
 
-12. Go the items view of the workspace again, select **Fabric Lakehouse
+11. Go the items view of the workspace again, select **Fabric Lakehouse
     Tutorial-XX** and select the **wwilakehouse** lakehouse to open it.
 
      ![](./media/image99.png)
  
      ![](./media/image100.png)
 
-13. Now, open the second notebook. In the lakehouse view, dropdown the
+12. Now, open the second notebook. In the lakehouse view, dropdown the
     **Open notebook** and select **Existing notebook** from the top
     navigation menu.
 
      ![](./media/image101.png)
 
-14. From the list of Open existing notebook, select the **02 - Data
+13. From the list of Open existing notebook, select the **02 - Data
     Transformation - Business** **Aggregation** notebook and click on
     the **Open**.
 
@@ -732,7 +733,7 @@ that data and prepare it for creating delta tables.
       generating business aggregates. This approach is preferable to someone
       with SQL background, transitioning to Spark.
 
-17. **Approach \#1 (sale_by_date_city)** - Use PySpark to join and
+18. **Approach \#1 (sale_by_date_city)** - Use PySpark to join and
     aggregate data for generating business aggregates. With the
     following code, you create three different Spark dataframes, each
     referencing an existing delta table. Then you join these tables
@@ -751,7 +752,7 @@ that data and prepare it for creating delta tables.
     ```
      ![](./media/image104.png)
 
-18. In this cell, you join these tables using the dataframes created
+19. In this cell, you join these tables using the dataframes created
     earlier, do group by to generate aggregation, rename a few of the
     columns, and finally write it as a delta table in
     the **Tables** section of the lakehouse.
@@ -775,7 +776,7 @@ that data and prepare it for creating delta tables.
         ```
       ![](./media/image105.png)
 
-19. **Approach \#2 (sale_by_date_employee)** - Use Spark SQL to join and
+20. **Approach \#2 (sale_by_date_employee)** - Use Spark SQL to join and
     aggregate data for generating business aggregates. With the
     following code, you create a temporary Spark view by joining three
     tables, do group by to generate aggregation, and rename a few of the
@@ -786,7 +787,7 @@ that data and prepare it for creating delta tables.
         > In this cell, you create a temporary Spark view by joining three
         > tables, do group by to generate aggregation, and rename a few of the
         > columns.
-        >
+        
         ```
         %%sql
         CREATE OR REPLACE TEMPORARY VIEW sale_by_date_employee
@@ -807,7 +808,7 @@ that data and prepare it for creating delta tables.
         ```
       ![](./media/image106.png)
 
-20. In this cell, you read from the temporary Spark view created in the
+21. In this cell, you read from the temporary Spark view created in the
     previous cell and finally write it as a delta table in
     the **Tables** section of the lakehouse.
       ```
@@ -816,7 +817,7 @@ that data and prepare it for creating delta tables.
       ```
        ![](./media/image107.png)
 
-21. To validate the created tables, click and select refresh on
+22. To validate the created tables, click and select refresh on
     the **Tables**. The aggregate tables appear.
 
      ![](./media/image108.png)
