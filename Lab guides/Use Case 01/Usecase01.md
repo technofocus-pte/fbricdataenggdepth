@@ -202,7 +202,7 @@ reports.
     **Power BI** icon located at the bottom left and select **Data
     Engineering** under Synapse.
 
-     ![](./media/new1.png)
+     ![](./media/new0.png)
 
 2.  In the **Synapse** **Data Engineering** **Home** page,
     select **Lakehouse** to create a lakehouse.
@@ -261,24 +261,24 @@ reports.
     under the **Data destination** field.
 
      ![](./media/image33.png)
->
-> ***Note:***
-
-- *If needed, from the **Connect to data destination** screen, sign into
-  your account. Select **Next**.*
-
-- Navigate to the **wwilakehouse** in your workspace.
-
-- If the **dimension_customer** table doesn't exist, select the **New
-  table** setting and enter the table name **dimension_customer**. If
-  the table already exists, select the **Existing table** setting and
-  choose **dimension_customer** from the list of tables in the object
-  explorer, then select **Next**.
-
-** *Note: ****Fabric adds a space and number at the end of the table
-name by default. Table names must be lower case and must not contain
-spaces. Please rename it appropriately and remove any spaces from the
-table name.*
+    >
+    > ***Note:***
+    
+    - *If needed, from the **Connect to data destination** screen, sign into
+      your account. Select **Next**.*
+    
+    - Navigate to the **wwilakehouse** in your workspace.
+    
+    - If the **dimension_customer** table doesn't exist, select the **New
+      table** setting and enter the table name **dimension_customer**. If
+      the table already exists, select the **Existing table** setting and
+      choose **dimension_customer** from the list of tables in the object
+      explorer, then select **Next**.
+    
+    **Note:** Fabric adds a space and number at the end of the table
+    name by default. Table names must be lower case and must not contain
+    spaces. Please rename it appropriately and remove any spaces from the
+    table name.
 
 7.  From the Dataflow canvas, you can easily transform the data based on
     your business requirements. For simplicity, we aren't making any
@@ -288,17 +288,18 @@ table name.*
      ![](./media/image34.png)
 
 8.  A spinning circle next to the dataflow's name indicates publishing
-    is in progress in the item view. ![](./media/image35.png)
+    is in progress in the item view.
+     ![](./media/new4.png)
 
 9.  In the **Fabric Lakehouse Tutorial-XX** tab, when publishing is
     completed, move your mouse to **Dataflow 1** row and click on the
     horizontal ellipses (**…**), then navigate and click on
     **Properties** as shown in the below image.
 
-      ![](./media/image36.png)
+      ![](./media/new5.png)
 
 10. In the Dataflow 1 pane that appear on the right side, rename the
-    dataflow to  **Load Lakehouse Table**  and select **Save**.
+    dataflow to  **+++Load Lakehouse Table+++**  and select **Save**.
 
       ![](./media/image37.png)
 
@@ -341,15 +342,15 @@ table name.*
     can rename or delete these files based on your need. Paste the code
     as shown in the below image, then click on the play icon to **Run**
     the script.
-```
-SELECT BuyingGroup, Count(*) AS Total
-FROM dimension_customer
-GROUP BY BuyingGroup
-```
-  ![](./media/image45.png)
+    ```
+    SELECT BuyingGroup, Count(*) AS Total
+    FROM dimension_customer
+    GROUP BY BuyingGroup
+    ```
+    ![](./media/image45.png)
 
-**Note**: If you encounter an error during the execution of the script,
-then crosscheck the script syntax with the above image.
+    **Note**: If you encounter an error during the execution of the script,
+    then crosscheck the script syntax with the above image.
     ![](./media/image46.png)
 
 17. Previously all the lakehouse tables and views were automatically
@@ -366,7 +367,7 @@ then crosscheck the script syntax with the above image.
 19. In **Manage default semantic model** tab, select
     the **dimension_customer** table and click on **Confirm.**
 
-      ![](./media/image48.png)
+      ![](./media/new6.png)
 
 ## **Task 4: Build a report**
 
@@ -405,7 +406,7 @@ then crosscheck the script syntax with the above image.
 6.  In the **Save your replort** dialog box, enter a name for your
     report as +++dimension_customer-report+++ and select **Save.**
 
-     ![](./media/image55.png)
+     ![](./media/new7.png)
 
 7.  You will see a notification stating **Report saved**.
 
@@ -427,20 +428,19 @@ the Wide World Importers (WWI) into the lakehouse.
       ![](./media/image58.png)
 
 2.  In the **Fabric Lakehouse Tutorial-XX** workspace page, navigate and
-    click on **+New** button, then select **Data pipeline**.
+    click on **+New item** button, then select **Data pipeline**.
 
-      ![](./media/image59.png)
+      ![](./media/new8.png)
 
 3.  In the New pipeline dialog box, specify the name as
-    **IngestDataFromSourceToLakehouse** and select **Create.** A new
+    **+++IngestDataFromSourceToLakehouse+++** and select **Create.** A new
     data factory pipeline is created and opened
 
       ![](./media/image60.png)
  
       ![](./media/image61.png)
 
-4.  On newly created data factory pipeline i.e
-    **IngestDataFromSourceToLakehouse**, select  **Copy data
+4.  On newly created data factory pipeline i.e **IngestDataFromSourceToLakehouse**, select  **Copy data
     assistant** .
 
       ![](./media/image62.png)
@@ -454,7 +454,15 @@ the Wide World Importers (WWI) into the lakehouse.
 6.  In the **Connect to data source** window, enter the details from the
     table below and select **Next**.
 
-[TABLE]
+    |   |   |
+    |---|---|
+    |Property |	Value|
+    |URL|	https://assetsprod.microsoft.com/en-us/wwi-sample-dataset.zip|
+    |Connection	|Create a new connection|
+    |Connection name	|wwisampledata|
+    |Data gateway|	None|
+    |Authentication kind|	Anonymous|
+
      ![](./media/image64.png)
 
 7.  In the next step, enable the **Binary copy** and choose **ZipDeflate
@@ -476,7 +484,7 @@ the Wide World Importers (WWI) into the lakehouse.
 9.  Choose the **File format** as **Binary** for the destination.
     Click **Next** and then **Save+Run**. You can schedule pipelines to
     refresh data periodically. In this tutorial, we only run the
-    pipeline once. The data copy process takes approximately 10-15
+    pipeline once. The data copy process takes approximately 15-19
     minutes to complete.
 
       ![](./media/image68.png)
@@ -530,16 +538,14 @@ that data and prepare it for creating delta tables.
 
      ![](./media/image80.png)
 
-2.  In the **Synapse Data Engineering** page, navigate to **New**
-    section and click on **Import notebook**.
+2.  2.	In the **Synapse Data Engineering** page, navigate to **Import** section, click on **Notebook** and click on **From this computer**
 
-     ![](./media/image81.png)
+     ![](./media/new9.png)
 
-3.  Select **Upload** from the **Import status** pane that opens on the
-    right side of the screen.
+3.  Select **Upload** from thenavigate to **Import** section, click on **Notebook** and click on **From this computer**
 
-> **Note**: Ensure to select **All files (\*.\*)** from the dropdown
-> beside **File name** field.
+     **Note**: Ensure to select **All files (\*.\*)** from the dropdown
+     beside **File name** field.
       ![](./media/image82.png)
 
 4.  Navigate and select **01-Create Delta Tables, 02-Data
@@ -583,19 +589,19 @@ that data and prepare it for creating delta tables.
 
      ![](./media/image90.png)
 
-** Note**
-
-Fabric provides
-the [**V-order**](https://learn.microsoft.com/en-us/fabric/data-engineering/delta-optimization-and-v-order) capability
-to write optimized delta lake files. V-order often improves compression
-by three to four times and up to 10 times performance acceleration over
-the Delta Lake files that aren't optimized. Spark in Fabric dynamically
-optimizes partitions while generating files with a default 128 MB size.
-The target file size may be changed per workload requirements using
-configurations. With the [**optimize
-write**](https://learn.microsoft.com/en-us/fabric/data-engineering/delta-optimization-and-v-order#what-is-optimized-write) capability,
-the Apache Spark engine that reduces the number of files written and
-aims to increase individual file size of the written data.
+    ** Note**
+    
+    Fabric provides
+    the [**V-order**](https://learn.microsoft.com/en-us/fabric/data-engineering/delta-optimization-and-v-order) capability
+    to write optimized delta lake files. V-order often improves compression
+    by three to four times and up to 10 times performance acceleration over
+    the Delta Lake files that aren't optimized. Spark in Fabric dynamically
+    optimizes partitions while generating files with a default 128 MB size.
+    The target file size may be changed per workload requirements using
+    configurations. With the [**optimize
+    write**](https://learn.microsoft.com/en-us/fabric/data-engineering/delta-optimization-and-v-order#what-is-optimized-write) capability,
+    the Apache Spark engine that reduces the number of files written and
+    aims to increase individual file size of the written data.
 
 4.  Before you write data as delta lake tables in the **Tables** section
     of the lakehouse, you use two Fabric features
@@ -609,15 +615,15 @@ aims to increase individual file size of the written data.
 
       ![](./media/image91.png)
 
-When running a cell, you didn't have to specify the underlying Spark
-pool or cluster details because Fabric provides them through Live Pool.
-Every Fabric workspace comes with a default Spark pool, called Live
-Pool. This means when you create notebooks, you don't have to worry
-about specifying any Spark configurations or cluster details. When you
-execute the first notebook command, the live pool is up and running in a
-few seconds. And the Spark session is established and it starts
-executing the code. Subsequent code execution is almost instantaneous in
-this notebook while the Spark session is active.
+    When running a cell, you didn't have to specify the underlying Spark
+    pool or cluster details because Fabric provides them through Live Pool.
+    Every Fabric workspace comes with a default Spark pool, called Live
+    Pool. This means when you create notebooks, you don't have to worry
+    about specifying any Spark configurations or cluster details. When you
+    execute the first notebook command, the live pool is up and running in a
+    few seconds. And the Spark session is established and it starts
+    executing the code. Subsequent code execution is almost instantaneous in
+    this notebook while the Spark session is active.
      ![](./media/image92.png)
 
 6.  Next, you read raw data from the **Files** section of the lakehouse
@@ -629,22 +635,22 @@ this notebook while the Spark session is active.
 7.  To execute the second cell, select **Run** icon that appears to the
     left of the cell upon hover.
 
-> **Note**: In case, you are unable to see the output, then click on the
-> horizontal lines on the left side of **Spark jobs**.
->
-```
-from pyspark.sql.functions import col, year, month, quarter
+     **Note**: In case, you are unable to see the output, then click on the
+     horizontal lines on the left side of **Spark jobs**.
+    
 
-table_name = 'fact_sale'
+        from pyspark.sql.functions import col, year, month, quarter
+        
+        table_name = 'fact_sale'
+        
+        df = spark.read.format("parquet").load('Files/wwi-raw-data/full/fact_sale_1y_full')
+        df = df.withColumn('Year', year(col("InvoiceDateKey")))
+        df = df.withColumn('Quarter', quarter(col("InvoiceDateKey")))
+        df = df.withColumn('Month', month(col("InvoiceDateKey")))
+        
+        df.write.mode("overwrite").format("delta").partitionBy("Year","Quarter").save("Tables/" + table_name)
 
-df = spark.read.format("parquet").load('Files/wwi-raw-data/full/fact_sale_1y_full')
-df = df.withColumn('Year', year(col("InvoiceDateKey")))
-df = df.withColumn('Quarter', quarter(col("InvoiceDateKey")))
-df = df.withColumn('Month', month(col("InvoiceDateKey")))
-
-df.write.mode("overwrite").format("delta").partitionBy("Year","Quarter").save("Tables/" + table_name)
-```
-   ![](./media/image93.png)
+       ![](./media/image93.png)
        ![](./media/image94.png)
 
 8.  After the fact tables load, you can move on to loading data for the
@@ -655,64 +661,59 @@ df.write.mode("overwrite").format("delta").partitionBy("Year","Quarter").save("T
     creates a delta table for each table name that's read from the input
     parameter.
 
-9.  Select the cell and select  **Run** icon that appears to the left of
-    the cell upon hover.
-```
-from pyspark.sql.types import *
-def loadFullDataFromSource(table_name):
-    df = spark.read.format("parquet").load('Files/wwi-raw-data/full/' + table_name)
-    df.write.mode("overwrite").format("delta").save("Tables/" + table_name)
+9.  Select the cell, replace the code, and click the **Run** icon that appears to the left of the cell when you hover over it
+        ```
+        from pyspark.sql.types import *
+        def loadFullDataFromSource(table_name):
+            df = spark.read.format("parquet").load('Files/wwi-raw-data/full/' + table_name)
+            df.write.mode("overwrite").format("delta").save("Tables/" + table_name)
+        
+        full_tables = [
+            'dimension_city',
+            'dimension_date',
+            'dimension_employee',
+            'dimension_stock_item'
+            ]
+        
+        for table in full_tables:
+            loadFullDataFromSource(table)
+        ```
 
-full_tables = [
-    'dimension_city',
-    'dimension_date',
-    'dimension_employee',
-    'dimension_stock_item'
-    ]
-
-for table in full_tables:
-    loadFullDataFromSource(table)
-
-
-for table in full_tables:
-    loadFullDataFromSource(table)
-```
-   ![](./media/image95.png)
+       ![](./media/image95.png)
       ![](./media/image96.png)
-10. To validate the created tables, click and select refresh on
+11. To validate the created tables, click and select refresh on
     the **Tables**. The tables appear.
      ![](./media/image97.png)
- 
-     ![](./media/image98.png)
+      ![](./media/image98.png)
 
-11. Go the items view of the workspace again, select **Fabric Lakehouse
+12. Go the items view of the workspace again, select **Fabric Lakehouse
     Tutorial-XX** and select the **wwilakehouse** lakehouse to open it.
 
      ![](./media/image99.png)
  
      ![](./media/image100.png)
 
-12. Now, open the second notebook. In the lakehouse view, dropdown the
+13. Now, open the second notebook. In the lakehouse view, dropdown the
     **Open notebook** and select **Existing notebook** from the top
     navigation menu.
 
      ![](./media/image101.png)
 
-13. From the list of Open existing notebook, select the **02 - Data
+14. From the list of Open existing notebook, select the **02 - Data
     Transformation - Business** **Aggregation** notebook and click on
     the **Open**.
 
      ![](./media/image102.png)
 
-14. In the open notebook in **Lakehouse explorer**, you see the notebook
+15. In the open notebook in **Lakehouse explorer**, you see the notebook
     is already linked to your opened lakehouse.
 
-15. To start the notebook and select the 1^(st) cell and select
+16. To start the notebook and select the 1^(st) cell and select
     the **Run** icon that appears to the left of the cell upon hover.
 
      ![](./media/image103.png)
 
-16. An organization might have data engineers working with Scala/Python
+17. An organization might have data engineers working with Scala/Python
     and other data engineers working with SQL (Spark SQL or T-SQL), all
     working on the same copy of the data. Fabric makes it possible for
     these different groups, with varied experience and preference, to
@@ -721,13 +722,13 @@ for table in full_tables:
     or mix and match these approaches based on your preference without
     compromising on the performance:
 
-- **Approach \#1** - Use PySpark to join and aggregates data for
-  generating business aggregates. This approach is preferable to someone
-  with a programming (Python or PySpark) background.
-
-- **Approach \#2** - Use Spark SQL to join and aggregates data for
-  generating business aggregates. This approach is preferable to someone
-  with SQL background, transitioning to Spark.
+    - **Approach \#1** - Use PySpark to join and aggregates data for
+      generating business aggregates. This approach is preferable to someone
+      with a programming (Python or PySpark) background.
+    
+    - **Approach \#2** - Use Spark SQL to join and aggregates data for
+      generating business aggregates. This approach is preferable to someone
+      with SQL background, transitioning to Spark.
 
 17. **Approach \#1 (sale_by_date_city)** - Use PySpark to join and
     aggregate data for generating business aggregates. With the
@@ -737,38 +738,40 @@ for table in full_tables:
     few of the columns, and finally write it as a delta table in
     the **Tables** section of the lakehouse to persist with the data.
 
-> In this cell, you create three different Spark dataframes, each
-> referencing an existing delta table.
->
-> PythonCopy
-```
-df_fact_sale = spark.read.table("wwilakehouse.fact_sale") 
-df_dimension_date = spark.read.table("wwilakehouse.dimension_date")
-df_dimension_city = spark.read.table("wwilakehouse.dimension_city")
-```
-   ![](./media/image104.png)
+    > In this cell, you create three different Spark dataframes, each
+    > referencing an existing delta table.
+   
+    > PythonCopy
+    ```
+    df_fact_sale = spark.read.table("wwilakehouse.fact_sale") 
+    df_dimension_date = spark.read.table("wwilakehouse.dimension_date")
+    df_dimension_city = spark.read.table("wwilakehouse.dimension_city")
+    ```
+     ![](./media/image104.png)
 
 18. In this cell, you join these tables using the dataframes created
     earlier, do group by to generate aggregation, rename a few of the
     columns, and finally write it as a delta table in
     the **Tables** section of the lakehouse.
 
-```
-sale_by_date_city = df_fact_sale.alias("sale") \
-.join(df_dimension_date.alias("date"), df_fact_sale.InvoiceDateKey == df_dimension_date.Date, "inner") \
-.join(df_dimension_city.alias("city"), df_fact_sale.CityKey == df_dimension_city.CityKey, "inner") \
-.select("date.Date", "date.CalendarMonthLabel", "date.Day", "date.ShortMonth", "date.CalendarYear", "city.City", "city.StateProvince", "city.SalesTerritory", "sale.TotalExcludingTax", "sale.TaxAmount", "sale.TotalIncludingTax", "sale.Profit")\
-.groupBy("date.Date", "date.CalendarMonthLabel", "date.Day", "date.ShortMonth", "date.CalendarYear", "city.City", "city.StateProvince", "city.SalesTerritory")\
-.sum("sale.TotalExcludingTax", "sale.TaxAmount", "sale.TotalIncludingTax", "sale.Profit")\
-.withColumnRenamed("sum(TotalExcludingTax)", "SumOfTotalExcludingTax")\
-.withColumnRenamed("sum(TaxAmount)", "SumOfTaxAmount")\
-.withColumnRenamed("sum(TotalIncludingTax)", "SumOfTotalIncludingTax")\
-.withColumnRenamed("sum(Profit)", "SumOfProfit")\
-.orderBy("date.Date", "city.StateProvince", "city.City")
-
-sale_by_date_city.write.mode("overwrite").format("delta").option("overwriteSchema", "true").save("Tables/aggregate_sale_by_date_city")
-```
- ![](./media/image105.png)
+        ```
+        sale_by_date_city = df_fact_sale.alias("sale") \
+        .join(df_dimension_date.alias("date"), df_fact_sale.InvoiceDateKey == df_dimension_date.Date, "inner") \
+        .join(df_dimension_city.alias("city"), df_fact_sale.CityKey == df_dimension_city.CityKey, "inner") \
+        .select("date.Date", "date.CalendarMonthLabel", "date.Day", "date.ShortMonth", "date.CalendarYear", "city.City", "city.StateProvince", 
+         "city.SalesTerritory", "sale.TotalExcludingTax", "sale.TaxAmount", "sale.TotalIncludingTax", "sale.Profit")\
+        .groupBy("date.Date", "date.CalendarMonthLabel", "date.Day", "date.ShortMonth", "date.CalendarYear", "city.City", "city.StateProvince", 
+         "city.SalesTerritory")\
+        .sum("sale.TotalExcludingTax", "sale.TaxAmount", "sale.TotalIncludingTax", "sale.Profit")\
+        .withColumnRenamed("sum(TotalExcludingTax)", "SumOfTotalExcludingTax")\
+        .withColumnRenamed("sum(TaxAmount)", "SumOfTaxAmount")\
+        .withColumnRenamed("sum(TotalIncludingTax)", "SumOfTotalIncludingTax")\
+        .withColumnRenamed("sum(Profit)", "SumOfProfit")\
+        .orderBy("date.Date", "city.StateProvince", "city.City")
+        
+        sale_by_date_city.write.mode("overwrite").format("delta").option("overwriteSchema", "true").save("Tables/aggregate_sale_by_date_city")
+        ```
+      ![](./media/image105.png)
 
 19. **Approach \#2 (sale_by_date_employee)** - Use Spark SQL to join and
     aggregate data for generating business aggregates. With the
@@ -778,38 +781,38 @@ sale_by_date_city.write.mode("overwrite").format("delta").option("overwriteSchem
     write it as a delta table in the **Tables** section of the lakehouse
     to persist with the data.
 
-> In this cell, you create a temporary Spark view by joining three
-> tables, do group by to generate aggregation, and rename a few of the
-> columns.
->
-```
-%%sql
-CREATE OR REPLACE TEMPORARY VIEW sale_by_date_employee
-AS
-SELECT
-       DD.Date, DD.CalendarMonthLabel
- , DD.Day, DD.ShortMonth Month, CalendarYear Year
-      ,DE.PreferredName, DE.Employee
-      ,SUM(FS.TotalExcludingTax) SumOfTotalExcludingTax
-      ,SUM(FS.TaxAmount) SumOfTaxAmount
-      ,SUM(FS.TotalIncludingTax) SumOfTotalIncludingTax
-      ,SUM(Profit) SumOfProfit 
-FROM wwilakehouse.fact_sale FS
-INNER JOIN wwilakehouse.dimension_date DD ON FS.InvoiceDateKey = DD.Date
-INNER JOIN wwilakehouse.dimension_Employee DE ON FS.SalespersonKey = DE.EmployeeKey
-GROUP BY DD.Date, DD.CalendarMonthLabel, DD.Day, DD.ShortMonth, DD.CalendarYear, DE.PreferredName, DE.Employee
-ORDER BY DD.Date ASC, DE.PreferredName ASC, DE.Employee ASC
-```
-   ![](./media/image106.png)
+        > In this cell, you create a temporary Spark view by joining three
+        > tables, do group by to generate aggregation, and rename a few of the
+        > columns.
+        >
+        ```
+        %%sql
+        CREATE OR REPLACE TEMPORARY VIEW sale_by_date_employee
+        AS
+        SELECT
+               DD.Date, DD.CalendarMonthLabel
+         , DD.Day, DD.ShortMonth Month, CalendarYear Year
+              ,DE.PreferredName, DE.Employee
+              ,SUM(FS.TotalExcludingTax) SumOfTotalExcludingTax
+              ,SUM(FS.TaxAmount) SumOfTaxAmount
+              ,SUM(FS.TotalIncludingTax) SumOfTotalIncludingTax
+              ,SUM(Profit) SumOfProfit 
+        FROM wwilakehouse.fact_sale FS
+        INNER JOIN wwilakehouse.dimension_date DD ON FS.InvoiceDateKey = DD.Date
+        INNER JOIN wwilakehouse.dimension_Employee DE ON FS.SalespersonKey = DE.EmployeeKey
+        GROUP BY DD.Date, DD.CalendarMonthLabel, DD.Day, DD.ShortMonth, DD.CalendarYear, DE.PreferredName, DE.Employee
+        ORDER BY DD.Date ASC, DE.PreferredName ASC, DE.Employee ASC
+        ```
+      ![](./media/image106.png)
 
 20. In this cell, you read from the temporary Spark view created in the
     previous cell and finally write it as a delta table in
     the **Tables** section of the lakehouse.
-  ```
-  sale_by_date_employee = spark.sql("SELECT * FROM sale_by_date_employee")
-  sale_by_date_employee.write.mode("overwrite").format("delta").option("overwriteSchema", "true").save("Tables/aggregate_sale_by_date_employee")
-  ```
-   ![](./media/image107.png)
+      ```
+      sale_by_date_employee = spark.sql("SELECT * FROM sale_by_date_employee")
+      sale_by_date_employee.write.mode("overwrite").format("delta").option("overwriteSchema", "true").save("Tables/aggregate_sale_by_date_employee")
+      ```
+       ![](./media/image107.png)
 
 21. To validate the created tables, click and select refresh on
     the **Tables**. The aggregate tables appear.
@@ -831,8 +834,6 @@ call CREATE TABLE statements to create tables to use with SQL.
 
 In this section of the tutorial, you create a Power BI data model and
 create a report from scratch.
-
-** **
 
 ## **Task 1: Explore data in the silver layer using the SQL endpoint**
 
@@ -876,24 +877,26 @@ frequent updates at the source.
 
 2.  From the SQL endpoint pane, you should be able to see all the tables
     you created. If you don't see them yet, select the **Refresh** icon
-    at the top. Next, select the **Model** tab at the bottom to open the
+    at the top. Next, select the **Model layout** tab at the bottom to open the
     default Power BI dataset.
 
-      ![](./media/image112.png)
+      ![](./media/new11.png)
 
 3.  For this data model, you need to define the relationship between
     different tables so that you can create reports and visualizations
-    based on data coming across different tables.
+    based on data coming across different tables.Click on **Auto layout**
+     ![](./media/new12.png)
+     ![](./media/new13.png)
 
 4.  From the **fact_sale** table, drag the **CityKey** field and drop it
     on the **CityKey** field in the **dimension_city** table to create a
     relationship. The **Create Relationship** dialog box appears.
 
-> Note: Rearrange the tables by clicking on the table, dragging and
-> dropping to have the dimension_city and the fact_sale tables next to
-> each other. The same holds good for any two tables that you are trying
-> to create relationship. This is just to make the drag and drop of the
-> columns between the tables is easier.
+    > Note: Rearrange the tables by clicking on the table, dragging and
+    > dropping to have the dimension_city and the fact_sale tables next to
+    > each other. The same holds good for any two tables that you are trying
+    > to create relationship. This is just to make the drag and drop of the
+    > columns between the tables is easier.
       ![](./media/image113.png)
 
 5.  In the **Create Relationship** dialog box:
@@ -912,32 +915,31 @@ frequent updates at the source.
 
     - Select the box next to **Assume referential integrity.**
 
-    - Select **Confirm.**
+    - Select **Save.**
 
-     ![](./media/image114.png)
+      ![](./media/new14.png)
 
 6.  Next, add these relationships with the same **Create
     Relationship** settings as shown above but with the following tables
     and columns:
 
-- **StockItemKey(fact_sale)** - **StockItemKey(dimension_stock_item)**
+    - **StockItemKey(fact_sale)** - **StockItemKey(dimension_stock_item)**
 
      ![](./media/image115.png)
 
-     ![](./media/image116.png)
+     ![](./media/new15.png)
 
-- **Salespersonkey(fact_sale)** - **EmployeeKey(dimension_employee)**
+    - **Salespersonkey(fact_sale)** - **EmployeeKey(dimension_employee)**
 
      ![](./media/image117.png)
 
-     ![](./media/image118.png)
-
+     
 7.  Ensure to create the relationships between the below two sets using
     the same steps as above.
 
-- **CustomerKey(fact_sale)** - **CustomerKey(dimension_customer)**
-
-- **InvoiceDateKey(fact_sale)** - **Date(dimension_date)**
+    - **CustomerKey(fact_sale)** - **CustomerKey(dimension_customer)**
+    
+    - **InvoiceDateKey(fact_sale)** - **Date(dimension_date)**
 
 8.  After you add these relationships, your data model should be as
     shown in the below image and is ready for reporting.
@@ -946,10 +948,10 @@ frequent updates at the source.
 
 ## **Task 2: Build Report**
 
-1.  From the top ribbon, select **New report** to start creating
+1.  From the top ribbon, select **Reporting** and select **New report** to start creating
     reports/dashboards in Power BI.
 
-     ![](./media/image120.png)
+      ![](./media/new16.png)
  
       ![](./media/image121.png)
 
@@ -992,7 +994,7 @@ frequent updates at the source.
 5.  Click anywhere on the blank canvas (or press the Esc key) so the
     Card that we just placed is no longer selected.
 
-**Add a Bar chart:**
+    **Add a Bar chart:**
 
 6.  On the **Data** pane, expand **fact_sales** and check the box next
     to **Profit**. This selection creates a column chart and adds the
