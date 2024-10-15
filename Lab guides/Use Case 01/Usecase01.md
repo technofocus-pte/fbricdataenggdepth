@@ -180,7 +180,7 @@ reports.
 
        |   |    |
        |----|---|
-       |Name|	Fabric Lakehouse Tutorial-XX (XX can be a unique number) (here, we entered Fabric Lakehouse Tutorial-29)|
+       |Name|	+++Fabric Lakehouse Tutorial-XX+++ (XX can be a unique number) (here, we entered Fabric Lakehouse Tutorial-29)|
        |Description	|This workspace contains all the items for the lakehouse tutorial |
        |Advanced	|Under License mode, select Trial|
        |Default |storage format	Small dataset storage format|
@@ -458,9 +458,9 @@ the Wide World Importers (WWI) into the lakehouse.
     |   |   |
     |---|---|
     |Property |	Value|
-    |URL|	https://assetsprod.microsoft.com/en-us/wwi-sample-dataset.zip|
+    |URL|	+++https://assetsprod.microsoft.com/en-us/wwi-sample-dataset.zip+++|
     |Connection	|Create a new connection|
-    |Connection name	|wwisampledata|
+    |Connection name	|+++wwisampledata+++ |
     |Data gateway|	None|
     |Authentication kind|	Anonymous|
 
