@@ -84,7 +84,7 @@ reports.
 
      ![](./media/image2.png)
 
-3.  In the Workspaces pane, click on **+** **New workspace** button**.**
+3.  In the Workspaces pane, click on **+New workspace** button**.**
 
       ![](./media/image3.png)
 
@@ -99,7 +99,7 @@ reports.
    |Template apps |Check the Develop template apps	                                |
 
    ![](./media/image4.png)
-      ![](./media/image5.png)
+    ![](./media/image5.png)
 
 6.  Wait for the deployment to complete. It takes 2-3 minutes to
     complete.
@@ -119,13 +119,12 @@ reports.
 
      ![](./media/image8.png)
 
-3.  In the **New lakehouse** dialog box, enter **wwilakehouse** in
+3.  In the **New lakehouse** dialog box, enter **+++wwilakehouse+++** in
     the **Name** field, click on the **Create** button and open the new
     lakehouse.
 
-> **Note**: Ensure to remove space before **wwilakehouse**.
+    **Note**: Ensure to remove space before **wwilakehouse**.
      ![](./media/image9.png)
- 
      ![](./media/image10.png)
 
 4.  You will see a notification stating **Successfully created SQL
@@ -142,7 +141,7 @@ reports.
 
      ![](./media/image12.png)
 
-2.  On the pop-up provide the Folder name as **bronze**, and select
+2.  On the pop-up provide the Folder name as **+++bronze+++**, and select
     Create.
 
       ![](./media/image13.png)
