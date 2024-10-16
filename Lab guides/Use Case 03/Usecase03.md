@@ -162,15 +162,13 @@ trial enabled.
       ![](./media/image23.png)
 
 7.  Finally, on the **Review + save** page of the copy data assistant,
-    review the configuration. For this lab, uncheck the **Start data
+    review the configuration. For this lab, **uncheck** the **Start data
     transfer immediately** checkbox, since we run the activity manually
     in the next step. Then select **OK**.
 
       ![](./media/image24.png)
 
-     ![](./media/image25.png)
-
-## **Task 4: Run and view the results of your Copy activity**.
+   ## **Task 4: Run and view the results of your Copy activity**.
 
 1.  On the **Home** tab of the pipeline editor window, then select
     the **Run** button.
@@ -245,7 +243,7 @@ trial enabled.
 
 8.  The **Choose data** dialog is displayed. Use the navigation pane to
     find the Lakehouse you created for the destination in the prior
-    module, and select the **DataFactoryLakehouse** data table then
+    module, and select the **DataFactoryLakehouse** data and select Bronze table then
     click on **Create** button.
 
       ![](./media/image41.png)
@@ -256,8 +254,8 @@ trial enabled.
     based on it.
 
 10. To do this, select **Options** from the ribbon pane, then select the
-    first three options under **Column profile**, and then
-    select **OK**.
+    first three options under **Column profile** i.e Enable column profile,Show column quality details in data preview,Show column value distribution in data 
+    preview , and then select **OK**.
 
     ![](./media/image42.png)
 
@@ -281,25 +279,31 @@ trial enabled.
     here, then select **OK**.
 
     •	lpepDropoffDatetime
+    
     •	puLocationId
+    
     •	doLocationId
+    
     •	pickupLatitude
+    
     •	dropoffLongitude
+    
     •	rateCodeID
+    
       ![](./media/image46.png)
 
-4.  Select the **storeAndFwdFlag** column's filter and sort dropdown
+5.  Select the **storeAndFwdFlag** column's filter and sort dropdown
     menu. (If you see a warning **List may be incomplete**,
     select **Load more** to see all the data.)
 
      ![](./media/image47.png)
 
-5.  Select '**Y'** to show only rows where a discount was applied, and
+6.  Select '**Y'** to show only rows where a discount was applied, and
     then select **OK**.
 
      ![](./media/image48.png)
 
-6.  Select the **Ipep_Pickup_Datetime** column sort and filter dropdown
+7.  Select the **Ipep_Pickup_Datetime** column sort and filter dropdown
     menu, then select **Date filters**, and choose
     the **Between...** filter provided for Date and Date/Time types.
 
@@ -322,7 +326,7 @@ prepare the data before combining it with the trips data.
      ![](./media/image51.png)
 
 2.  In the **Connect to data source** pane, under **Connection
-    settings**, select **Upload file (Preview)** radio button, then
+    settings**, select **Upload file** radio button, then
     click on **Browse** button and browse your VM **C:\LabFiles**, then
     select the **NYC-Taxi-Green-Discounts** file and click on the
     **Open** button.
@@ -362,7 +366,7 @@ types of your columns.*
 
 3.  With the table unpivoted, rename
     the **Attribute** and **Value** columns by double-clicking them and
-    changing **Attribute** to **Date** and **Value** to **Discount**.
+    changing **Attribute** to **+++Date+++** and **Value** to **+++Discount+++**.
 
      ![](./media/image58.png)
 
@@ -462,19 +466,20 @@ discount that should be applied to the trip, and the adjusted total.
 
       ![](./media/image75.png)
 
-10. On the **Custom column** dialog, you can use the [Power Query
-    formula language (also known as
+10. On the **Custom column** dialog, you can use the  (also known as
     M)](https://learn.microsoft.com/en-us/powerquery-m) to define how
     your new column should be calculated.
     Enter **+++TotalAfterDiscount+++** for the **New column name**,
     select **Currency** for the **Data type**, and provide the following
     M expression for the **Custom column formula**:
+      
+      ```
+     if [totalAmount] > 0 then [totalAmount] * ( 1 -[Discount] ) else [totalAmount]
+     ```
+     Then select **OK**.
 
-+++if [totalAmount] > 0 then [totalAmount] * ( 1 -[Discount] ) else [totalAmount]+++
-> Then select **OK**.
-    ![](./media/image76.png)
-
-    ![](./media/image77.png)
+     ![](./media/image76.png)
+     ![](./media/image77.png)
 
 11. Select the newly create **TotalAfterDiscount** column and then
     select the **Transform** tab at the top of the editor window. On
@@ -565,8 +570,7 @@ we can define the output destination for the query.
 
 # Exercise 3: Automate and send notifications with Data Factory
 
-** Important**
-
+**Important**
 Microsoft Fabric is currently in PREVIEW. This information relates to a
 prerelease product that may be substantially modified before it's
 released. Microsoft makes no warranties, expressed or implied, with
@@ -638,8 +642,10 @@ use an enterprise email address.
     expression builder** option when it appears below the text area. Add
     the following expression again in the **Pipeline expression
     builder** dialog that appears, then select **OK**:
-
-+++@concat('RunID = ', pipeline().RunId, ' ; ', 'Copied rows ', activity('Copy data1').output.rowsCopied, ' ; ','Throughput ', activity('Copy data1').output.throughput)+++
+    ```
+    @concat('RunID = ', pipeline().RunId, ' ; ', 'Copied rows ', activity('Copy data1').output.rowsCopied, ' ; ','Throughput ', activity('Copy       
+    data1').output.throughput)
+    ```
     ![](./media/image104.png)
     ![](./media/image105.png)
 
