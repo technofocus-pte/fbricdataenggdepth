@@ -188,13 +188,13 @@ folder in your Lakehouse.
 4.  Use the **🖉** (Edit) button to switch the cell to editing mode,
     replace all the text then modify the markdown as follows:
 
-CodeCopy
-```
-\# Sales order data exploration
-
-Use the code in this notebook to explore sales order data.
-```
-  ![](./media/image21.png)
+    CodeCopy
+    ```
+    \# Sales order data exploration
+    
+    Use the code in this notebook to explore sales order data.
+    ```
+    ![](./media/image21.png)
     ![](./media/image22.png)
 
 4.  Click anywhere in the notebook outside of the cell to stop editing
@@ -210,108 +210,105 @@ Use the code in this notebook to explore sales order data.
 6.  Now, Use the notebook to load the data from the bronze layer into a
     Spark DataFrame.
 
-Select the existing cell in the notebook, which contains some simple
-commented-out code. Highlight and delete these two lines - you will not
-need this code.
-
-*Note: Notebooks enable you to run code in a variety of languages,
-including Python, Scala, and SQL. In this exercise, you’ll use PySpark
-and SQL. You can also add markdown cells to provide formatted text and
-images to document your code.*
-
-For this, enter the following code in it and click **Run**.
-
-CodeCopy
-```
-from pyspark.sql.types import *
-
-# Create the schema for the table
-orderSchema = StructType([
-    StructField("SalesOrderNumber", StringType()),
-    StructField("SalesOrderLineNumber", IntegerType()),
-    StructField("OrderDate", DateType()),
-    StructField("CustomerName", StringType()),
-    StructField("Email", StringType()),
-    StructField("Item", StringType()),
-    StructField("Quantity", IntegerType()),
-    StructField("UnitPrice", FloatType()),
-    StructField("Tax", FloatType())
-])
-
-# Import all files from bronze folder of lakehouse
-df = spark.read.format("csv").option("header", "true").schema(orderSchema).load("Files/bronze/*.csv")
-
-# Display the first 10 rows of the dataframe to preview your data
-display(df.head(10))
-```
+    Select the existing cell in the notebook, which contains some simple
+    commented-out code. Highlight and delete these two lines - you will not
+    need this code.
+  
+  **Note**: Notebooks enable you to run code in a variety of languages,
+   including Python, Scala, and SQL. In this exercise, you’ll use PySpark
+   and SQL. You can also add markdown cells to provide formatted text and
+   images to document your code.
+    For this, enter the following code in it and click **Run**.
+    ```
+    from pyspark.sql.types import *
+    
+    # Create the schema for the table
+    orderSchema = StructType([
+        StructField("SalesOrderNumber", StringType()),
+        StructField("SalesOrderLineNumber", IntegerType()),
+        StructField("OrderDate", DateType()),
+        StructField("CustomerName", StringType()),
+        StructField("Email", StringType()),
+        StructField("Item", StringType()),
+        StructField("Quantity", IntegerType()),
+        StructField("UnitPrice", FloatType()),
+        StructField("Tax", FloatType())
+    ])
+    
+    # Import all files from bronze folder of lakehouse
+    df = spark.read.format("csv").option("header", "true").schema(orderSchema).load("Files/bronze/*.csv")
+    
+    # Display the first 10 rows of the dataframe to preview your data
+    display(df.head(10))
+    ```
    ![](./media/image25.png)
 
-***Note**: Since this is the first time you’ve run any Spark code in
-this notebook, a Spark session must be started. This means that the
-first run can take a minute or so to complete. Subsequent runs will be
-quicker.*
-     ![](./media/image26.png)
+    **Note**: Since this is the first time you’ve run any Spark code in
+    this notebook, a Spark session must be started. This means that the
+    first run can take a minute or so to complete. Subsequent runs will be
+    quicker.
+  ![](./media/image26.png)
 
 7.  The code you ran loaded the data from the CSV files in
     the **bronze** folder into a Spark dataframe, and then displayed the
     first few rows of the dataframe.
 
-> **Note**: You can clear, hide, and auto-resize the contents of the
-> cell output by selecting the **…** menu at the top left of the output
-> pane.
+ **Note**: You can clear, hide, and auto-resize the contents of the
+    cell output by selecting the **…** menu at the top left of the output
+   pane.
 
 8.  Now you’ll **add columns for data validation and cleanup**, using a
     PySpark dataframe to add columns and update the values of some of
     the existing columns. Use the + button to **add a new code
     block** and add the following code to the cell:
 
-> CodeCopy
-```
-from pyspark.sql.functions import when, lit, col, current_timestamp, input_file_name
+    ```
+    from pyspark.sql.functions import when, lit, col, current_timestamp, input_file_name
+        
+     # Add columns IsFlagged, CreatedTS and ModifiedTS
+     df = df.withColumn("FileName", input_file_name()) \
+         .withColumn("IsFlagged", when(col("OrderDate") < '2019-08-01',True).otherwise(False)) \
+         .withColumn("CreatedTS", current_timestamp()).withColumn("ModifiedTS", current_timestamp())
+        
+     # Update CustomerName to "Unknown" if CustomerName null or empty
+     df = df.withColumn("CustomerName", when((col("CustomerName").isNull() | (col("CustomerName")=="")),lit("Unknown")).otherwise(col("CustomerName")))
     
- # Add columns IsFlagged, CreatedTS and ModifiedTS
- df = df.withColumn("FileName", input_file_name()) \
-     .withColumn("IsFlagged", when(col("OrderDate") < '2019-08-01',True).otherwise(False)) \
-     .withColumn("CreatedTS", current_timestamp()).withColumn("ModifiedTS", current_timestamp())
-    
- # Update CustomerName to "Unknown" if CustomerName null or empty
- df = df.withColumn("CustomerName", when((col("CustomerName").isNull() | (col("CustomerName")=="")),lit("Unknown")).otherwise(col("CustomerName")))
-```
-  ![](./media/image27.png)
-      ![](./media/image28.png)
+    ```
+    ![](./media/image27.png)
+    ![](./media/image28.png)
 
 9.  Next, you’ll define the schema for the **sales_silver** table in the
     sales database using Delta Lake format. Create a new code block and
     add the following code to the cell:
 
-> CodeCopy
-```
-from pyspark.sql.types import *
-from delta.tables import *
-
-# Define the schema for the sales_silver table
-silver_table_schema = StructType([
-    StructField("SalesOrderNumber", StringType(), True),
-    StructField("SalesOrderLineNumber", IntegerType(), True),
-    StructField("OrderDate", DateType(), True),
-    StructField("CustomerName", StringType(), True),
-    StructField("Email", StringType(), True),
-    StructField("Item", StringType(), True),
-    StructField("Quantity", IntegerType(), True),
-    StructField("UnitPrice", FloatType(), True),
-    StructField("Tax", FloatType(), True),
-    StructField("FileName", StringType(), True),
-    StructField("IsFlagged", BooleanType(), True),
-    StructField("CreatedTS", TimestampType(), True),
-    StructField("ModifiedTS", TimestampType(), True)
-])
-
-# Create or replace the sales_silver table with the defined schema
-DeltaTable.createIfNotExists(spark) \
-    .tableName("wwilakehouse.sales_silver") \
-    .addColumns(silver_table_schema) \
-    .execute()
-```
+      
+      ```
+      from pyspark.sql.types import *
+      from delta.tables import *
+      
+      # Define the schema for the sales_silver table
+      silver_table_schema = StructType([
+          StructField("SalesOrderNumber", StringType(), True),
+          StructField("SalesOrderLineNumber", IntegerType(), True),
+          StructField("OrderDate", DateType(), True),
+          StructField("CustomerName", StringType(), True),
+          StructField("Email", StringType(), True),
+          StructField("Item", StringType(), True),
+          StructField("Quantity", IntegerType(), True),
+          StructField("UnitPrice", FloatType(), True),
+          StructField("Tax", FloatType(), True),
+          StructField("FileName", StringType(), True),
+          StructField("IsFlagged", BooleanType(), True),
+          StructField("CreatedTS", TimestampType(), True),
+          StructField("ModifiedTS", TimestampType(), True)
+      ])
+      
+      # Create or replace the sales_silver table with the defined schema
+      DeltaTable.createIfNotExists(spark) \
+          .tableName("wwilakehouse.sales_silver") \
+          .addColumns(silver_table_schema) \
+          .execute()
+      ```
   
 10. Run the cell to execute the code using the **▷ (Run cell)**  button.
 
@@ -320,8 +317,8 @@ DeltaTable.createIfNotExists(spark) \
     new **sales_silver** table listed. The **▲** (triangle icon)
     indicates that it’s a Delta table.
 
-> **Note**: If you don’t see the new table, wait a few seconds and then
-> select **Refresh** again, or refresh the entire browser tab.
+ **Note**: If you don’t see the new table, wait a few seconds and then
+   select **Refresh** again, or refresh the entire browser tab.
       ![](./media/image29.png)
       ![](./media/image30.png)
 
@@ -330,77 +327,77 @@ DeltaTable.createIfNotExists(spark) \
     inserting new records when no match is found. Add a new code block
     and paste the following code:
 
-> CodeCopy
-```
-from pyspark.sql.types import *
-from pyspark.sql.functions import when, lit, col, current_timestamp, input_file_name
-from delta.tables import *
 
-# Define the schema for the source data
-orderSchema = StructType([
-    StructField("SalesOrderNumber", StringType(), True),
-    StructField("SalesOrderLineNumber", IntegerType(), True),
-    StructField("OrderDate", DateType(), True),
-    StructField("CustomerName", StringType(), True),
-    StructField("Email", StringType(), True),
-    StructField("Item", StringType(), True),
-    StructField("Quantity", IntegerType(), True),
-    StructField("UnitPrice", FloatType(), True),
-    StructField("Tax", FloatType(), True)
-])
-
-# Read data from the bronze folder into a DataFrame
-df = spark.read.format("csv").option("header", "true").schema(orderSchema).load("Files/bronze/*.csv")
-
-# Add additional columns
-df = df.withColumn("FileName", input_file_name()) \
-    .withColumn("IsFlagged", when(col("OrderDate") < '2019-08-01', True).otherwise(False)) \
-    .withColumn("CreatedTS", current_timestamp()) \
-    .withColumn("ModifiedTS", current_timestamp()) \
-    .withColumn("CustomerName", when((col("CustomerName").isNull()) | (col("CustomerName") == ""), lit("Unknown")).otherwise(col("CustomerName")))
-
-# Define the path to the Delta table
-deltaTablePath = "Tables/sales_silver"
-
-# Create a DeltaTable object for the existing Delta table
-deltaTable = DeltaTable.forPath(spark, deltaTablePath)
-
-# Perform the merge (upsert) operation
-deltaTable.alias('silver') \
-    .merge(
-        df.alias('updates'),
-        'silver.SalesOrderNumber = updates.SalesOrderNumber AND \
-         silver.OrderDate = updates.OrderDate AND \
-         silver.CustomerName = updates.CustomerName AND \
-         silver.Item = updates.Item'
-    ) \
-    .whenMatchedUpdate(set = {
-        "SalesOrderLineNumber": "updates.SalesOrderLineNumber",
-        "Email": "updates.Email",
-        "Quantity": "updates.Quantity",
-        "UnitPrice": "updates.UnitPrice",
-        "Tax": "updates.Tax",
-        "FileName": "updates.FileName",
-        "IsFlagged": "updates.IsFlagged",
-        "ModifiedTS": "current_timestamp()"
-    }) \
-    .whenNotMatchedInsert(values = {
-        "SalesOrderNumber": "updates.SalesOrderNumber",
-        "SalesOrderLineNumber": "updates.SalesOrderLineNumber",
-        "OrderDate": "updates.OrderDate",
-        "CustomerName": "updates.CustomerName",
-        "Email": "updates.Email",
-        "Item": "updates.Item",
-        "Quantity": "updates.Quantity",
-        "UnitPrice": "updates.UnitPrice",
-        "Tax": "updates.Tax",
-        "FileName": "updates.FileName",
-        "IsFlagged": "updates.IsFlagged",
-        "CreatedTS": "current_timestamp()",
-        "ModifiedTS": "current_timestamp()"
-    }) \
-    .execute()
-```
+      ```
+      from pyspark.sql.types import *
+      from pyspark.sql.functions import when, lit, col, current_timestamp, input_file_name
+      from delta.tables import *
+      
+      # Define the schema for the source data
+      orderSchema = StructType([
+          StructField("SalesOrderNumber", StringType(), True),
+          StructField("SalesOrderLineNumber", IntegerType(), True),
+          StructField("OrderDate", DateType(), True),
+          StructField("CustomerName", StringType(), True),
+          StructField("Email", StringType(), True),
+          StructField("Item", StringType(), True),
+          StructField("Quantity", IntegerType(), True),
+          StructField("UnitPrice", FloatType(), True),
+          StructField("Tax", FloatType(), True)
+      ])
+      
+      # Read data from the bronze folder into a DataFrame
+      df = spark.read.format("csv").option("header", "true").schema(orderSchema).load("Files/bronze/*.csv")
+      
+      # Add additional columns
+      df = df.withColumn("FileName", input_file_name()) \
+          .withColumn("IsFlagged", when(col("OrderDate") < '2019-08-01', True).otherwise(False)) \
+          .withColumn("CreatedTS", current_timestamp()) \
+          .withColumn("ModifiedTS", current_timestamp()) \
+          .withColumn("CustomerName", when((col("CustomerName").isNull()) | (col("CustomerName") == ""), lit("Unknown")).otherwise(col("CustomerName")))
+      
+      # Define the path to the Delta table
+      deltaTablePath = "Tables/sales_silver"
+      
+      # Create a DeltaTable object for the existing Delta table
+      deltaTable = DeltaTable.forPath(spark, deltaTablePath)
+      
+      # Perform the merge (upsert) operation
+      deltaTable.alias('silver') \
+          .merge(
+              df.alias('updates'),
+              'silver.SalesOrderNumber = updates.SalesOrderNumber AND \
+               silver.OrderDate = updates.OrderDate AND \
+               silver.CustomerName = updates.CustomerName AND \
+               silver.Item = updates.Item'
+          ) \
+          .whenMatchedUpdate(set = {
+              "SalesOrderLineNumber": "updates.SalesOrderLineNumber",
+              "Email": "updates.Email",
+              "Quantity": "updates.Quantity",
+              "UnitPrice": "updates.UnitPrice",
+              "Tax": "updates.Tax",
+              "FileName": "updates.FileName",
+              "IsFlagged": "updates.IsFlagged",
+              "ModifiedTS": "current_timestamp()"
+          }) \
+          .whenNotMatchedInsert(values = {
+              "SalesOrderNumber": "updates.SalesOrderNumber",
+              "SalesOrderLineNumber": "updates.SalesOrderLineNumber",
+              "OrderDate": "updates.OrderDate",
+              "CustomerName": "updates.CustomerName",
+              "Email": "updates.Email",
+              "Item": "updates.Item",
+              "Quantity": "updates.Quantity",
+              "UnitPrice": "updates.UnitPrice",
+              "Tax": "updates.Tax",
+              "FileName": "updates.FileName",
+              "IsFlagged": "updates.IsFlagged",
+              "CreatedTS": "current_timestamp()",
+              "ModifiedTS": "current_timestamp()"
+          }) \
+          .execute()
+      ```
 
 13. Run the cell to execute the code using the **▷ (Run cell)** button.
       ![](./media/image31.png)
@@ -427,7 +424,7 @@ and reuse*.
 
 ## **Task 2: Load data into Gold Delta tables**
 
-1.  Return to the Fabric Lakehouse Tutorial-29 home page.
+1.  Return to the **Fabric Lakehouse Tutorial-XX** home page.
 
       ![](./media/image32.png)
 
@@ -450,36 +447,35 @@ and reuse*.
     the following code** to load data to your dataframe and start
     building out your star schema, then run it:
 
-> CodeCopy
-```
-# Load data to the dataframe as a starting point to create the gold layer
-df = spark.read.table("wwilakehouse.sales_silver")
-
-# Display the first few rows of the dataframe to verify the data
-df.show()
-
-```
-  ![](./media/image36.png)
+    ```
+    # Load data to the dataframe as a starting point to create the gold layer
+    df = spark.read.table("wwilakehouse.sales_silver")
+    
+    # Display the first few rows of the dataframe to verify the data
+    df.show()
+    
+    ```
+   ![](./media/image36.png)
 
 6.  Next, Add a new code block and paste the following code to
     create your date dimension table and run it:
-```
- from pyspark.sql.types import *
- from delta.tables import*
-    
- # Define the schema for the dimdate_gold table
- DeltaTable.createIfNotExists(spark) \
-     .tableName("wwilakehouse.dimdate_gold") \
-     .addColumn("OrderDate", DateType()) \
-     .addColumn("Day", IntegerType()) \
-     .addColumn("Month", IntegerType()) \
-     .addColumn("Year", IntegerType()) \
-     .addColumn("mmmyyyy", StringType()) \
-     .addColumn("yyyymm", StringType()) \
-     .execute()
-```
+    ```
+     from pyspark.sql.types import *
+     from delta.tables import*
+        
+     # Define the schema for the dimdate_gold table
+     DeltaTable.createIfNotExists(spark) \
+         .tableName("wwilakehouse.dimdate_gold") \
+         .addColumn("OrderDate", DateType()) \
+         .addColumn("Day", IntegerType()) \
+         .addColumn("Month", IntegerType()) \
+         .addColumn("Year", IntegerType()) \
+         .addColumn("mmmyyyy", StringType()) \
+         .addColumn("yyyymm", StringType()) \
+         .execute()
+    ```
 
-  ![](./media/image37.png)
+    ![](./media/image37.png)
 
 **Note**: You can run the display(df) command at any time to check the
 progress of your work. In this case, you’d run ‘display(dfdimDate_gold)’
@@ -488,24 +484,24 @@ to see the contents of the dimDate_gold dataframe.
 7.  In a new code block, **add and run the following code** to create a
     dataframe for your date dimension, **dimdate_gold**:
 
-> CodeCopy
-```
-from pyspark.sql.functions import col, dayofmonth, month, year, date_format
-    
- # Create dataframe for dimDate_gold
-    
-dfdimDate_gold =df.dropDuplicates(["OrderDate"]).select(col("OrderDate"), \
-         dayofmonth("OrderDate").alias("Day"), \
-         month("OrderDate").alias("Month"), \
-         year("OrderDate").alias("Year"), \
-         date_format(col("OrderDate"), "MMM-yyyy").alias("mmmyyyy"), \
-         date_format(col("OrderDate"), "yyyyMM").alias("yyyymm"), \
-     ).orderBy("OrderDate")
 
- # Display the first 10 rows of the dataframe to preview your data
-
-display(dfdimDate_gold.head(10))
-```
+    ```
+    from pyspark.sql.functions import col, dayofmonth, month, year, date_format
+        
+     # Create dataframe for dimDate_gold
+        
+    dfdimDate_gold =df.dropDuplicates(["OrderDate"]).select(col("OrderDate"), \
+             dayofmonth("OrderDate").alias("Day"), \
+             month("OrderDate").alias("Month"), \
+             year("OrderDate").alias("Year"), \
+             date_format(col("OrderDate"), "MMM-yyyy").alias("mmmyyyy"), \
+             date_format(col("OrderDate"), "yyyyMM").alias("yyyymm"), \
+         ).orderBy("OrderDate")
+    
+     # Display the first 10 rows of the dataframe to preview your data
+    
+    display(dfdimDate_gold.head(10))
+    ```
 
    ![](./media/image38.png)
     ![](./media/image39.png)
@@ -514,38 +510,38 @@ display(dfdimDate_gold.head(10))
     understand and watch what’s happening in the notebook as you
     transform the data. In another new code block, **add and run the
     following code** to update the date dimension as new data comes in:
-```
-from delta.tables import *
-    
- deltaTable = DeltaTable.forPath(spark, 'Tables/dimdate_gold')
-    
- dfUpdates = dfdimDate_gold
-    
- deltaTable.alias('silver') \
-   .merge(
-     dfUpdates.alias('updates'),
-     'silver.OrderDate = updates.OrderDate'
-   ) \
-    .whenMatchedUpdate(set =
-     {
-          
-     }
-   ) \
-  .whenNotMatchedInsert(values =
-     {
-       "OrderDate": "updates.OrderDate",
-       "Day": "updates.Day",
-       "Month": "updates.Month",
-       "Year": "updates.Year",
-       "mmmyyyy": "updates.mmmyyyy",
-       "yyyymm": "yyyymm"
-     }
-   ) \
-   .execute()
-```
-  ![](./media/image40.png)
+    ```
+    from delta.tables import *
+        
+    deltaTable = DeltaTable.forPath(spark, 'Tables/dimdate_gold')
+        
+    dfUpdates = dfdimDate_gold
+        
+    deltaTable.alias('silver') \
+       .merge(
+         dfUpdates.alias('updates'),
+         'silver.OrderDate = updates.OrderDate'
+       ) \
+        .whenMatchedUpdate(set =
+         {
+              
+         }
+       ) \
+      .whenNotMatchedInsert(values =
+         {
+           "OrderDate": "updates.OrderDate",
+           "Day": "updates.Day",
+           "Month": "updates.Month",
+           "Year": "updates.Year",
+           "mmmyyyy": "updates.mmmyyyy",
+           "yyyymm": "yyyymm"
+         }
+       ) \
+       .execute()
+    ```
+   ![](./media/image40.png)
 
-> Your date dimension is all set up.
+   Your date dimension is all set up.
 
    ![](./media/image41.png)
 
@@ -554,42 +550,41 @@ from delta.tables import *
 1.  To build out the customer dimension table, **add a new code block**,
     paste and run the following code:
 
-> CodeCopy
-```
- from pyspark.sql.types import *
- from delta.tables import *
-    
- # Create customer_gold dimension delta table
- DeltaTable.createIfNotExists(spark) \
-     .tableName("wwilakehouse.dimcustomer_gold") \
-     .addColumn("CustomerName", StringType()) \
-     .addColumn("Email",  StringType()) \
-     .addColumn("First", StringType()) \
-     .addColumn("Last", StringType()) \
-     .addColumn("CustomerID", LongType()) \
-     .execute()
-```
-   ![](./media/image42.png)
+    ```
+     from pyspark.sql.types import *
+     from delta.tables import *
+        
+     # Create customer_gold dimension delta table
+     DeltaTable.createIfNotExists(spark) \
+         .tableName("wwilakehouse.dimcustomer_gold") \
+         .addColumn("CustomerName", StringType()) \
+         .addColumn("Email",  StringType()) \
+         .addColumn("First", StringType()) \
+         .addColumn("Last", StringType()) \
+         .addColumn("CustomerID", LongType()) \
+         .execute()
+    ```
+    ![](./media/image42.png)
      ![](./media/image43.png)
 
 2.  In a new code block, **add and run the following code** to drop
     duplicate customers, select specific columns, and split the
     “CustomerName” column to create “First” and “Last” name columns:
 
-> CodeCopy
-```
-from pyspark.sql.functions import col, split
-    
- # Create customer_silver dataframe
-    
- dfdimCustomer_silver = df.dropDuplicates(["CustomerName","Email"]).select(col("CustomerName"),col("Email")) \
-     .withColumn("First",split(col("CustomerName"), " ").getItem(0)) \
-     .withColumn("Last",split(col("CustomerName"), " ").getItem(1)) 
-    
- # Display the first 10 rows of the dataframe to preview your data
 
- display(dfdimCustomer_silver.head(10))
-```
+    ```
+    from pyspark.sql.functions import col, split
+        
+     # Create customer_silver dataframe
+        
+    dfdimCustomer_silver = df.dropDuplicates(["CustomerName","Email"]).select(col("CustomerName"),col("Email")) \
+         .withColumn("First",split(col("CustomerName"), " ").getItem(0)) \
+         .withColumn("Last",split(col("CustomerName"), " ").getItem(1)) 
+        
+     # Display the first 10 rows of the dataframe to preview your data
+    
+    display(dfdimCustomer_silver.head(10))
+    ```
    ![](./media/image44.png)
 
 Here you have created a new DataFrame dfdimCustomer_silver by performing
@@ -603,177 +598,178 @@ columns extracted from the “CustomerName” column.
 3.  Next, we’ll **create the ID column for our customers**. In a new
     code block, paste and run the following:
 
-CodeCopy
-```
-from pyspark.sql.functions import monotonically_increasing_id, col, when, coalesce, max, lit
-
-# Read the existing data from the Delta table
-dfdimCustomer_temp = spark.read.table("wwilakehouse.dimCustomer_gold")
-
-# Find the maximum CustomerID or use 0 if the table is empty
-MAXCustomerID = dfdimCustomer_temp.select(coalesce(max(col("CustomerID")), lit(0)).alias("MAXCustomerID")).first()[0]
-
-# Assume dfdimCustomer_silver is your source DataFrame with new data
-# Here, we select only the new customers by doing a left anti join
-dfdimCustomer_gold = dfdimCustomer_silver.join(
-    dfdimCustomer_temp,
-    (dfdimCustomer_silver.CustomerName == dfdimCustomer_temp.CustomerName) & 
-    (dfdimCustomer_silver.Email == dfdimCustomer_temp.Email),
-    "left_anti"
-)
-
-# Add the CustomerID column with unique values starting from MAXCustomerID + 1
-dfdimCustomer_gold = dfdimCustomer_gold.withColumn(
-    "CustomerID",
-    monotonically_increasing_id() + MAXCustomerID + 1
-)
-
-# Display the first 10 rows of the dataframe to preview your data
-dfdimCustomer_gold.show(10)
-```
-  ![](./media/image46.png)
+    CodeCopy
+    ```
+    from pyspark.sql.functions import monotonically_increasing_id, col, when, coalesce, max, lit
+    
+    # Read the existing data from the Delta table
+    dfdimCustomer_temp = spark.read.table("wwilakehouse.dimCustomer_gold")
+    
+    # Find the maximum CustomerID or use 0 if the table is empty
+    MAXCustomerID = dfdimCustomer_temp.select(coalesce(max(col("CustomerID")), lit(0)).alias("MAXCustomerID")).first()[0]
+    
+    # Assume dfdimCustomer_silver is your source DataFrame with new data
+    # Here, we select only the new customers by doing a left anti join
+    dfdimCustomer_gold = dfdimCustomer_silver.join(
+        dfdimCustomer_temp,
+        (dfdimCustomer_silver.CustomerName == dfdimCustomer_temp.CustomerName) & 
+        (dfdimCustomer_silver.Email == dfdimCustomer_temp.Email),
+        "left_anti"
+    )
+    
+    # Add the CustomerID column with unique values starting from MAXCustomerID + 1
+    dfdimCustomer_gold = dfdimCustomer_gold.withColumn(
+        "CustomerID",
+        monotonically_increasing_id() + MAXCustomerID + 1
+    )
+    
+    # Display the first 10 rows of the dataframe to preview your data
+    dfdimCustomer_gold.show(10)
+    ```
+    ![](./media/image46.png)
      ![](./media/image47.png)
 
 4.  Now you’ll ensure that your customer table remains up-to-date as new
     data comes in. **In a new code block**, paste and run the following:
 
-> CodeCopy
-```
-from delta.tables import DeltaTable
-
-# Define the Delta table path
-deltaTable = DeltaTable.forPath(spark, 'Tables/dimcustomer_gold')
-
-# Use dfUpdates to refer to the DataFrame with new or updated records
-dfUpdates = dfdimCustomer_gold
-
-# Perform the merge operation to update or insert new records
-deltaTable.alias('silver') \
-  .merge(
-    dfUpdates.alias('updates'),
-    'silver.CustomerName = updates.CustomerName AND silver.Email = updates.Email'
-  ) \
-  .whenMatchedUpdate(set =
-    {
-      "CustomerName": "updates.CustomerName",
-      "Email": "updates.Email",
-      "First": "updates.First",
-      "Last": "updates.Last",
-      "CustomerID": "updates.CustomerID"
-    }
-  ) \
-  .whenNotMatchedInsert(values =
-    {
-      "CustomerName": "updates.CustomerName",
-      "Email": "updates.Email",
-      "First": "updates.First",
-      "Last": "updates.Last",
-      "CustomerID": "updates.CustomerID"
-    }
-  ) \
-  .execute()
-```
-   ![](./media/image48.png)
+    ```
+    from delta.tables import DeltaTable
+    
+    # Define the Delta table path
+    deltaTable = DeltaTable.forPath(spark, 'Tables/dimcustomer_gold')
+    
+    # Use dfUpdates to refer to the DataFrame with new or updated records
+    dfUpdates = dfdimCustomer_gold
+    
+    # Perform the merge operation to update or insert new records
+    deltaTable.alias('silver') \
+      .merge(
+        dfUpdates.alias('updates'),
+        'silver.CustomerName = updates.CustomerName AND silver.Email = updates.Email'
+      ) \
+      .whenMatchedUpdate(set =
+        {
+          "CustomerName": "updates.CustomerName",
+          "Email": "updates.Email",
+          "First": "updates.First",
+          "Last": "updates.Last",
+          "CustomerID": "updates.CustomerID"
+        }
+      ) \
+      .whenNotMatchedInsert(values =
+        {
+          "CustomerName": "updates.CustomerName",
+          "Email": "updates.Email",
+          "First": "updates.First",
+          "Last": "updates.Last",
+          "CustomerID": "updates.CustomerID"
+        }
+      ) \
+      .execute()
+    ```
+     ![](./media/image48.png)
      ![](./media/image49.png)
 5.  Now you’ll **repeat those steps to create your product dimension**.
     In a new code block, paste and run the following:
 
-> CodeCopy
-```
-from pyspark.sql.types import *
-from delta.tables import *
-    
-DeltaTable.createIfNotExists(spark) \
-    .tableName("wwilakehouse.dimproduct_gold") \
-    .addColumn("ItemName", StringType()) \
-    .addColumn("ItemID", LongType()) \
-    .addColumn("ItemInfo", StringType()) \
-    .execute()
-```
-   ![](./media/image50.png)
+
+    ```
+    from pyspark.sql.types import *
+    from delta.tables import *
+        
+    DeltaTable.createIfNotExists(spark) \
+        .tableName("wwilakehouse.dimproduct_gold") \
+        .addColumn("ItemName", StringType()) \
+        .addColumn("ItemID", LongType()) \
+        .addColumn("ItemInfo", StringType()) \
+        .execute()
+    ```
+    ![](./media/image50.png)
      ![](./media/image51.png)
 
 6.  **Add another code block** to create
     the **product_silver** dataframe.
 
-> CodeCopy
-```
-from pyspark.sql.functions import col, split, lit
-    
-# Create product_silver dataframe
-    
-dfdimProduct_silver = df.dropDuplicates(["Item"]).select(col("Item")) \
-    .withColumn("ItemName",split(col("Item"), ", ").getItem(0)) \
-    .withColumn("ItemInfo",when((split(col("Item"), ", ").getItem(1).isNull() | (split(col("Item"), ", ").getItem(1)=="")),lit("")).otherwise(split(col("Item"), ", ").getItem(1))) 
-    
-# Display the first 10 rows of the dataframe to preview your data
 
-display(dfdimProduct_silver.head(10))
-```
-  ![](./media/image52.png)
-      ![](./media/image53.png)
+    ```
+    from pyspark.sql.functions import col, split, lit
+        
+    # Create product_silver dataframe
+        
+    dfdimProduct_silver = df.dropDuplicates(["Item"]).select(col("Item")) \
+        .withColumn("ItemName",split(col("Item"), ", ").getItem(0)) \
+        .withColumn("ItemInfo",when((split(col("Item"), ", ").getItem(1).isNull() | (split(col("Item"), ", 
+    ").getItem(1)=="")),lit("")).otherwise(split(col("Item"), ", ").getItem(1))) 
+        
+    # Display the first 10 rows of the dataframe to preview your data
+    
+    display(dfdimProduct_silver.head(10))
+    ```
+    ![](./media/image52.png)
+    ![](./media/image53.png)
 
 7.  Now you’ll create IDs for your **dimProduct_gold table**. Add the
     following syntax to a new code block and run it:
 
-CodeCopy
-```
-from pyspark.sql.functions import monotonically_increasing_id, col, lit, max, coalesce
-    
-#dfdimProduct_temp = dfdimProduct_silver
-dfdimProduct_temp = spark.read.table("wwilakehouse.dimProduct_gold")
-    
-MAXProductID = dfdimProduct_temp.select(coalesce(max(col("ItemID")),lit(0)).alias("MAXItemID")).first()[0]
-    
-dfdimProduct_gold = dfdimProduct_silver.join(dfdimProduct_temp,(dfdimProduct_silver.ItemName == dfdimProduct_temp.ItemName) & (dfdimProduct_silver.ItemInfo == dfdimProduct_temp.ItemInfo), "left_anti")
-    
-dfdimProduct_gold = dfdimProduct_gold.withColumn("ItemID",monotonically_increasing_id() + MAXProductID + 1)
-    
-# Display the first 10 rows of the dataframe to preview your data
 
-display(dfdimProduct_gold.head(10))
-```
+    ```
+    from pyspark.sql.functions import monotonically_increasing_id, col, lit, max, coalesce
+        
+    #dfdimProduct_temp = dfdimProduct_silver
+    dfdimProduct_temp = spark.read.table("wwilakehouse.dimProduct_gold")
+        
+    MAXProductID = dfdimProduct_temp.select(coalesce(max(col("ItemID")),lit(0)).alias("MAXItemID")).first()[0]
+        
+    dfdimProduct_gold = dfdimProduct_silver.join(dfdimProduct_temp,(dfdimProduct_silver.ItemName == dfdimProduct_temp.ItemName) & (dfdimProduct_silver.ItemInfo 
+     == dfdimProduct_temp.ItemInfo), "left_anti")
+        
+    dfdimProduct_gold = dfdimProduct_gold.withColumn("ItemID",monotonically_increasing_id() + MAXProductID + 1)
+        
+    # Display the first 10 rows of the dataframe to preview your data
+    
+    display(dfdimProduct_gold.head(10))
+    ```
    ![](./media/image54.png)
 
-This calculates the next available product ID based on the current data
-in the table, assigns these new IDs to the products, and then displays
-the updated product information.
+  This calculates the next available product ID based on the current data
+  in the table, assigns these new IDs to the products, and then displays
+  the updated product information.
      ![](./media/image55.png)
 
 8.  Similar to what you’ve done with your other dimensions, you need to
     ensure that your product table remains up-to-date as new data comes
     in. **In a new code block**, paste and run the following:
 
-CodeCopy
-```
-from delta.tables import *
-    
-deltaTable = DeltaTable.forPath(spark, 'Tables/dimproduct_gold')
-            
-dfUpdates = dfdimProduct_gold
-            
-deltaTable.alias('silver') \
-  .merge(
-        dfUpdates.alias('updates'),
-        'silver.ItemName = updates.ItemName AND silver.ItemInfo = updates.ItemInfo'
-        ) \
-        .whenMatchedUpdate(set =
-        {
-               
-        }
-        ) \
-        .whenNotMatchedInsert(values =
-         {
-          "ItemName": "updates.ItemName",
-          "ItemInfo": "updates.ItemInfo",
-          "ItemID": "updates.ItemID"
-          }
-          ) \
-          .execute()
-```
+
+    ```
+    from delta.tables import *
+        
+    deltaTable = DeltaTable.forPath(spark, 'Tables/dimproduct_gold')
+                
+    dfUpdates = dfdimProduct_gold
+                
+    deltaTable.alias('silver') \
+      .merge(
+            dfUpdates.alias('updates'),
+            'silver.ItemName = updates.ItemName AND silver.ItemInfo = updates.ItemInfo'
+            ) \
+            .whenMatchedUpdate(set =
+            {
+                   
+            }
+            ) \
+            .whenNotMatchedInsert(values =
+             {
+              "ItemName": "updates.ItemName",
+              "ItemInfo": "updates.ItemInfo",
+              "ItemID": "updates.ItemID"
+              }
+              ) \
+              .execute()
+    ```
 
    ![](./media/image56.png)
-       ![](./media/image57.png)
+   ![](./media/image57.png)
 
 **Now that you have your dimensions built out, the final step is to
 create the fact table.**
@@ -781,22 +777,22 @@ create the fact table.**
 9.  **In a new code block**, paste and run the following code to create
     the **fact table**:
 
-> CodeCopy
-```
-from pyspark.sql.types import *
-from delta.tables import *
-    
-DeltaTable.createIfNotExists(spark) \
-    .tableName("wwilakehouse.factsales_gold") \
-    .addColumn("CustomerID", LongType()) \
-    .addColumn("ItemID", LongType()) \
-    .addColumn("OrderDate", DateType()) \
-    .addColumn("Quantity", IntegerType()) \
-    .addColumn("UnitPrice", FloatType()) \
-    .addColumn("Tax", FloatType()) \
-    .execute()
-```
-  ![](./media/image58.png)
+
+    ```
+    from pyspark.sql.types import *
+    from delta.tables import *
+        
+    DeltaTable.createIfNotExists(spark) \
+        .tableName("wwilakehouse.factsales_gold") \
+        .addColumn("CustomerID", LongType()) \
+        .addColumn("ItemID", LongType()) \
+        .addColumn("OrderDate", DateType()) \
+        .addColumn("Quantity", IntegerType()) \
+        .addColumn("UnitPrice", FloatType()) \
+        .addColumn("Tax", FloatType()) \
+        .execute()
+    ```
+    ![](./media/image58.png)
     ![](./media/image59.png)
 
 10. **In a new code block**, paste and run the following code to create
@@ -804,115 +800,115 @@ DeltaTable.createIfNotExists(spark) \
     information include customer ID, item ID, order date, quantity, unit
     price, and tax:
 
-CodeCopy
-```
-from pyspark.sql import SparkSession
-from pyspark.sql.functions import split, col, when, lit
-from pyspark.sql.types import StructType, StructField, StringType, IntegerType, DateType, FloatType, BooleanType, TimestampType
 
-# Initialize Spark session
-spark = SparkSession.builder \
-    .appName("DeltaTableUpsert") \
-    .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
-    .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog") \
-    .getOrCreate()
-
-# Define the schema for the sales_silver table
-silver_table_schema = StructType([
-    StructField("SalesOrderNumber", StringType(), True),
-    StructField("SalesOrderLineNumber", IntegerType(), True),
-    StructField("OrderDate", DateType(), True),
-    StructField("CustomerName", StringType(), True),
-    StructField("Email", StringType(), True),
-    StructField("Item", StringType(), True),
-    StructField("Quantity", IntegerType(), True),
-    StructField("UnitPrice", FloatType(), True),
-    StructField("Tax", FloatType(), True),
-    StructField("FileName", StringType(), True),
-    StructField("IsFlagged", BooleanType(), True),
-    StructField("CreatedTS", TimestampType(), True),
-    StructField("ModifiedTS", TimestampType(), True)
-])
-
-# Define the path to the Delta table (ensure this path is correct)
-delta_table_path = "abfss://<container>@<storage-account>.dfs.core.windows.net/path/to/wwilakehouse/sales_silver"
-
-# Create a DataFrame with the defined schema
-empty_df = spark.createDataFrame([], silver_table_schema)
-
-# Register the Delta table in the Metastore
-spark.sql(f"""
-    CREATE TABLE IF NOT EXISTS wwilakehouse.sales_silver
-    USING DELTA
-    LOCATION '{delta_table_path}'
-""")
-
-# Load data into DataFrame
-df = spark.read.table("wwilakehouse.sales_silver")
-
-# Perform transformations on df
-df = df.withColumn("ItemName", split(col("Item"), ", ").getItem(0)) \
-    .withColumn("ItemInfo", when(
-        (split(col("Item"), ", ").getItem(1).isNull()) | (split(col("Item"), ", ").getItem(1) == ""),
-        lit("")
-    ).otherwise(split(col("Item"), ", ").getItem(1)))
-
-# Load additional DataFrames for joins
-dfdimCustomer_temp = spark.read.table("wwilakehouse.dimCustomer_gold")
-dfdimProduct_temp = spark.read.table("wwilakehouse.dimProduct_gold")
-
-# Create Sales_gold dataframe
-dffactSales_gold = df.alias("df1").join(dfdimCustomer_temp.alias("df2"), (df.CustomerName == dfdimCustomer_temp.CustomerName) & (df.Email == dfdimCustomer_temp.Email), "left") \
-    .join(dfdimProduct_temp.alias("df3"), (df.ItemName == dfdimProduct_temp.ItemName) & (df.ItemInfo == dfdimProduct_temp.ItemInfo), "left") \
-    .select(
-        col("df2.CustomerID"),
-        col("df3.ItemID"),
-        col("df1.OrderDate"),
-        col("df1.Quantity"),
-        col("df1.UnitPrice"),
-        col("df1.Tax")
-    ).orderBy(col("df1.OrderDate"), col("df2.CustomerID"), col("df3.ItemID"))
-
-# Show the result
-dffactSales_gold.show()
-```
- ![](./media/image60.png)
+    ```
+    from pyspark.sql import SparkSession
+    from pyspark.sql.functions import split, col, when, lit
+    from pyspark.sql.types import StructType, StructField, StringType, IntegerType, DateType, FloatType, BooleanType, TimestampType
+    
+    # Initialize Spark session
+    spark = SparkSession.builder \
+        .appName("DeltaTableUpsert") \
+        .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
+        .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog") \
+        .getOrCreate()
+    
+    # Define the schema for the sales_silver table
+    silver_table_schema = StructType([
+        StructField("SalesOrderNumber", StringType(), True),
+        StructField("SalesOrderLineNumber", IntegerType(), True),
+        StructField("OrderDate", DateType(), True),
+        StructField("CustomerName", StringType(), True),
+        StructField("Email", StringType(), True),
+        StructField("Item", StringType(), True),
+        StructField("Quantity", IntegerType(), True),
+        StructField("UnitPrice", FloatType(), True),
+        StructField("Tax", FloatType(), True),
+        StructField("FileName", StringType(), True),
+        StructField("IsFlagged", BooleanType(), True),
+        StructField("CreatedTS", TimestampType(), True),
+        StructField("ModifiedTS", TimestampType(), True)
+    ])
+    
+    # Define the path to the Delta table (ensure this path is correct)
+    delta_table_path = "abfss://<container>@<storage-account>.dfs.core.windows.net/path/to/wwilakehouse/sales_silver"
+    
+    # Create a DataFrame with the defined schema
+    empty_df = spark.createDataFrame([], silver_table_schema)
+    
+    # Register the Delta table in the Metastore
+    spark.sql(f"""
+        CREATE TABLE IF NOT EXISTS wwilakehouse.sales_silver
+        USING DELTA
+        LOCATION '{delta_table_path}'
+    """)
+    
+    # Load data into DataFrame
+    df = spark.read.table("wwilakehouse.sales_silver")
+    
+    # Perform transformations on df
+    df = df.withColumn("ItemName", split(col("Item"), ", ").getItem(0)) \
+        .withColumn("ItemInfo", when(
+            (split(col("Item"), ", ").getItem(1).isNull()) | (split(col("Item"), ", ").getItem(1) == ""),
+            lit("")
+        ).otherwise(split(col("Item"), ", ").getItem(1)))
+    
+    # Load additional DataFrames for joins
+    dfdimCustomer_temp = spark.read.table("wwilakehouse.dimCustomer_gold")
+    dfdimProduct_temp = spark.read.table("wwilakehouse.dimProduct_gold")
+    
+    # Create Sales_gold dataframe
+    dffactSales_gold = df.alias("df1").join(dfdimCustomer_temp.alias("df2"), (df.CustomerName == dfdimCustomer_temp.CustomerName) & (df.Email == dfdimCustomer_temp.Email), "left") \
+        .join(dfdimProduct_temp.alias("df3"), (df.ItemName == dfdimProduct_temp.ItemName) & (df.ItemInfo == dfdimProduct_temp.ItemInfo), "left") \
+        .select(
+            col("df2.CustomerID"),
+            col("df3.ItemID"),
+            col("df1.OrderDate"),
+            col("df1.Quantity"),
+            col("df1.UnitPrice"),
+            col("df1.Tax")
+        ).orderBy(col("df1.OrderDate"), col("df2.CustomerID"), col("df3.ItemID"))
+    
+    # Show the result
+    dffactSales_gold.show()
+    ```
+    ![](./media/image60.png)
     ![](./media/image61.png)
-       ![](./media/image62.png)
+    ![](./media/image62.png)
 
 11.  Now you’ll ensure that sales data remains up-to-date by running the
     following code in a **new code block**:
 
-```
-from delta.tables import *
-    
-deltaTable = DeltaTable.forPath(spark, 'Tables/factsales_gold')
-    
-dfUpdates = dffactSales_gold
-    
-deltaTable.alias('silver') \
-  .merge(
-    dfUpdates.alias('updates'),
-    'silver.OrderDate = updates.OrderDate AND silver.CustomerID = updates.CustomerID AND silver.ItemID = updates.ItemID'
-  ) \
-   .whenMatchedUpdate(set =
-    {
-          
-    }
-  ) \
- .whenNotMatchedInsert(values =
-    {
-      "CustomerID": "updates.CustomerID",
-      "ItemID": "updates.ItemID",
-      "OrderDate": "updates.OrderDate",
-      "Quantity": "updates.Quantity",
-      "UnitPrice": "updates.UnitPrice",
-      "Tax": "updates.Tax"
-    }
-  ) \
-  .execute()
-```
-  ![](./media/image63.png)
+    ```
+    from delta.tables import *
+        
+    deltaTable = DeltaTable.forPath(spark, 'Tables/factsales_gold')
+        
+    dfUpdates = dffactSales_gold
+        
+    deltaTable.alias('silver') \
+      .merge(
+        dfUpdates.alias('updates'),
+        'silver.OrderDate = updates.OrderDate AND silver.CustomerID = updates.CustomerID AND silver.ItemID = updates.ItemID'
+      ) \
+       .whenMatchedUpdate(set =
+        {
+              
+        }
+      ) \
+     .whenNotMatchedInsert(values =
+        {
+          "CustomerID": "updates.CustomerID",
+          "ItemID": "updates.ItemID",
+          "OrderDate": "updates.OrderDate",
+          "Quantity": "updates.Quantity",
+          "UnitPrice": "updates.UnitPrice",
+          "Tax": "updates.Tax"
+        }
+      ) \
+      .execute()
+    ```
+   ![](./media/image63.png)
 
 Here you’re using Delta Lake’s merge operation to synchronize and update
 the factsales_gold table with new sales data (dffactSales_gold). The
@@ -997,8 +993,10 @@ data via the ADLS shortcut.
 
    |               |                                                                             |
    |---------------|-----------------------------------------------------------------------------|
-   |Resource Group |DBTutorial                                                                	 |
-   |Region         |EAST US                                                                      |
+   |Subscription|Select your Azure OpenAI subscription|
+   |Resource Group |Click on Create new> enter DBTutorial          	 |
+   |Region         |EAST US                |
+   |Storage account name|azurestorageXXXX(XXXX can be a unique number)|
    |Performance    |Select Standard performance for general-purpose v2 storage accounts (default)|	                               
    |Redundancy     |Geo-redundant storage (GRS)               	                                 |
 
@@ -1013,8 +1011,8 @@ Note: If you do not have a resource group created already, you can click
     validation on the storage account settings that you have chosen. If
     validation passes, you can proceed to create the storage account.
 
-If validation fails, then the portal indicates which settings need to be
-modified.
+    If validation fails, then the portal indicates which settings need to be
+    modified.
     ![](./media/image78.png)
       ![](./media/image79.png)
 
@@ -1027,7 +1025,7 @@ You have now successfully created your Azure data storage account.
 
 7.  On the storage account page, navigate to **Containers** under **Data
     storage** on left hand navigation pane create a new container with
-    the name as !!medalion1!! and click on **Create** button. 
+    the name as +++medalion1+++ and click on **Create** button. 
 
       ![](./media/image81.png)
 
