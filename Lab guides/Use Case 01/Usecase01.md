@@ -664,6 +664,7 @@ that data and prepare it for creating delta tables.
     parameter.
 
 9.  Select the cell, replace the code, and click the **Run** icon that appears to the left of the cell when you hover over it
+
     
         ```
         from pyspark.sql.types import *
