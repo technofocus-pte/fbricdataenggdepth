@@ -215,8 +215,8 @@ trial enabled.
 
      ![](./media/image34.png)
 
-3.  From the new dataflow menu, under the **Power Query** pane click on
-    **Get data**, then select **More...**.
+3.  From the new dataflow menu, under the **Power Query** pane, dropdown the
+    **Get data** and then select **More...**.
 
       ![](./media/image35.png)
 
@@ -485,21 +485,21 @@ discount that should be applied to the trip, and the adjusted total.
     select the **Transform** tab at the top of the editor window. On
     the **Number column** group, select the **Rounding** drop down and
     then choose **Round...**.
-
+     ![](./media/new19.png)
      ![](./media/image78.png)
 
-12. On the **Round** dialog, enter **2** for the number of decimal
+13. On the **Round** dialog, enter **2** for the number of decimal
     places and then select **OK**.
 
       ![](./media/image79.png)
 
-13. Change the data type of the **IpepPickupDatetime** from **Date** to
+14. Change the data type of the **IpepPickupDatetime** from **Date** to
     **Date/Time**.
 
      ![](./media/image80.png)
 
      ![](./media/image81.png)
-14. Finally, expand the **Query settings** pane from the right side of
+15. Finally, expand the **Query settings** pane from the right side of
     the editor if it isn't already expanded, and rename the query
     from **Merge** to **Output**.
 
