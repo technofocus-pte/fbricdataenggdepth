@@ -303,7 +303,7 @@ used languages on Spark and is the default language in Fabric notebooks.
     all the code in the **cell** with the following code and click on
     **▷ Run cell** button and review the output
     ```
-    df = spark.read.format("csv").option("header","false").load("Files/orders/2019.csv")
+    df = spark.read.format("csv").option("header","true").load("Files/orders/2019.csv")
     # df now is a Spark DataFrame containing CSV data from "Files/orders/2019.csv".
     display(df)
     ```
@@ -505,8 +505,8 @@ or analysis.
     transformed_df = df.withColumn("Year", year(col("OrderDate"))).withColumn("Month", month(col("OrderDate")))
     
     # Create the new FirstName and LastName fields
-    transformed_df = transformed_df.withColumn("FirstName", split(col("CustomerName"), " ").getItem(0)).withColumn("LastName", split(col("CustomerName"), " 
-    ").getItem(1))
+    transformed_df = transformed_df.withColumn("FirstName", split(col("CustomerName"), " ").getItem(0)).withColumn("LastName", split(col("CustomerName"),
+    " ").getItem(1))
     
     # Filter and reorder columns
     transformed_df = transformed_df["SalesOrderNumber", "SalesOrderLineNumber", "OrderDate", "Year", "Month", "FirstName", "LastName", "Email", "Item", 
@@ -732,7 +732,7 @@ stored in an external location.
     abfss://dp_Fabric29@onelake.dfs.fabric.microsoft.com/Fabric_lakehouse.Lakehouse/Files/external_salesorder
      ![](./media/image73.png)
 
-3.  Now, move into the code cell, replace **\<abfs_path\>** with the
+3.  Now, move into the code cell, replace **<abfs_path>** with the
     **path** you copied to the notepad so that the code saves the
     dataframe as an external table with data files in a folder named
     **external_salesorder** in your **Files** folder location. The full
@@ -870,7 +870,7 @@ create charts from data in dataframes.
 
       ![](./media/image88.png)
 
-3.  Use the **View options** button at the top right of the chart to
+3.  Use the **Customize chart** button at the top right of the chart to
     display the options pane for the chart. Then set the options as
     follows and select **Apply**:
 
@@ -1389,7 +1389,7 @@ Task 2: Add data destination for Dataflow
     automatic settings off** and the **Update method** select **Append**
     ,then click on the **Save settings** button.
 
-      ![](./media/image136.png)
+      ![](./media/new18.png)
 8.  The **Lakehouse** destination is indicated as an **icon** in the
     **query** in the Power Query editor.
 
