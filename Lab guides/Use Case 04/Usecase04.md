@@ -1040,7 +1040,11 @@ You have now successfully created your Azure data storage account.
     panel.
 
       ![](./media/image83.png)
-
+10. In the  storage home page, select Overview and select the Blob soft delete under Blob service
+     ![](./media/new1.png)
+11.	Uncheck the options for ‘**Enable soft delete for blobs**’ and ‘**Enable soft delete for containers**’
+    ![](./media/new2.png)
+   	![](./media/new3.png)
 ## **Task 2: Create a Delta table, create a shortcut, and analyze the data in your Lakehouse**
 
 1.  In your lakehouse, select the ellipses **(…)** next to files and
