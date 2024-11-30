@@ -124,8 +124,8 @@ Follow these steps to start your Fabric trial.
  
       ![](./media/image10.png)
 
-**Note**: If you are directly landed on **Microsoft 365 admin center**
-page, then skip steps from \#2 to \#4.
+        **Note**: If you are directly landed on **Microsoft 365 admin center**
+        page, then skip steps from \#2 to \#4.
 
 2.  In the **Microsoft Azure** window, enter your **Sign-in**
     credentials, and click on the **Next** button.
@@ -177,7 +177,6 @@ reports.
 3.  In the **Create a workspace** pane that appears on the right side,
     enter the following details, and click on the **Apply** button.
 
-
        |   |    |
        |----|---|
        |Name|	+++Fabric Lakehouse Tutorial-XX+++ (XX can be a unique number) (here, we entered Fabric Lakehouse Tutorial-29)|
@@ -214,7 +213,7 @@ reports.
     the **Name** field, click on the **Create** button and open the new
     lakehouse.
 
-    > **Note**: Ensure to remove space before **wwilakehouse**.
+    **Note**: Ensure to remove space before **wwilakehouse**.
  
      ![](./media/new3.png)
  
@@ -262,9 +261,8 @@ reports.
     under the **Data destination** field.
 
      ![](./media/image33.png)
-    >
-    > ***Note:***
-    
+  
+    **Note:**
     - *If needed, from the **Connect to data destination** screen, sign into
       your account. Select **Next**.*
     
@@ -639,7 +637,7 @@ that data and prepare it for creating delta tables.
      **Note**: In case, you are unable to see the output, then click on the
      horizontal lines on the left side of **Spark jobs**.
     
-       >
+      ```
         from pyspark.sql.functions import col, year, month, quarter
         
         table_name = 'fact_sale'
@@ -650,7 +648,7 @@ that data and prepare it for creating delta tables.
         df = df.withColumn('Month', month(col("InvoiceDateKey")))
         
         df.write.mode("overwrite").format("delta").partitionBy("Year","Quarter").save("Tables/" + table_name)
-      >
+     ```
       
        ![](./media/image93.png)
        ![](./media/image94.png)
@@ -664,7 +662,6 @@ that data and prepare it for creating delta tables.
     parameter.
 
 9.  Select the cell, replace the code, and click the **Run** icon that appears to the left of the cell when you hover over it
-
     
         ```
         from pyspark.sql.types import *
@@ -746,7 +743,6 @@ that data and prepare it for creating delta tables.
     referencing an existing delta table.
    
    PythonCopy
-   
     ```
     df_fact_sale = spark.read.table("wwilakehouse.fact_sale") 
     df_dimension_date = spark.read.table("wwilakehouse.dimension_date")
@@ -877,7 +873,7 @@ frequent updates at the source.
 1.  From your left navigation pane, select **Fabric_LakehouseXX** and
     then select **wwilakehouse** of **Type** **SQL analytics endpoint.**
 
-    ![](./media/image110.png)
+     ![](./media/image110.png)
  
      ![](./media/image111.png)
 
@@ -979,11 +975,11 @@ frequent updates at the source.
 
      ![](./media/image124.png)
 
-**Add a Card:**
-
-- On the **Data** pane, expand **fact_sales** and check the box next
-  to **Profit**. This selection creates a column chart and adds the
-  field to the Y-axis.
+    **Add a Card:**
+    
+    - On the **Data** pane, expand **fact_sales** and check the box next
+      to **Profit**. This selection creates a column chart and adds the
+      field to the Y-axis.
 
      ![](./media/image125.png)
 
@@ -1061,7 +1057,7 @@ frequent updates at the source.
 17.  On the **Data** pane, expand **fact_sales** and check the box next
     to **Profit**. This selection adds the field to the Y-axis.
 
-&nbsp;
+        &nbsp;
 
 18.  On the **Data** pane, expand **dimension_employee** and check the
     box next to **Employee**. This selection adds the field to the
