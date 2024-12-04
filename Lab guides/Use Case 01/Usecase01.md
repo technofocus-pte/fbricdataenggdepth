@@ -480,25 +480,28 @@ the Wide World Importers (WWI) into the lakehouse.
  
       ![](./media/image67.png)
 
-9.  Choose the **File format** as **Binary** for the destination.
+9.  Choose the **File format** as **Avro** for the destination.
     Click **Next** and then **Save+Run**. You can schedule pipelines to
     refresh data periodically. In this tutorial, we only run the
     pipeline once. The data copy process takes approximately 15-19
     minutes to complete.
 
-      ![](./media/image68.png)
+      ![](./media/pic1.png)
  
-      ![](./media/image69.png)
+      ![](./media/pic2.png)
+10.	Now,you can see that validation will fail. Click on the **pipeline validation output**
  
-      ![](./media/image70.png)
+      ![](./media/pic3.png)
+11.	In the **destination** tab, dropdown the File format and select **Binary**.
  
-      ![](./media/image71.png)
- 
+      ![](./media/pic4.png)
+12.	Now click on the Run button
+       ![](./media/pic5.png)
       ![](./media/image72.png)
  
       ![](./media/image73.png)
 
-10. Under the Output tab, , select **Copy_a1n** to look at the details
+13. Under the Output tab, , select **Copy_a1n** to look at the details
     of the data transfer. After seeing the **Status** as **Succeeded**,
     click on the **Close** button.
 
@@ -506,17 +509,17 @@ the Wide World Importers (WWI) into the lakehouse.
  
       ![](./media/image75.png)
 
-11. After the successful execution of the pipeline, go to your lakehouse
+14. After the successful execution of the pipeline, go to your lakehouse
     (**wwilakehouse**) and open the explorer to see the imported data.
 
       ![](./media/image76.png)
 
-12. Verify that the folder **WideWorldImportersDW** is present in
+15. Verify that the folder **WideWorldImportersDW** is present in
     the **Explorer** view and contains data for all tables.
 
      ![](./media/image77.png)
 
-13. The data is created under the **Files** section of the lakehouse
+16. The data is created under the **Files** section of the lakehouse
     explorer. A new folder with GUID contains all the needed data.
     Rename the GUID to +++**wwi-raw-data+++**
 
