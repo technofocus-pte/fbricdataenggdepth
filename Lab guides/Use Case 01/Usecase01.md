@@ -485,7 +485,7 @@ the Wide World Importers (WWI) into the lakehouse.
     refresh data periodically. In this tutorial, we only run the
     pipeline once. The data copy process takes approximately 15-19
     minutes to complete.
-        ![](./media/pic7.png)
+        ![](./media/Picture7.png)
        ![](./media/pic6.png)
 10.	Now,you can see that validation will fail. Click on the **pipeline validation output**
  
