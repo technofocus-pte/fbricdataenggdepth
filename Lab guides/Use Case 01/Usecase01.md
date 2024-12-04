@@ -480,15 +480,13 @@ the Wide World Importers (WWI) into the lakehouse.
  
       ![](./media/image67.png)
 
-9.  Choose the **File format** as **Avro** for the destination.
+9.  Choose the **File format** shoul be  empty for the destination.
     Click **Next** and then **Save+Run**. You can schedule pipelines to
     refresh data periodically. In this tutorial, we only run the
     pipeline once. The data copy process takes approximately 15-19
     minutes to complete.
 
-      ![](./media/pic1.png)
- 
-      ![](./media/pic2.png)
+       ![](./media/pic2.png)
 10.	Now,you can see that validation will fail. Click on the **pipeline validation output**
  
       ![](./media/pic3.png)
