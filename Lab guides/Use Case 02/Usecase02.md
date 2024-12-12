@@ -1371,12 +1371,10 @@ Task 2: Add data destination for Dataflow
     that the dataflow uses to access the lakehouse.
 
      ![](./media/image132.png)
-
-     ![](./media/image133.png)
-
+     
 5.  In Connect to data destination dialog box, select **Next**
 
-      ![](./media/image134.png)
+      ![](./media/image200.png)
 
 6.  In Connect to data destination dialog box, select **New table**.
     Click on the **Lakehouse folder** ,select your workspace –
