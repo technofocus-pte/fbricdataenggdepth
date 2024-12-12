@@ -233,9 +233,7 @@ trial enabled.
     using your Power BI organizational account to set the identity that
     the dataflow uses to access the lakehouse.
 
-     ![](./media/image38.png)
-
-     ![](./media/image39.png)
+      ![](./media/image39.png)
 
 7.  In **Connect to data source** dialog box, select **Next.**
 
@@ -254,7 +252,7 @@ trial enabled.
     based on it.
 
 10. To do this, select **Options** from the ribbon pane, then select the
-    first three options under **Column profile** i.e Enable column profile,Show column quality details in data preview,Show column value distribution in data 
+    first three options under **Column profile** i.e Enable **column profile**,**Show column quality details in data preview**,**Show column value distribution in data** 
     preview , and then select **OK**.
 
     ![](./media/image42.png)
