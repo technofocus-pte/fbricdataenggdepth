@@ -93,7 +93,7 @@ reports.
     
    |              |                                                                 |
    |--------------|-----------------------------------------------------------------|
-   |Name          |+++Fabric Lakehouse Tutorial-XX+++ (XX can be a unique number) 	|
+   |Name          |+++Fabric Lakehouse Tutorial-XXXXXX+++ (XXXXXX can be Lab instant ID) 	|
    |Description   |This workspace contains all the items for the lakehouse tutorial |
    |Advanced      |Under License mode, select Trial	                                |
    |Template apps |Check the Develop template apps	                                |
@@ -989,23 +989,24 @@ data via the ADLS shortcut.
 
       ![](./media/image76.png)
 4.  On the Basics tab, upon selecting a resource group, provide the
-    essential information for your storage account:
+    essential information for your storage account and select **Next**
 
    |               |                                                                             |
    |---------------|-----------------------------------------------------------------------------|
    |Subscription|Select your subscription|
-   |Resource Group |Click on Create new> enter +++DBTutorial+++          	 |
+   |Resource Group |Select your resorcegroup	 |
    |Region         |EAST US                |
-   |Storage account name|+++azurestorageXXXX+++(XXXX can be a unique number)|
+   |Storage account name|+++azurestorageXXXXXXX+++(XXXXXXX can be Lab instant ID)|
    |Performance    |Select Standard performance for general-purpose v2 storage accounts (default)|	                               
    |Redundancy     |Geo-redundant storage (GRS)               	                                 |
 
-Leave the other settings as is and select **Review + create** to accept
-the default options and proceed to validate and create the account.
+   ![](./media/image200.png)
+
+5. On the Advanced tab, select **Enable hierarchical namespace** and click on Review + create
 
 Note: If you do not have a resource group created already, you can click
 “**Create new**” and create a new resource for your storage account.
-     ![](./media/image77.png)
+     ![](./media/image201.png)
 
 5.  When you navigate to the **Review + create** tab, Azure runs
     validation on the storage account settings that you have chosen. If
