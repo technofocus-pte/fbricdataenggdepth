@@ -81,7 +81,7 @@ trial enabled.
     click on the **Apply** button.
     |                          |                                               |
     |-----------------------|------------------------------------------------- |
-    |Name                   | +++Data-FactoryXX+++ (XX can be a unique number) |
+    |Name                   | +++Data-FactoryXXXXXX+++ (XXXXXX can be Lab instant ID) |
     |Advanced               |Under License mode, select Trial	|
     |Default storage format |Small dataset storage format	|
     
