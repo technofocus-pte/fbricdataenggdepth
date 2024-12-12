@@ -993,10 +993,10 @@ data via the ADLS shortcut.
 
    |               |                                                                             |
    |---------------|-----------------------------------------------------------------------------|
-   |Subscription|Select your Azure OpenAI subscription|
-   |Resource Group |Click on Create new> enter DBTutorial          	 |
+   |Subscription|Select your subscription|
+   |Resource Group |Click on Create new> enter +++DBTutorial+++          	 |
    |Region         |EAST US                |
-   |Storage account name|azurestorageXXXX(XXXX can be a unique number)|
+   |Storage account name|+++azurestorageXXXX+++(XXXX can be a unique number)|
    |Performance    |Select Standard performance for general-purpose v2 storage accounts (default)|	                               
    |Redundancy     |Geo-redundant storage (GRS)               	                                 |
 
