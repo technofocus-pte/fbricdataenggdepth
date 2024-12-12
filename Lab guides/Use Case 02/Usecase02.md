@@ -118,7 +118,7 @@ trial enabled.
 
     |	       |      |
     |-------|-------|
-    |Name                   |+++dp_FabricXX+++ (XX can be a unique number) |
+    |Name                   |+++dp_FabricXXXXXX+++ (XXXXXX can be Lab instant ID) |
     |Advanced               |Under License mode, select Trial	|
     |Default storage format |Small dataset storage format	|
 
