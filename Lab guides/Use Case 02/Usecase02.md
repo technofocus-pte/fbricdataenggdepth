@@ -1304,7 +1304,7 @@ transform, and load* (ETL) process.
 
     - **Authentication kind**: Organizational account
 
-      ![](./media/image122.png)
+      ![](./media/new31.png)
 
 7.  In **Preview file data** pane, click on **Create** to create the
     data source.
