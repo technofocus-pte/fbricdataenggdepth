@@ -1148,6 +1148,7 @@ streaming data in a simulated internet of things (IoT) scenario.
     print("Source stream created...")
     ```
       ![](./media/image105png)
+    
       ![](./media/image106.png)
 
 3.  Ensure the message ***Source stream created…*** is printed. The code
