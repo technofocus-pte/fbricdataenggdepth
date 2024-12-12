@@ -179,7 +179,7 @@ reports.
 
        |   |    |
        |----|---|
-       |Name|	+++Fabric Lakehouse Tutorial-XX+++ (XX can be a unique number) (here, we entered Fabric Lakehouse Tutorial-29)|
+       |Name|	+++Fabric Lakehouse Tutorial-XXXX+++ (XX can be a Lab Instant ID|
        |Description	|This workspace contains all the items for the lakehouse tutorial |
        |Advanced	|Under License mode, select Trial|
        |Default |storage format	Small dataset storage format|
@@ -227,146 +227,99 @@ reports.
 ## **Task 3: Ingest sample data**
 
 1.  In the **wwilakehouse** page, navigate to **Get data in your
-    lakehouse** section, and click on **New Dataflow Gen2** as shown in
-    the below image.
+    lakehouse** section, and click on **Upload files as shown in the
+    below image.**
 
-      ![](./media/image27.png)
+    ![](./media/image200.png)
 
-2.  On the Dataflow canvas, navigate and click on **Import from a
-    Text/CSV file**.
+2.  On the Upload files tab, click on the folder under the Files
 
-      ![](./media/image28.png)
+     ![](./media/image201.png)
 
-3.  On the **Connect to data source** pane, select the **Upload
-    file** radio button. Click on the **Browse button** and browse to
-    **C:\LabFiles** on your VM, then select
-    **dimension_customer.csv** file and click on **Open** button.
+3.  Browse to **C:\LabFiles** on your VM, then select
+    ***dimension_customer.csv*** file and click on **Open** button.
 
-     ![](./media/image29.png)
- 
-     ![](./media/image30.png)
+      ![](./media/image202.png)
 
-4.  Then, click on the **Next** button.
+4.  Then, click on the **Upload** button and close
 
-     ![](./media/image31.png)
+     ![](./media/image203.png)
 
-5.  In the **Preview file data** page, go through the data and click on
-    the **Create** button. You’ll be directed to **Dataflow** canvas.
+5.  Click and select refresh on the **Files**. The file appear.
 
-     ![](./media/image32.png)
+     ![](./media/image204.png)
 
-6.  In the **Query settings** pane on the right side of the Dataflow
-    canvas, ensure that **dimension_customer** is selected under the
-    **Name** field. Similarly, ensure that **Lakehouse** is selected
-    under the **Data destination** field.
+     ![](./media/image205.png)
 
-     ![](./media/image33.png)
-  
-    **Note:**
-    - *If needed, from the **Connect to data destination** screen, sign into
-      your account. Select **Next**.*
-    
-    - Navigate to the **wwilakehouse** in your workspace.
-    
-    - If the **dimension_customer** table doesn't exist, select the **New
-      table** setting and enter the table name **dimension_customer**. If
-      the table already exists, select the **Existing table** setting and
-      choose **dimension_customer** from the list of tables in the object
-      explorer, then select **Next**.
-    
-    **Note:** Fabric adds a space and number at the end of the table
-    name by default. Table names must be lower case and must not contain
-    spaces. Please rename it appropriately and remove any spaces from the
-    table name.
+6.  In the **Lakehouse** page, Under the Explorer pane select Files.
+    Now, however your mouse to **dimension_customer.csv** file. Click on
+    the horizontal ellipses **(…)** beside **dimension_customer**.csv.
+    Navigate and click on **Load Table**, then select **New table**.
 
-7.  From the Dataflow canvas, you can easily transform the data based on
-    your business requirements. For simplicity, we aren't making any
-    changes in this task. To proceed, select **Publish** at the bottom
-    right of the screen.
+     ![](./media/image206.png)
 
-     ![](./media/image34.png)
+7.  In the **Load file to new table** dialog box, click on the **Load**
+    button.
 
-8.  A spinning circle next to the dataflow's name indicates publishing
-    is in progress in the item view.
-     ![](./media/new4.png)
+     ![](./media/image207.png)
 
-9.  In the **Fabric Lakehouse Tutorial-XX** tab, when publishing is
-    completed, move your mouse to **Dataflow 1** row and click on the
-    horizontal ellipses (**…**), then navigate and click on
-    **Properties** as shown in the below image.
+8.  Then, in the **Lakehouse explorer** pane on the left, in
+    the **…** menu for the **Table** node, select **Refresh**.
 
-      ![](./media/new5.png)
+     ![](./media/image208.png)
 
-10. In the Dataflow 1 pane that appear on the right side, rename the
-    dataflow to  **+++Load Lakehouse Table+++**  and select **Save**.
+     ![](./media/image209.png)
 
-      ![](./media/image37.png)
+     ![](./media/image210.png)
 
-11. Select the **Refresh now** option next to data flow name to refresh
-    the dataflow. It runs the dataflow and moves data from the source
-    file to lakehouse table. While it's in progress, you see a spinning
-    circle under **Refreshed** column in the item view.
-
-     ![](./media/image38.png)
-
-     ![](./media/image39.png)
-
-12. Refreshing data will take around 4-5 min.
-
-     ![](./media/image40.png)
-
-13. Once the dataflow is refreshed, select **wwilakehouse** in the left
-    navigation panel to view the **dimension_customer** delta table.
-    Select the table to preview its data.
-
-    ![](./media/image41.png)
-
-    ![](./media/image42.png)
-
-14. You can also use the SQL endpoint of the lakehouse to query the data
+9.  You can also use the SQL endpoint of the lakehouse to query the data
     with SQL statements. Select **SQL analytics endpoint** from
     the **Lakehouse** drop-down menu at the top right of the screen.
 
-     ![](./media/image43.png)
+     ![](./media/image211.png)
 
-15. In the wwilakehouse page, under Explorer select
+10. In the wwilakehouse page, under Explorer select
     the **dimension_customer** table to preview its data and
     select **New SQL query** to write your SQL statements.
 
-      ![](./media/image44.png)
+      ![](./media/image212.png)
 
-16. The following sample query aggregates the row count based on the
+11. The following sample query aggregates the row count based on the
     **BuyingGroup column** of the **dimension_customer** table. SQL
     query files are saved automatically for future reference, and you
     can rename or delete these files based on your need. Paste the code
     as shown in the below image, then click on the play icon to **Run**
     the script.
-    ```
-    SELECT BuyingGroup, Count(*) AS Total
-    FROM dimension_customer
-    GROUP BY BuyingGroup
-    ```
-    ![](./media/image45.png)
+
+        SQLCopy
+        ```
+        SELECT BuyingGroup, Count(\*) AS Total
+
+        FROM dimension_customer
+
+        GROUP BY BuyingGroup
+        ```
+    ![](./media/image213.png)
 
     **Note**: If you encounter an error during the execution of the script,
     then crosscheck the script syntax with the above image.
-    ![](./media/image46.png)
 
-17. Previously all the lakehouse tables and views were automatically
+    ![](./media/image213.png)
+12. Previously all the lakehouse tables and views were automatically
     added to the semantic model. With the recent updates, for new
     lakehouses, you have to manually add your tables to the semantic
     model.
 
-18. From the lakehouse **Reporting** tab, select **Manage default Power
+13. From the lakehouse **Reporting** tab, select **Manage default Power
     BI semantic model** and select the tables that you want to add to
     the semantic model.
 
-      ![](./media/image47.png)
+     ![](./media/image214.png)
 
-19. In **Manage default semantic model** tab, select
+14. In **Manage default semantic model** tab, select
     the **dimension_customer** table and click on **Confirm.**
 
-      ![](./media/new6.png)
+     ![](./media/image215.png)
 
 ## **Task 4: Build a report**
 
