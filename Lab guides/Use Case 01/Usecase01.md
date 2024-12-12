@@ -116,46 +116,6 @@ Follow these steps to start your Fabric trial.
 
      ![](./media/image9.png)
 
-## Task 3: OneDrive configured sign up for the Microsoft 365 admin center
-
-1.  Open your browser, navigate to the address bar, and type or paste
-    the following URL:+++https://admin.microsoft.com/AdminPortal/Home#/homepage+++ then press
-    the **Enter** button.
- 
-      ![](./media/image10.png)
-
-        **Note**: If you are directly landed on **Microsoft 365 admin center**
-        page, then skip steps from \#2 to \#4.
-
-2.  In the **Microsoft Azure** window, enter your **Sign-in**
-    credentials, and click on the **Next** button.
-
-     ![](./media/image11.png)
-
-3.  Then, in the **Microsoft** window, enter the password and click on
-    the **Sign in** button.
-
-      ![](./media/image3.png)
-
-4.  In **Stay signed in?** window, click on the **Yes** button.
-
-     ![](./media/image4.png)
-
-5.  On the left-side of Microsoft 365 admin center page, click on the
-    **App launcher** as shown in the below image.
-
-     ![](./media/image12.png)
-
-6.  Under the **Apps** section, navigate and click on the **OneDrive.**
-
-     ![](./media/image13.png)
-
-7.  In **OneDrive** page, under **Securely store and share files,**
-    select **Your OneDrive is ready**
-
-    ![](./media/image14.png)
-    ![](./media/image15.png)
-
 # Exercise 2: Build and implement an end-to-end lakehouse for your organization
 
 ## **Task 1: Create a Fabric workspace**
