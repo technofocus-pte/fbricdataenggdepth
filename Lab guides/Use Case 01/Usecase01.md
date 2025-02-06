@@ -90,7 +90,7 @@ analysis.
 
      ![](./media/image5.png)
 
-## Task 2: Start the Microsoft Fabric (Preview) trial
+## Task 2: Start the Microsoft Fabric trial
 
 Follow these steps to start your Fabric trial.
 
