@@ -99,21 +99,11 @@ trial enabled.
 
       ![](./media/image4.png)
 
-5.  In the **Microsoft Fabric** home page, select the **Power BI**
-    template.
+5.  Fabric home page, select **+New workspace** tile.
 
-      ![](./media/image5.png)
+     ![](./media/a1.png)
 
-6.  In the **Power BI Home** page menu bar on the left,
-    select **Workspaces** (the icon looks similar to 🗇).
-
-      ![](./media/image6.png)
-
-7.  In the Workspaces pane, select **+** **New workspace**.
-
-      ![](./media/image7.png)
-
-8.  In the **Create a workspace tab**, enter the following details and
+6.  In the **Create a workspace tab**, enter the following details and
     click on the **Apply** button.
 
     |	       |      |
@@ -126,7 +116,7 @@ trial enabled.
        ![](./media/image9.png)
        ![](./media/image10.png)
 
-9.  Wait for the deployment to complete. It takes 2-3 minutes to
+7.  Wait for the deployment to complete. It takes 2-3 minutes to
     complete. When your new workspace opens, it should be empty.
 
       ![](./media/image11.png)
@@ -137,15 +127,14 @@ Now that you have a workspace, it’s time to switch to the *Data
 engineering* experience in the portal and create a data lakehouse for
 the data files you’re going to analyze.
 
-1.  At the bottom left of the Power BI portal, select the **Power
-    BI** icon and switch to the **Data Engineering** experience.
 
-      ![](./media/new1.png)
+1.  Create a new Eventhouse by clicking on the **+New item** button in the navigation bar.
 
-2.  In the **Synapse Data Engineering** home page, Select **Lakehouse**
-    under **New** pane.
+     ![](./media/a3.png)
+    
+2.  Click on the "**Lakehouse**" tile.
 
-      ![](./media/image13.png)
+     ![](./media/aa6.png)
 
 3.  In the **New lakehouse** dialog box, enter **+++Fabric_lakehouse+++** in
     the **Name** field, click on the **Create** button and open the new
@@ -1421,8 +1410,7 @@ you to combine dataflows with other kinds of operation in a single,
 scheduled process. Pipelines can be created in a few different
 experiences, including Data Factory experience.
 
-1.  In the Synapse Data Engineering Home page , Under **dp_FabricXX**
-    pane, select **+New item** -\> **Data pipeline**
+1.  In the Home page , Under **dp_FabricXX** pane, select **+New item** -\> **Data pipeline**
 
       ![](./media/new17.png)
 
