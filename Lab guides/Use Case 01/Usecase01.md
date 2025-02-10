@@ -125,9 +125,8 @@ the items needed for this lakehouse tutorial, which includes lakehouse,
 dataflows, Data Factory pipelines, the notebooks, Power BI datasets, and
 reports.
 
-1.  Fabric home page, select **+New workspace** tile.
 
-     ![](./media/a1.png)
+
 
 2.  In the **Create a workspace** pane that appears on the right side,
     enter the following details, and click on the **Apply** button.
@@ -155,7 +154,7 @@ reports.
 
 ## **Task 2: Create a lakehouse**
 
-1.  Create a new Eventhouse by clicking on the **+New item** button in the navigation bar.
+1.  Create a new lakehouse by clicking on the **+New item** button in the navigation bar.
 
      ![](./media/a3.png)
     
