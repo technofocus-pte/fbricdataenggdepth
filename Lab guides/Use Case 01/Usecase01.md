@@ -323,7 +323,7 @@ reports.
 In this exercise, you ingest additional dimensional and fact tables from
 the Wide World Importers (WWI) into the lakehouse.
 
-## ** Task 1: Ingest data**
+## **Task 1: Ingest data**
 
 1.  Select **Workspaces** in the left navigation pane, and then select
     your new workspace (i.e., Fabric Lakehouse Tutorial-XX) from
@@ -445,7 +445,7 @@ that data and prepare it for creating delta tables.
 
      ![](./media/image80.png)
 
-2.  2.	In the **Synapse Data Engineering** page, navigate to **Import** section, click on **Notebook** and click on **From this computer**
+2.  2.	In the **Home** page, navigate to **Import** section, click on **Notebook** and click on **From this computer**
 
      ![](./media/new9.png)
 
@@ -871,7 +871,7 @@ frequent updates at the source.
 
       ![](./media/image122.png)
 
-**Add a title:**
+    **Add a title:**
 
 1.  In the Ribbon, select **Text box**. Type in **WW Importers Profit
     Reporting**. **Highlight** the **text** and increase size to **20**.
@@ -1025,4 +1025,4 @@ analysis. The objectives aim to provide hands-on experience in utilizing
 Microsoft Fabric and Power BI for data management and reporting
 purposes.
 
-## 
+
