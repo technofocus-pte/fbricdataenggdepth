@@ -63,21 +63,16 @@ trial enabled.
 
      ![](./media/image4.png)
 
-5.  In the **Microsoft Fabric** home page, select the **Power BI**
-    template.
 
-     ![](./media/image5.png)
+5.  Create a new Eventhouse by clicking on the **+New item** button in the navigation bar.
 
-6.  In the **Power BI Home** page left-sided navigation bar,
-    select **Workspaces** (the icon looks similar to 🗇).
+     ![](./media/a3.png)
+    
+6.  Click on the "**Lakehouse**" tile.
 
-      ![](./media/image6.png)
+     ![](./media/aa6.png)
 
-7.  In the Workspaces pane, select **+** **New workspace**.
-
-     ![](./media/image7.png)
-
-8.  In the **Create a workspace** tab, enter the following details and
+7.  In the **Create a workspace** tab, enter the following details and
     click on the **Apply** button.
     |                          |                                               |
     |-----------------------|------------------------------------------------- |
@@ -89,15 +84,15 @@ trial enabled.
      ![](./media/image9.png)
      ![](./media/image10.png)
 
-10.  Wait for the deployment to complete. It’ll take approximately 2-3
+8.  Wait for the deployment to complete. It’ll take approximately 2-3
     minutes.
 
-11. In the **Data-FactoryXX** workspace page, navigate and click on
+9. In the **Data-FactoryXX** workspace page, navigate and click on
     **+New** button, then select **Lakehouse.**
 
      ![](./media/image11.png)
 
-12. In the **New lakehouse** dialog box, enter
+10. In the **New lakehouse** dialog box, enter
     **+++DataFactoryLakehouse+++** in the **Name** field, click on the
     **Create** button and open the new lakehouse.
 
@@ -111,11 +106,9 @@ trial enabled.
 
 ##  Task 2: Create a data pipeline
 
-1.  Select the default Power BI icon at the bottom left of the screen,
-    and switch to the **Data Factory** experience.
+1.  Create a new lakehouse by clicking on the **+New item** button in the navigation bar.Click on the "**Data pipeline**" tile
 
-     ![](./media/image15.png)
-
+     ![](./media/aa8.png)
 2.  In the **Data Factory** Home page, click on **Data pipeline** as
     shown in the below image.
 
@@ -612,8 +605,8 @@ the service in Azure.
 
      ![](./media/image101.png)
 
-**Note:** The service doesn't currently support personal email. You must
-use an enterprise email address.
+    **Note:** The service doesn't currently support personal email. You must
+    use an enterprise email address.
 
 7.  Select the Office 365 Outlook activity from the pipeline canvas, on
     the **Settings** tab of the property area below the canvas to
