@@ -73,35 +73,24 @@ the items needed for this lakehouse tutorial, which includes lakehouse,
 dataflows, Data Factory pipelines, the notebooks, Power BI datasets, and
 reports.
 
-1.  Open your browser, navigate to the address bar, and type or paste
-    the following URL:+++https://app.fabric.microsoft.com/+++
-    then press the **Enter** button.
+1.  Fabric home page, select **+New workspace** tile.
 
-     ![](./media/image1.png)
+     ![](./media/a1.png)
 
-2.  Go back to **Power BI** window. On the left side navigation menu of
-    Power BI Home page, navigate and click on **Workspaces**.
-
-     ![](./media/image2.png)
-
-3.  In the Workspaces pane, click on **+New workspace** button**.**
-
-      ![](./media/image3.png)
-
-4.  In the **Create a workspace** pane that appears on the right side,
+2.  In the **Create a workspace** pane that appears on the right side,
     enter the following details, and click on the **Apply** button.
     
-   |              |                                                                 |
-   |--------------|-----------------------------------------------------------------|
-   |Name          |+++Fabric Lakehouse Tutorial-XXXXXX+++ (XXXXXX can be Lab instant ID) 	|
-   |Description   |This workspace contains all the items for the lakehouse tutorial |
-   |Advanced      |Under License mode, select Trial	                                |
-   |Template apps |Check the Develop template apps	                                |
-
-   ![](./media/image4.png)
+     |              |                                                                 |
+     |--------------|-----------------------------------------------------------------|
+     |Name          |+++Fabric Lakehouse Tutorial-XXXXXX+++ (XXXXXX can be Lab instant ID) 	|
+     |Description   |This workspace contains all the items for the lakehouse tutorial |
+     |Advanced      |Under License mode, select Trial	                                |
+     |Template apps |Check the Develop template apps	                                |
+  
+     ![](./media/image4.png)
     ![](./media/image5.png)
 
-6.  Wait for the deployment to complete. It takes 2-3 minutes to
+4.  Wait for the deployment to complete. It takes 2-3 minutes to
     complete.
 
       ![](./media/image6.png)
@@ -243,11 +232,11 @@ folder in your Lakehouse.
     ```
    ![](./media/image25.png)
 
-    **Note**: Since this is the first time you’ve run any Spark code in
-    this notebook, a Spark session must be started. This means that the
-    first run can take a minute or so to complete. Subsequent runs will be
-    quicker.
-  ![](./media/image26.png)
+      **Note**: Since this is the first time you’ve run any Spark code in
+      this notebook, a Spark session must be started. This means that the
+      first run can take a minute or so to complete. Subsequent runs will be
+      quicker.
+   ![](./media/image26.png)
 
 7.  The code you ran loaded the data from the CSV files in
     the **bronze** folder into a Spark dataframe, and then displayed the
@@ -402,25 +391,25 @@ folder in your Lakehouse.
 13. Run the cell to execute the code using the **▷ (Run cell)** button.
       ![](./media/image31.png)
 
-This operation is important because it enables you to update existing
-records in the table based on the values of specific columns, and insert
-new records when no match is found. This is a common requirement when
-you’re loading data from a source system that may contain updates to
-existing and new records.
-
-You now have data in your silver delta table that is ready for further
-transformation and modelling.
-
-You have successfully taken data from your bronze layer, transformed it,
-and loaded it into a silver Delta table. Now you’ll use a new notebook
-to transform the data further, model it into a star schema, and load it
-into gold Delta tables.
-
-*Note that you could have done all of this in a single notebook, but for
-the purposes of this exercise you’re using separate notebooks to
-demonstrate the process of transforming data from bronze to silver and
-then from silver to gold. This can help with debugging, troubleshooting,
-and reuse*.
+    This operation is important because it enables you to update existing
+    records in the table based on the values of specific columns, and insert
+    new records when no match is found. This is a common requirement when
+    you’re loading data from a source system that may contain updates to
+    existing and new records.
+    
+    You now have data in your silver delta table that is ready for further
+    transformation and modelling.
+    
+    You have successfully taken data from your bronze layer, transformed it,
+    and loaded it into a silver Delta table. Now you’ll use a new notebook
+    to transform the data further, model it into a star schema, and load it
+    into gold Delta tables.
+    
+    *Note that you could have done all of this in a single notebook, but for
+    the purposes of this exercise you’re using separate notebooks to
+    demonstrate the process of transforming data from bronze to silver and
+    then from silver to gold. This can help with debugging, troubleshooting,
+    and reuse*.
 
 ## **Task 2: Load data into Gold Delta tables**
 
@@ -477,9 +466,9 @@ and reuse*.
 
     ![](./media/image37.png)
 
-**Note**: You can run the display(df) command at any time to check the
-progress of your work. In this case, you’d run ‘display(dfdimDate_gold)’
-to see the contents of the dimDate_gold dataframe.
+    **Note**: You can run the display(df) command at any time to check the
+    progress of your work. In this case, you’d run ‘display(dfdimDate_gold)’
+    to see the contents of the dimDate_gold dataframe.
 
 7.  In a new code block, **add and run the following code** to create a
     dataframe for your date dimension, **dimdate_gold**:
@@ -503,7 +492,7 @@ to see the contents of the dimDate_gold dataframe.
     display(dfdimDate_gold.head(10))
     ```
 
-   ![](./media/image38.png)
+     ![](./media/image38.png)
     ![](./media/image39.png)
 
 8.  You’re separating the code out into new code blocks so that you can
@@ -587,12 +576,12 @@ to see the contents of the dimDate_gold dataframe.
     ```
    ![](./media/image44.png)
 
-Here you have created a new DataFrame dfdimCustomer_silver by performing
-various transformations such as dropping duplicates, selecting specific
-columns, and splitting the “CustomerName” column to create “First” and
-“Last” name columns. The result is a DataFrame with cleaned and
-structured customer data, including separate “First” and “Last” name
-columns extracted from the “CustomerName” column.
+  Here you have created a new DataFrame dfdimCustomer_silver by performing
+  various transformations such as dropping duplicates, selecting specific
+  columns, and splitting the “CustomerName” column to create “First” and
+  “Last” name columns. The result is a DataFrame with cleaned and
+  structured customer data, including separate “First” and “Last” name
+  columns extracted from the “CustomerName” column.
     ![](./media/image45.png)
 
 3.  Next, we’ll **create the ID column for our customers**. In a new
@@ -771,8 +760,8 @@ columns extracted from the “CustomerName” column.
    ![](./media/image56.png)
    ![](./media/image57.png)
 
-**Now that you have your dimensions built out, the final step is to
-create the fact table.**
+    **Now that you have your dimensions built out, the final step is to
+    create the fact table.**
 
 9.  **In a new code block**, paste and run the following code to create
     the **fact table**:
