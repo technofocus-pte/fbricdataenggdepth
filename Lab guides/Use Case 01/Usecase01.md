@@ -88,33 +88,33 @@ analysis.
 
 5.  You’ll be directed to Power BI Home page.
 
-     ![](./media/image5.png)
+     ![](./media/a1.png)
 
 ## Task 2: Start the Microsoft Fabric trial
 
 Follow these steps to start your Fabric trial.
 
-1.  On **Power BI Home** page, click on the **Account manager** on the
+1.  On **Fabric** page, click on the **Account manager** on the
     right side. In the Account manager blade, navigate and
     select **Start trial** as shown in the below image.
 
-     ![](./media/image6.png)
+     ![](./media/aa2.png)
 
-2.  If prompted, agree to the terms and then select **Start trial**.
+2.  If prompted, agree to the terms and then select **Activate**.
 
-     ![](./media/new1-1.png)
+     ![](./media/aa3.png)
 
 3.  Once your trial capacity is ready, you receive a confirmation
-    message. Select **Fabric Home Page** to begin working in Fabric.
+    message. Select **Got it** to begin working in Fabric.
 
-      ![](./media/image8.png)
+      ![](./media/aa4.png)
 
 4.  Open your Account manager again. Notice that you now have a heading
     for **Trial status**. Your Account manager keeps track of the number
     of days remaining in your trial. You will also see the countdown in
     your Fabric menu bar when you work in a product experience.
 
-     ![](./media/image9.png)
+     ![](./media/aa5.png)
 
 # Exercise 2: Build and implement an end-to-end lakehouse for your organization
 
@@ -125,16 +125,11 @@ the items needed for this lakehouse tutorial, which includes lakehouse,
 dataflows, Data Factory pipelines, the notebooks, Power BI datasets, and
 reports.
 
-1.  Go back to **Power BI** window. On the left side navigation menu of
-    Power BI Home page, navigate and click on **Workspaces**.
+1.  Fabric home page, select **+New workspace** tile.
 
-     ![](./media/image16.png)
+     ![](./media/a1.png)
 
-2.  In the Workspaces pane, click on **+** **New workspace** button.
-
-      ![](./media/image17.png)
-
-3.  In the **Create a workspace** pane that appears on the right side,
+2.  In the **Create a workspace** pane that appears on the right side,
     enter the following details, and click on the **Apply** button.
 
        |   |    |
@@ -153,23 +148,20 @@ reports.
 
       ![](./media/image20.png)
 
-5.  Wait for the deployment to complete. It takes 2-3 minutes to
+3.  Wait for the deployment to complete. It takes 2-3 minutes to
     complete.
 
      ![](./media/image21.png)
 
 ## **Task 2: Create a lakehouse**
 
-1.  In the **Power BI Fabric Lakehouse Tutorial-XX** page, click on the
-    **Power BI** icon located at the bottom left and select **Data
-    Engineering** under Synapse.
+1.  Create a new Eventhouse by clicking on the **+New item** button in the navigation bar.
 
-     ![](./media/new0.png)
+     ![](./media/a3.png)
+    
+2.  Click on the "**Lakehouse**" tile.
 
-2.  In the **Synapse** **Data Engineering** **Home** page,
-    select **Lakehouse** to create a lakehouse.
-
-     ![](./media/new2.png)
+     ![](./media/aa6.png)
 
 3.  In the **New lakehouse** dialog box, enter **wwilakehouse** in
     the **Name** field, click on the **Create** button and open the new
@@ -177,7 +169,7 @@ reports.
 
     **Note**: Ensure to remove space before **wwilakehouse**.
  
-     ![](./media/new3.png)
+     ![](./media/aa7.png)
  
      ![](./media/image25.png)
 
