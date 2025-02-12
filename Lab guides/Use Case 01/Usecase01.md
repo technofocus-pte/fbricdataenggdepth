@@ -253,24 +253,25 @@ reports.
 
         GROUP BY BuyingGroup
         ```
-        ![](./media/image213.png)
+    
+     ![](./media/image213.png)
 
     **Note**: If you encounter an error during the execution of the script,
     then crosscheck the script syntax with the above image.
 
     ![](./media/image213.png)
-12. Previously all the lakehouse tables and views were automatically
+13. Previously all the lakehouse tables and views were automatically
     added to the semantic model. With the recent updates, for new
     lakehouses, you have to manually add your tables to the semantic
     model.
 
-13. From the lakehouse **Reporting** tab, select **Manage default Power
+14. From the lakehouse **Reporting** tab, select **Manage default Power
     BI semantic model** and select the tables that you want to add to
     the semantic model.
 
      ![](./media/image214.png)
 
-14. In **Manage default semantic model** tab, select
+15. In **Manage default semantic model** tab, select
     the **dimension_customer** table and click on **Confirm.**
 
      ![](./media/image215.png)
