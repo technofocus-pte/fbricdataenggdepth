@@ -573,6 +573,11 @@ that data and prepare it for creating delta tables.
 9.  Select the cell, replace the code, and click the **Run** icon that appears to the left of the cell when you hover over it
 
         ```
+        from pyspark.sql.types import *
+        def loadFullDataFromSource(table_name):
+            df = spark.read.format("parquet").load('Files/wwi-raw-data/full/' + table_name)
+            df.write.mode("overwrite").format("delta").save("Tables/" + table_name)
+        
         full_tables = [
             'dimension_city',
             'dimension_date',
