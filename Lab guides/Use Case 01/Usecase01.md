@@ -571,12 +571,8 @@ that data and prepare it for creating delta tables.
     parameter.
 
 9.  Select the cell, replace the code, and click the **Run** icon that appears to the left of the cell when you hover over it
+
         ```
-        from pyspark.sql.types import *
-        def loadFullDataFromSource(table_name):
-            df = spark.read.format("parquet").load('Files/wwi-raw-data/full/' + table_name)
-            df.write.mode("overwrite").format("delta").save("Tables/" + table_name)
-        
         full_tables = [
             'dimension_city',
             'dimension_date',
@@ -587,28 +583,28 @@ that data and prepare it for creating delta tables.
         for table in full_tables:
             loadFullDataFromSource(table)
         ```
-
+  
        ![](./media/image95.png)
       ![](./media/image96.png)
-10. To validate the created tables, click and select refresh on
+11. To validate the created tables, click and select refresh on
     the **Tables**. The tables appear.
      ![](./media/image97.png)
       ![](./media/image98.png)
 
-11. Go the items view of the workspace again, select **Fabric Lakehouse
+12. Go the items view of the workspace again, select **Fabric Lakehouse
     Tutorial-XX** and select the **wwilakehouse** lakehouse to open it.
 
      ![](./media/image99.png)
  
      ![](./media/image100.png)
 
-12. Now, open the second notebook. In the lakehouse view, dropdown the
+13. Now, open the second notebook. In the lakehouse view, dropdown the
     **Open notebook** and select **Existing notebook** from the top
     navigation menu.
 
      ![](./media/image101.png)
 
-13. From the list of Open existing notebook, select the **02 - Data
+14. From the list of Open existing notebook, select the **02 - Data
     Transformation - Business** **Aggregation** notebook and click on
     the **Open**.
 
