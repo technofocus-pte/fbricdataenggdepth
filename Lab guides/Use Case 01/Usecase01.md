@@ -245,7 +245,7 @@ reports.
     as shown in the below image, then click on the play icon to **Run**
     the script.
 
-        SQLCopy
+      
         ```
         SELECT BuyingGroup, Count(\*) AS Total
 
@@ -361,14 +361,14 @@ the Wide World Importers (WWI) into the lakehouse.
 6.  In the **Connect to data source** window, enter the details from the
     table below and select **Next**.
 
-    |   |   |
-    |---|---|
-    |Property |	Value|
-    |URL|	+++https://assetsprod.microsoft.com/en-us/wwi-sample-dataset.zip+++|
-    |Connection	|Create a new connection|
-    |Connection name	|+++wwisampledata+++ |
-    |Data gateway|	None|
-    |Authentication kind|	Anonymous|
+        |   |   |
+        |---|---|
+        |Property |	Value|
+        |URL|	+++https://assetsprod.microsoft.com/en-us/wwi-sample-dataset.zip+++|
+        |Connection	|Create a new connection|
+        |Connection name	|+++wwisampledata+++ |
+        |Data gateway|	None|
+        |Authentication kind|	Anonymous|
 
      ![](./media/image64.png)
 
@@ -427,7 +427,7 @@ the Wide World Importers (WWI) into the lakehouse.
 
 16. The data is created under the **Files** section of the lakehouse
     explorer. A new folder with GUID contains all the needed data.
-    Rename the GUID to +++**wwi-raw-data+++**
+    Rename the GUID to +++wwi-raw-data+++
 
      ![](./media/image78.png)
  
@@ -650,7 +650,7 @@ that data and prepare it for creating delta tables.
     In this cell, you create three different Spark dataframes, each
     referencing an existing delta table.
    
-   PythonCopy
+   
     ```
     df_fact_sale = spark.read.table("wwilakehouse.fact_sale") 
     df_dimension_date = spark.read.table("wwilakehouse.dimension_date")
@@ -998,7 +998,7 @@ the workspace you created for this tutorial.
     left-hand navigation menu. It opens the workspace item view.
 
      ![](./media/image142.png)
-2.  Select the ***...*** option under the workspace name and
+2.  Select the **...** option under the workspace name and
     select **Workspace settings**.
 
     ![](./media/image143.png)
