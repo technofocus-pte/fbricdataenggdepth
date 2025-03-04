@@ -64,15 +64,11 @@ trial enabled.
      ![](./media/image4.png)
 
 
-5.  Create a new Eventhouse by clicking on the **+New item** button in the navigation bar.
+5.  Create a new Eventhouse by clicking on the **+New workshop** button in the navigation bar.
 
-     ![](./media/a3.png)
+     ![](./media/a2.png)
     
-6.  Click on the "**Lakehouse**" tile.
-
-     ![](./media/aa6.png)
-
-7.  In the **Create a workspace** tab, enter the following details and
+6.  In the **Create a workspace** tab, enter the following details and
     click on the **Apply** button.
     |                          |                                               |
     |-----------------------|------------------------------------------------- |
@@ -84,15 +80,17 @@ trial enabled.
      ![](./media/image9.png)
      ![](./media/image10.png)
 
-8.  Wait for the deployment to complete. It’ll take approximately 2-3
+7.  Wait for the deployment to complete. It’ll take approximately 2-3
     minutes.
 
-9. In the **Data-FactoryXX** workspace page, navigate and click on
-    **+New** button, then select **Lakehouse.**
+8. In the **Data-FactoryXX** workspace page, navigate and click on
+    **+New item** button, then select **Lakehouse.**
 
-     ![](./media/image11.png)
+       ![](./media/a2.png)
 
-10. In the **New lakehouse** dialog box, enter
+     ![](./media/a4.png)
+
+9. In the **New lakehouse** dialog box, enter
     **+++DataFactoryLakehouse+++** in the **Name** field, click on the
     **Create** button and open the new lakehouse.
 
@@ -100,7 +98,7 @@ trial enabled.
 
      ![](./media/image13.png)
 
-13. Now, click on **Data-FactoryXX** on the left-sided navigation pane.
+10. Now, click on **Data-FactoryXX** on the left-sided navigation pane.
 
     ![](./media/image14.png)
 
