@@ -86,7 +86,7 @@ trial enabled.
 8. In the **Data-FactoryXX** workspace page, navigate and click on
     **+New item** button, then select **Lakehouse.**
 
-       ![](./media/a2.png)
+      ![](./media/a3.png)
 
      ![](./media/a5.png)
 
