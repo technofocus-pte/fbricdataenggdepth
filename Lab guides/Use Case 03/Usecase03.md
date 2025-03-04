@@ -88,7 +88,7 @@ trial enabled.
 
        ![](./media/a2.png)
 
-     ![](./media/a4.png)
+     ![](./media/a5.png)
 
 9. In the **New lakehouse** dialog box, enter
     **+++DataFactoryLakehouse+++** in the **Name** field, click on the
