@@ -247,7 +247,7 @@ reports.
 
       
         ```
-        SELECT BuyingGroup, Count(\*) AS Total
+        SELECT BuyingGroup, Count(*) AS Total
 
         FROM dimension_customer
 
