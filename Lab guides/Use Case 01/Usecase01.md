@@ -361,14 +361,14 @@ the Wide World Importers (WWI) into the lakehouse.
 6.  In the **Connect to data source** window, enter the details from the
     table below and select **Next**.
 
-        |   |   |
-        |---|---|
-        |Property |	Value|
-        |URL|	+++https://assetsprod.microsoft.com/en-us/wwi-sample-dataset.zip+++|
-        |Connection	|Create a new connection|
-        |Connection name	|+++wwisampledata+++ |
-        |Data gateway|	None|
-        |Authentication kind|	Anonymous|
+    |          |              |
+    |-------|-------------|
+    |Property |	Value|
+    |URL|	+++https://assetsprod.microsoft.com/en-us/wwi-sample-dataset.zip+++|
+    |Connection	|Create a new connection|
+    |Connection name	|+++wwisampledata+++ |
+    |Data gateway|	None|
+    |Authentication kind|	Anonymous|
 
      ![](./media/image64.png)
 
@@ -382,7 +382,7 @@ the Wide World Importers (WWI) into the lakehouse.
 8.  In the **Connect to data destination** window, select **OneLake data
     hub** and select **wwilakehouse.** Now specify the **Root
     folder** as **Files** and click **Next**. This will write the data
-    to the *Files* section of the lakehouse.
+    to the **Files** section of the lakehouse.
 
       ![](./media/image66.png)
  
