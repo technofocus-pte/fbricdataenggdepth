@@ -1291,7 +1291,7 @@ transform, and load* (ETL) process.
 
     - **data gateway**: (none)
 
-    - **Authentication kind**: Organizational account
+    - **Authentication kind**: Anonymous
 
       ![](./media/new31.png)
 
