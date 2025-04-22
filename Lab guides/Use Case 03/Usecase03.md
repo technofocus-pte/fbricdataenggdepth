@@ -315,14 +315,10 @@ prepare the data before combining it with the trips data.
      ![](./media/image51.png)
 
 2.  In the **Connect to data source** pane, under **Connection
-    settings**, select **Upload file** radio button, then
-    click on **Browse** button and browse your VM **C:\LabFiles**, then
-    select the **NYC-Taxi-Green-Discounts** file and click on the
-    **Open** button.
+    settings**, select **Link to file** radio button, then
+    enter the URL as +++https://raw.githubusercontent.com/ekote/azure-architect/master/Generated-NYC-Taxi-Green-Discounts.csv+++
 
-      ![](./media/image52.png)
-
-     ![](./media/image53.png)
+      ![](./media/aaa1.png)
 
 3.  In the **Connect to data source** pane, click on the **Next**
     button.
